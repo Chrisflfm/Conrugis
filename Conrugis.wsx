@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<WORKSPACE_OPTIONS>
+  <Version>1_0</Version>
+  <Projects>
+    <ActiveProject>Conrugis</ActiveProject>
+    <Project>
+      <Name>Conrugis</Name>
+      <ActiveConfiguration>Release</ActiveConfiguration>
+      <Configurations>
+        <Configuration>
+          <Name>Release</Name>
+          <ForceRebuild>0</ForceRebuild>
+          <AxesVerified>1</AxesVerified>
+          <CreateDAFile>0</CreateDAFile>
+          <DownloadDAFile>0</DownloadDAFile>
+          <CreateExportFile>0</CreateExportFile>
+          <MonitorTask>0</MonitorTask>
+          <DataDump>
+            <CurrentGroupName />
+            <ApplyChanges>1</ApplyChanges>
+            <DownloadFilename />
+            <UploadFilename />
+            <OverwriteExisting>0</OverwriteExisting>
+            <ForceOldDAFormat>0</ForceOldDAFormat>
+            <OpenDocumentAfterUpload>1</OpenDocumentAfterUpload>
+          </DataDump>
+        </Configuration>
+      </Configurations>
+    </Project>
+  </Projects>
+  <Breakpoints />
+  <Bookmarks />
+  <ChildFrames>
+    <Document>
+      <ViewFrame>
+        <DocPathName>.\Conrugis.stxp</DocPathName>
+        <WindowPlacement>MCAAAAAAAAAAAAAABAAAAAAAPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPDAAAAAAADAAAAAAADGGAAAAAJICAAAAA</WindowPlacement>
+        <ViewScrollHoriz>0</ViewScrollHoriz>
+        <ViewScrollVert>488</ViewScrollVert>
+        <IsActiveChildFrame>1</IsActiveChildFrame>
+        <Line>529</Line>
+        <Column>13</Column>
+      </ViewFrame>
+    </Document>
+  </ChildFrames>
+  <ExpandedTreenodes>
+    <Treenode>
+      <Location>Conrugis</Location>
+    </Treenode>
+    <Treenode>
+      <Location>Conrugis/Program</Location>
+    </Treenode>
+    <Treenode>
+      <Location>Conrugis/System Files</Location>
+    </Treenode>
+  </ExpandedTreenodes>
+  <ExpandedTreeNodesHWM>
+    <Location>Conrugis System</Location>
+    <Location>Conrugis System/Release</Location>
+    <Location>Conrugis System/Release/Hardware</Location>
+    <Location>Conrugis System/Release/Hardware/Network</Location>
+    <Location>Conrugis System/Release/Hardware/Network/JC-340</Location>
+  </ExpandedTreeNodesHWM>
+</WORKSPACE_OPTIONS>

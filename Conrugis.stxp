@@ -1,0 +1,613 @@
+Var
+// *********************In en outputs*********************************
+	ctFlow1:		Bool	at %IX 100000201; //
+	ctFlow2:		Bool	at %IX 100000202; //
+	ctVorstVeilig1:	Bool	at %IX 100000203; //
+	ctVorstVeilig2:	Bool	at %IX 100000204; //
+	ctPressH2O:		Bool	at %IX 100000205; //
+	ctExtVorstVlg:	Bool	at %IX 100000206; //
+	ctAlarmAan:		Bool	at %IX 100000207; //
+	resI1_8:		Bool	at %IX 100000208; //
+	alm1_85V:		Bool	at %QX 100000209; //
+	alm2_52V:		Bool	at %QX 100000210; //
+	alm3_37V:		Bool	at %QX 100000211; //
+	alm4_29V:		Bool	at %QX 100000212; //
+	resIO1_13:		Bool	at %IX 100000213; //
+	resIO1_14:		Bool	at %IX 100000214; //
+	resIO1_15:		Bool	at %IX 100000215; //
+	resIO1_16:		Bool	at %IX 100000216; //
+	
+	hrVent1A:		Bool	at %QX 100000301; //
+	hrVent1B:		Bool	at %QX 100000302; //
+	hrVent2A:		Bool	at %QX 100000303; //
+	hrVent2B:		Bool	at %QX 100000304; //
+	hrPomp1:		Bool	at %QX 100000305; //
+	hrPomp2:		Bool	at %QX 100000306; //
+	hrDakvent1:		Bool	at %QX 100000307; //
+	hrDakvent2:		Bool	at %QX 100000308; //
+	laBlauw1:		Bool	at %QX 100000309; //
+	laBlauw2:		Bool	at %QX 100000310; //
+	laRood:			Bool	at %QX 100000311; //
+	laGroen:		Bool	at %QX 100000312; //
+	hrOpstoken:		Bool	at %QX 100000313; //
+	hrExtractor:	Bool	at %QX 100000314; //
+	resO2_15:		Bool	at %QX 100000315; //
+	resO2_16:		Bool	at %QX 100000316; //
+// *********************Tempratuur sensoren*********************************
+// Retour temp	
+	Ret_ModState:	Int		at %vl 100040000; //1 module status
+	tmpRet1:		Float	at %vl 100040002; //Temp1 retour 1
+	tmpRet2:		Float	at %vl 100040003; //Temp2 retour 2
+	ComTmpRet1:		Int		at %vl 100041101; //Command register retour 1
+	ComTmpRet2:		Int		at %vl 100041201; //Command register retour 2
+	StaTtmpRet1:	Int		at %vl 100041100; //Temp retour 1
+	StaTtmpRet2:	Int		at %vl 100041200; //Temp retour 2
+	AvgTmpRet1:		Int		at %vl 100041106; //Temperatuur 1 meting uitmiddelen retour 1
+	AvgTmpRet2:		Int		at %vl 100041206; //Temperatuur 1 meting uitmiddelen retour 2
+// Ruimte temp 		
+	Rth_ModState:	Int		at %vl 100050000; //1 module status
+	tmpRth1:		Float	at %vl 100050002; //Temp1 ruimte 1
+	tmpRth2:		Float	at %vl 100050003; //Temp2 ruimte 2
+	ComTmpRth1:		Int		at %vl 100051101; //Command register ruimte 1
+	ComTmpRth2:		Int		at %vl 100051201; //Command register ruimte 2
+	StaTtmpRtht1:	Int		at %vl 100051100; //Temp ruimte 1
+	StaTtmpRtht2:	Int		at %vl 100051200; //Temp ruimte 2
+	AvgTmpRth1:		Int		at %vl 100051106; //Temperatuur 1 meting uitmiddelen ruimte 1
+	AvgTmpRth2:		Int		at %vl 100051206; //Temperatuur 1 meting uitmiddelen ruimte 2
+// Ruimte temp dak		
+	Rthdak_ModState:Int		at %vl 100060000; //1 module status
+	tmpRth1dak:		Float	at %vl 100060002; //Temp1 ruimte 1 dak
+	tmpRth2dak:		Float	at %vl 100060003; //Temp2 ruimte 2 dak
+	ComTmpRth1dak:	Int		at %vl 100061101; //Command register ruimte 1 dak
+	ComTmpRth2dak:	Int		at %vl 100061201; //Command register ruimte 2 dak
+	StaTtmpRtht1dak:Int		at %vl 100061100; //Temp ruimte 1 dak
+	StaTtmpRtht2dak:Int		at %vl 100061200; //Temp ruimte 2 dak
+	AvgTmpRth1dak:	Int		at %vl 100061106; //Temperatuur 1 meting uitmiddelen ruimte 1 dak
+	AvgTmpRth2dak:	Int		at %vl 100061206; //Temperatuur 1 meting uitmiddelen ruimte 2 dak
+// Aanvoer temp	
+	Aanv_ModState:	Int		at %vl 100070000; //1 module status
+	tmpAanv1:		Float	at %vl 100070002; //Temp1 Aanv 1
+	tmpAanv2:		Float	at %vl 100070003; //Temp2 Aanv 2
+	ComTmpAanv1:	Int		at %vl 100071101; //Command register Aanv 1
+	ComTmpAanv2:	Int		at %vl 100071201; //Command register Aanv 2
+	StaTtmpAanv1:	Int		at %vl 100071100; //Temp Aanv 1
+	StaTtmpAanv2:	Int		at %vl 100071200; //Temp Aanv 2
+	AvgTmpAanv1:	Int		at %vl 100071106; //Temperatuur 1 meting uitmiddelen Aanv 1
+	AvgTmpAanv2:	Int		at %vl 100071206; //Temperatuur 1 meting uitmiddelen Aanv 2
+// *********************Analoog IO*********************************
+//Analoog in
+	AI_Mod:			Int		at %vl 100080000; //Status AI module 
+	ComSetpoint:	Int		at %vl 100080001; //Command register AI 
+	mVSetpoint1:	Float	at %vl 100080002; //mV signaal Positie klep 1
+	mVSetpoint2:	Float	at %vl 100080003; //mV signaal Positie klep 2
+	StatSetpoint1:	Int		at %vl 100081100; //Status Ai klep 1
+	StatSetpoint:	Int		at %vl 100081200; //Status Ai klep 2
+	AvgSetpoint1:	Int		at %vl 100081106; //gemiddelde setting register klep 1
+	AvgSetpoint2:	Int		at %vl 100081206; //gemiddelde setting register klep 2
+	ConfgSetpoint1:	Int		at %vl 100081107; //configuratie register klep 1
+	ConfgSetpoint2:	Int		at %vl 100081207; //configuratie register klep 2
+
+	
+//**********************Programma variabelen en registers******************************
+
+// Flags
+	flVent1A:				Bool	at %MX 1;	//
+	flVent1B:				Bool	at %MX 2;	//
+	flVent2A:				Bool	at %MX 3;	//
+	flVent2B:				Bool	at %MX 4;	//
+	flPomp1:				Bool	at %MX 5;	//
+	flPomp2:				Bool	at %MX 6;	//
+	flDakvent1:				Bool	at %MX 7;	//
+	flDakvent2:				Bool	at %MX 8;	//
+	flBlauw1:				Bool	at %MX 9;	//
+	flBlauw2:				Bool	at %MX 10;	//
+	flRood:					Bool	at %MX 11;	//
+	flGroen:				Bool	at %MX 12;	//
+	flOpstoken:				Bool	at %MX 13;	//
+	flExtractor:			Bool	at %MX 14;	//
+	flAlm1_85V:				Bool	at %MX 15;	//
+	flAlm2_52V:				Bool	at %MX 16;	//
+	flAlm3_37V:				Bool	at %MX 17;	//
+	flAlm4_29V:				Bool	at %MX 18;	//
+	flSetClock:				Bool	at %MX 19;	//
+	flInVorstVeilig1:		Bool	at %MX 20;	//
+	flInVorstVeilig2:		Bool	at %MX 21;	//
+	flForceDakVent1:		Bool	at %MX 22;	//
+	flForceDakVent2:		Bool	at %MX 23;	//
+	flForceDakVent1Off:		Bool	at %MX 24;	//
+	flForceDakVent2Off:		Bool	at %MX 25;	//	
+	flForceVent1Off:		Bool	at %MX 26;	//
+	flForceVent2Off:		Bool	at %MX 27;	//	
+	flForceVent1:			Bool	at %MX 28;	//
+	flForceVent2:			Bool	at %MX 29;	//	
+//**********************Fouten*******************************************
+	Ft01_Flow1:				Bool	at %MX 100; //Geen flow in garage
+	Ft02_Flow2:				Bool	at %MX 102; //geen flow in loods
+	Ft03_H2Odruk:			Bool	at %MX 103; //waterdruk weggevallen
+	Ft04_Vorstgevaar:		Bool	at %MX 104; //temperatuur te laag in de ruimte
+	Ft05_Opstoken:			Bool	at %MX 105; //Opstoken nodig
+
+//Booleans
+	bInAuto:				Bool;
+	blTimeOutPmp1Act:		Bool;
+	blTimeOutPmp2Act:		Bool;
+	blPomp1Ok:				Bool;
+	blPomp2Ok:				Bool;
+	KnipperBit:				Bool;
+//Register numbers: 1000000 ... 1001999
+//Registers
+	regTimeOutPomp:			Int		at %rl 1000000; //
+	AlarmTempVorst:			Int		at %rl 1000001; //
+	MinTempAanVBedrijf:		Int		at %rl 1000002; //
+	MinTempAanVVorstVlg:	Int		at %rl 1000003; //
+	BaseSetpointBedrijf:	Int		at %rl 1000004; //
+	SetpointVorstVeilig:	Int		at %rl 1000005; //
+	regHours:				Int		at %rl 1000006; //
+	regMinutes:				Int		at %rl 1000007; //
+	regSeconds:				Int		at %rl 1000008; //
+	res9:					Int		at %rl 1000009; //
+	res10:					Int		at %rl 1000010; //
+	HysteresischBedrijf:	Int		at %rl 1000011; //
+	HysteresischVorstV:		Int		at %rl 1000012; //
+	HysteresischDak:		Int		at %rl 1000013; //
+	MinTempAanvoer1:		Int		at %rl 1000014; //
+	MinTempAanvoer2:		Int		at %rl 1000015; //
+	HysteresischAanv:		Int		at %rl 1000016; //
+	dTVentBijschakelen:		Int		at %rl 1000017; //	
+	setpointDakVent:		Int		at %rl 1000018; //	
+	
+	
+	
+//Integers
+//Floats
+	SetpointBedrijf1:		Float	at %rl 1000050; //
+	SetpointBedrijf2:		Float	at %rl 1000055; //
+//**********************RTC**********************************************
+	Milliseconds:			Int		at %vl 102910; //
+	Seconds:				Int		at %vl 102911; //
+	Minutes:				Int		at %vl 102912; //
+	Hours:					Int		at %vl 102913; //
+	Weekday:				Int		at %vl 102914; //Weekday (0 = Sunday)
+	Day:					Int		at %vl 102915; //
+	Month:					Int		at %vl 102916; //
+	Year:					Int		at %vl 102917; //
+	
+
+
+//**********************Timers********************************************
+	stTimeOutPomp1:			Timer;
+	stTimeOutPomp2:			Timer;
+	
+End_var
+
+Task tMain Autorun
+//Init flags
+	FlagClear(0,100); //Clear eerste 100 flags
+//Init outputs
+	hrVent1A := False;
+	hrVent1B := False;
+	hrVent2A := False;		
+	hrVent2B := False;		
+	hrPomp1 := False;		
+	hrPomp2 := False;	
+	hrDakvent1 := False;
+	hrDakvent2 := False;
+	laBlauw1 := False;
+	laBlauw2 := False;
+	laRood :=False;
+	laGroen :=False;
+	hrOpstoken :=False;
+	hrExtractor :=False;
+	alm1_85V := False;
+	alm2_52V := False;
+	alm3_37V := False;
+	alm4_29V := False;
+	
+//Start temp meting Retour
+	ComTmpRet1 := 104; //4 draads
+	ComTmpRet1 := 107; //Celsius
+	ComTmpRet1 := 109; //PT100
+	ComTmpRet1 := 160; //Display temperature in module register
+	ComTmpRet2 := 104; //4 draads
+	ComTmpRet2 := 107; //Celsius
+	ComTmpRet2 := 109; //PT100
+	ComTmpRet2 := 160; //Display temperature in module register
+
+//Start temp meting Ruimte temp
+	ComTmpRth1 := 104; //4 draads
+	ComTmpRth1 := 107; //Celsius
+	ComTmpRth1 := 109; //PT100
+	ComTmpRth1 := 160; //Display temperature in module register
+	ComTmpRth2 := 104; //4 draads
+	ComTmpRth2 := 107; //Celsius
+	ComTmpRth2 := 109; //PT100
+	ComTmpRth2 := 160; //Display temperature in module register
+
+//Start temp meting Ruimte temp dak
+	ComTmpRth1dak := 104; //4 draads
+	ComTmpRth1dak := 107; //Celsius
+	ComTmpRth1dak := 109; //PT100
+	ComTmpRth1dak := 160; //Display temperature in module register
+	ComTmpRth2dak := 104; //4 draads
+	ComTmpRth2dak := 107; //Celsius
+	ComTmpRth2dak := 109; //PT100
+	ComTmpRth2dak := 160; //Display temperature in module register
+
+//Start temp meting Aanvoer
+	ComTmpAanv1 := 104; //4 draads
+	ComTmpAanv1 := 107; //Celsius
+	ComTmpAanv1 := 109; //PT100
+	ComTmpAanv1 := 160; //Display temperature in module register
+	ComTmpAanv2 := 104; //4 draads
+	ComTmpAanv2 := 107; //Celsius
+	ComTmpAanv2 := 109; //PT100
+	ComTmpAanv2 := 160; //Display temperature in module register
+
+//Set uitmideling temperatuur meting	
+	AvgTmpRet1 := 16; //uitmiddelen  laatste 16
+	AvgTmpRet2 :=16; //uitmiddelen  laatste 16
+	AvgTmpRth1 := 16; //uitmiddelen  laatste 16
+	AvgTmpRth2 := 16; //uitmiddelen  laatste 16
+	AvgTmpRth1dak := 16; //uitmiddelen  laatste 16
+	AvgTmpRth2dak := 16; //uitmiddelen  laatste 16
+	AvgSetpoint1 := 16; //uitmiddelen  laatste 16
+	AvgSetpoint2 := 16; //uitmiddelen  laatste 16
+
+//Config AI
+	ConfgSetpoint1 := 5; //0-10V
+	AvgSetpoint1 := 16; //uitmiddelen  laatste 16
+	ConfgSetpoint1 := 5; //0-10V
+	AvgSetpoint1 := 16; //uitmiddelen  laatste 16
+
+//Reset fouten
+	Ft01_Flow1 := False;
+	Ft02_Flow2 := False;
+	Ft03_H2Odruk := False;
+	Ft04_Vorstgevaar := False;
+	Ft05_Opstoken := False;
+
+//**************************************Start Main loop**************************************
+	bInAuto := True;
+	While bInAuto Do
+		if ctVorstVeilig1 then
+			flInVorstVeilig1 := False;
+			//Setpoint uitrekenen
+			SetpointBedrijf1 := BaseSetpointBedrijf + (mVSetpoint1/1000);
+			
+			//Garage
+			If tmpRth1 < SetpointBedrijf1 - (HysteresischBedrijf/2) then
+				flPomp1 := True;
+			End_If;
+			If tmpRth1 >= SetpointBedrijf1 + (HysteresischBedrijf/2) then
+				flPomp1 := False;
+			End_If;
+			if tmpRet1 >= MinTempAanvoer1 + (HysteresischAanv/2) or flForceVent1 then
+				flVent1A := True;
+				flVent1B := True;
+			End_If;
+			if tmpRet1 < MinTempAanvoer1 - (HysteresischAanv/2) and not flForceVent1  then
+				flVent1A := False;
+				flVent1B := False;
+			End_If;
+			flBlauw1 := False;
+		
+		Else
+			flInVorstVeilig1 := True;
+			SetpointBedrijf1 :=SetpointVorstVeilig;
+			//Garage
+			If tmpRth1 < SetpointVorstVeilig - (HysteresischVorstV/2) then
+				flPomp1 := True;
+			End_If;
+			If tmpRth1 >= SetpointVorstVeilig - (HysteresischVorstV/2) then
+				flPomp1 := False;
+			End_If;
+			if flPomp1 or flForceVent1 then
+				flVent1A := True;
+			Else
+				flVent1A := False;
+			End_If;
+			if flVent1A and tmpRet1 < SetpointVorstVeilig - dTVentBijschakelen or flForceVent1 then
+				flVent1B := True;
+			else
+				flVent1B := False;
+			End_If;
+			flBlauw1 := True;
+			
+		End_If;
+
+		if ctVorstVeilig2 then
+			flInVorstVeilig2 := False;
+			//Setpoint uitrekenen
+			SetpointBedrijf2 := BaseSetpointBedrijf + (mVSetpoint2/1000);
+			//Loods
+			If tmpRth2 < SetpointBedrijf2 - (HysteresischBedrijf/2) then
+				flPomp2 := True;
+			End_If;
+			If tmpRth2 >= SetpointBedrijf2 + (HysteresischBedrijf/2) then
+				flPomp2 := False;
+			End_If;
+			if tmpRet2 >= MinTempAanvoer2 + (HysteresischAanv/2) then
+				flVent2A := True;
+				flVent2B := True;
+			End_If;
+			if tmpRet2 < MinTempAanvoer2 - (HysteresischAanv/2) then
+				flVent2A := False;
+				flVent2B := False;
+			End_If;
+			flBlauw2 := False;	
+		Else
+			flInVorstVeilig2 := True;
+			SetpointBedrijf2 :=SetpointVorstVeilig;
+			//Loods
+			If tmpRth2 < SetpointVorstVeilig - (HysteresischVorstV/2) or flForceVent2 then
+				flPomp2 := True;
+			End_If;
+			If tmpRth2 >= SetpointVorstVeilig - (HysteresischVorstV/2) and not flForceVent2 then
+				flPomp2 := False;
+			End_If;
+			if flPomp2 or flForceVent2 then
+				flVent2A := True;
+			Else
+				flVent2A := False;
+			End_If;
+			if flVent2A and tmpRet2 < SetpointVorstVeilig - dTVentBijschakelen or flForceVent2 then
+				flVent2B := True;
+			else
+				flVent2B := False;
+			End_If;
+			flBlauw2 := True;
+		End_If;
+
+//dakvent Garage
+		if (tmpRth1dak > setpointDakVent + (HysteresischDak/2)) or flForceDakVent1 then
+			flDakvent1 := True;
+		End_if;
+		if (tmpRth1dak <= setpointDakVent - (HysteresischDak/2)) and not flForceDakVent1 then
+			flDakvent1 := False;
+		End_if;
+//Dakvent loods
+		if (tmpRth2dak > setpointDakVent + (HysteresischDak/2)) or flForceDakVent2 then
+			flDakvent2 := True;
+		End_if;
+		if (tmpRth2dak <= setpointDakVent - (HysteresischDak/2)) and not flForceDakVent2 then
+			flDakvent2 := False;
+		End_if;
+// set clock
+		if flSetClock then
+			Hours := regHours;
+			Minutes := regMinutes;
+			Seconds := regSeconds;
+			flSetClock := False;
+		End_if;
+
+// Flow bevestigd	
+		if hrPomp1 and not Ft01_Flow1 then
+			blPomp1Ok := True;
+		else
+			blPomp1Ok := False;
+		End_If;
+
+		if hrPomp2 and not Ft02_Flow2 then
+			blPomp2Ok := True;
+		else
+			blPomp2Ok := False;
+		End_If;
+
+//Opstoken
+		if Ft05_Opstoken then
+			flOpstoken := true;
+		else
+			flOpstoken := false;
+		End_If;
+
+// Alm visualisatie
+		if Ft01_Flow1 or Ft02_Flow2 or Ft03_H2Odruk or Ft04_Vorstgevaar or (Ft05_Opstoken and KnipperBit) then
+			flRood := True;
+			flGroen := False;
+		else
+			flRood := False;
+			flGroen := True;
+		End_if;
+
+	End_While;
+End_Task
+
+Task tVeiligheden Autorun
+//*************************************tVeiligheden en outputs****************************************
+	While True Do
+//Knipperbit
+	if Seconds mod 2 == 0 then
+		KnipperBit := True;
+	else
+		KnipperBit := False;
+	End_if;
+//alarm uitgangen		
+		if Ft01_Flow1 then
+			flAlm1_85V := True;
+		else
+			flAlm1_85V := False;
+		End_if;
+		if Ft02_Flow2 then
+			flAlm2_52V := True;
+		else
+			flAlm2_52V := False;
+		End_if;
+		if Ft03_H2Odruk then
+			flAlm3_37V := True;
+		else
+			flAlm3_37V := False;
+		End_if;
+		if Ft04_Vorstgevaar then
+			flAlm4_29V := True;
+		else
+			flAlm4_29V := False;
+		End_if;
+// DO sturen op 1 locatie
+		if flAlm1_85V then
+	 		alm1_85V := True;
+		else
+			alm1_85V := False;
+		End_If;
+		
+		if flAlm2_52V then
+			alm2_52V := True;
+	 	else
+			alm2_52V := False;
+		End_If;
+		
+		if flAlm3_37V then
+	 		alm3_37V := True;
+		else
+			alm3_37V := False;
+		End_If;
+		
+		if flAlm4_29V then
+			alm4_29V := True;
+	 	else
+			alm4_29V := False;
+		End_If;
+		
+		if flBlauw1 then
+			laBlauw1 := True;
+		else
+			laBlauw1 := False;
+		end_if;
+		
+		if flBlauw2 then
+			laBlauw2 := True;
+		else
+			laBlauw2 := False;
+		end_if;
+		
+		if flGroen and not Ft05_Opstoken then
+			laGroen := True;
+		else
+			laGroen := False;
+		end_if;
+		
+		if flRood then
+			laRood := True;
+		else
+			laRood := False;
+		end_if;
+		
+		if flDakvent1 And not flForceDakVent1Off then
+			hrDakvent1 := True;
+		else
+			hrDakvent1 := False;
+		end_if;
+		
+		if flDakvent2 And not flForceDakVent2Off then
+			hrDakvent2 := True;
+		else
+			hrDakvent2 := False;
+		end_if;
+		
+		if flVent1A and not flForceVent1Off then
+			hrVent1A := True;
+		else
+			hrVent1A := False;
+		end_if;
+		
+		if flVent1B  and not flForceVent1Off then
+			hrVent1B := True;
+		else
+			hrVent1B := False;
+		end_if;
+		
+		if flVent2A and not flForceVent2Off then
+			hrVent2A := True;
+		else
+			hrVent2A := False;
+		end_if;
+		
+		if flVent2B and  not flForceVent2Off then
+			hrVent2B := True;
+		else
+			hrVent2B := False;
+		end_if;
+		
+		if flPomp1 or Ft04_Vorstgevaar then
+			hrPomp1 := True;
+		else
+			hrPomp1 := False;
+		end_if;
+		
+		if flPomp2 or Ft04_Vorstgevaar then
+			hrPomp2 := True;
+		else
+			hrPomp2 := False;
+		end_if;
+		
+		if flOpstoken then
+			hrOpstoken := True;
+		else
+			hrOpstoken := False;
+		end_if;
+		
+		if flExtractor and not Ft04_Vorstgevaar then
+			hrExtractor := True;
+		else
+			hrExtractor := False;
+		end_if;
+
+	End_While	
+End_Task
+
+Task tError Autorun
+//*************************************tError****************************************
+	if hrPomp1 and not blTimeOutPmp1Act then
+		TimerStart(stTimeOutPomp1,T#30s);
+		blTimeOutPmp1Act := True;
+	End_If;
+	if TimerEnd(stTimeOutPomp1) and not ctFlow1 then
+		Ft01_Flow1 := True;
+	End_If;
+	if not hrPomp1 then
+		blTimeOutPmp1Act := False;
+		Ft01_Flow1 := False;
+	End_If;
+	
+	if hrPomp2 and not blTimeOutPmp2Act then
+		TimerStart(stTimeOutPomp2,T#30s);
+		blTimeOutPmp2Act := True;
+	End_If;
+	if TimerEnd(stTimeOutPomp2) and not ctFlow2 then
+		Ft02_Flow2 := True;
+	End_If;
+	if not hrPomp2 then
+		blTimeOutPmp2Act := False;
+		Ft02_Flow2 := False;
+	End_If;
+	
+	if not ctPressH2O then
+		Ft03_H2Odruk := True;
+	Else
+		Ft03_H2Odruk := False;
+	End_If;
+	
+	if AvgTmpRth1 < AlarmTempVorst or AvgTmpRth2 < AlarmTempVorst then
+		Ft04_Vorstgevaar := True;
+	end_if;
+	
+	if AvgTmpRth1 >= AlarmTempVorst and AvgTmpRth2 >= AlarmTempVorst then
+		Ft04_Vorstgevaar := False;
+	end_if;
+	
+	if AvgTmpAanv1 < MinTempAanVBedrijf and blPomp1Ok and not flInVorstVeilig1 then
+		Ft05_Opstoken := True;
+	end_if;
+	if AvgTmpAanv2 < MinTempAanVBedrijf and blPomp2Ok and not flInVorstVeilig2 then
+		Ft05_Opstoken := True;
+	end_if;
+	if AvgTmpAanv1 < MinTempAanVVorstVlg and blPomp1Ok and flInVorstVeilig1 then
+		Ft05_Opstoken := True;
+	end_if;
+	if AvgTmpAanv2 < MinTempAanVVorstVlg and blPomp2Ok and flInVorstVeilig2 then
+		Ft05_Opstoken := True;
+	end_if;
+	if AvgTmpAanv1 >= MinTempAanVBedrijf or AvgTmpAanv1 >= MinTempAanVBedrijf then
+		 Ft05_Opstoken := False;
+	End_If;
+		
+End_Task
