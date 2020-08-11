@@ -120,6 +120,10 @@ Var
 	flForceVent2Off:		Bool	at %MX 27;	//	
 	flForceVent1:			Bool	at %MX 28;	//
 	flForceVent2:			Bool	at %MX 29;	//	
+	flExtractorAan:			Bool	at %MX 30;	//	
+	flExtractorAuto:		Bool	at %MX 31;	//	
+	flExtractorUit:			Bool	at %MX 32;	//	
+	flExtractorInAuto:		Bool	at %MX 33;	//	
 //**********************Fouten*******************************************
 	Ft01_Flow1:				Bool	at %MX 100; //Geen flow in garage
 	Ft02_Flow2:				Bool	at %MX 102; //geen flow in loods
@@ -155,6 +159,9 @@ Var
 	HysteresischAanv:		Int		at %rl 1000016; //
 	dTVentBijschakelen:		Int		at %rl 1000017; //	
 	setpointDakVent:		Int		at %rl 1000018; //	
+	TijdVorstVeiligUit:		Int		at %rl 1000019; //
+	TijdVorstVeiligAan:		Int		at %rl 1000020; // 
+	LoopTijdEXtractor:		Int		at %rl 1000020; // 
 	
 	
 	
@@ -177,6 +184,7 @@ Var
 //**********************Timers********************************************
 	stTimeOutPomp1:			Timer;
 	stTimeOutPomp2:			Timer;
+	stExtractor:			Timer;
 	
 End_var
 
@@ -269,7 +277,7 @@ Task tMain Autorun
 //**************************************Start Main loop**************************************
 	bInAuto := True;
 	While bInAuto Do
-		if ctVorstVeilig1 then
+		if ctVorstVeilig1 and not ctAlarmAan and Hours > TijdVorstVeiligUit and Hours < TijdVorstVeiligAan then
 			flInVorstVeilig1 := False;
 			//Setpoint uitrekenen
 			SetpointBedrijf1 := BaseSetpointBedrijf + (mVSetpoint1/1000);
@@ -315,7 +323,7 @@ Task tMain Autorun
 			
 		End_If;
 
-		if ctVorstVeilig2 then
+		if ctVorstVeilig2 and not ctAlarmAan and Hours > TijdVorstVeiligUit and Hours < TijdVorstVeiligAan then
 			flInVorstVeilig2 := False;
 			//Setpoint uitrekenen
 			SetpointBedrijf2 := BaseSetpointBedrijf + (mVSetpoint2/1000);
@@ -365,6 +373,7 @@ Task tMain Autorun
 		if (tmpRth1dak <= setpointDakVent - (HysteresischDak/2)) and not flForceDakVent1 then
 			flDakvent1 := False;
 		End_if;
+		
 //Dakvent loods
 		if (tmpRth2dak > setpointDakVent + (HysteresischDak/2)) or flForceDakVent2 then
 			flDakvent2 := True;
@@ -372,6 +381,7 @@ Task tMain Autorun
 		if (tmpRth2dak <= setpointDakVent - (HysteresischDak/2)) and not flForceDakVent2 then
 			flDakvent2 := False;
 		End_if;
+		
 // set clock
 		if flSetClock then
 			Hours := regHours;
@@ -408,6 +418,20 @@ Task tMain Autorun
 			flRood := False;
 			flGroen := True;
 		End_if;
+		
+// Extractor
+		if flExtractorAuto and not flExtractorInAuto then
+			flExtractorInAuto := True;
+			LoopTijdEXtractor := T#5m; //Nog via Scherm maken
+			TimerStart (stExtractor,LoopTijdEXtractor); 
+			flExtractor := True;
+		End_if;
+		
+		if TimerEnd(stExtractor) then
+			flExtractor := False;
+			flExtractorInAuto := False;
+		End_if;
+			
 
 	End_While;
 End_Task
@@ -545,7 +569,7 @@ Task tVeiligheden Autorun
 			hrOpstoken := False;
 		end_if;
 		
-		if flExtractor and not Ft04_Vorstgevaar then
+		if (flExtractor or flExtractorAan) and not Ft04_Vorstgevaar and not flExtractorUit then
 			hrExtractor := True;
 		else
 			hrExtractor := False;
