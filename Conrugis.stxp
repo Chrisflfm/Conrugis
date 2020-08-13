@@ -78,14 +78,14 @@ Var
 //Analoog in
 	AI_Mod:			Int		at %vl 100080000; //Status AI module 
 	ComSetpoint:	Int		at %vl 100080001; //Command register AI 
-	mVSetpoint1:	Float	at %vl 100080002; //mV signaal Positie klep 1
-	mVSetpoint2:	Float	at %vl 100080003; //mV signaal Positie klep 2
-	StatSetpoint1:	Int		at %vl 100081100; //Status Ai klep 1
-	StatSetpoint:	Int		at %vl 100081200; //Status Ai klep 2
-	AvgSetpoint1:	Int		at %vl 100081106; //gemiddelde setting register klep 1
-	AvgSetpoint2:	Int		at %vl 100081206; //gemiddelde setting register klep 2
-	ConfgSetpoint1:	Int		at %vl 100081107; //configuratie register klep 1
-	ConfgSetpoint2:	Int		at %vl 100081207; //configuratie register klep 2
+	mVSetpoint1:	Float	at %vl 100080002; //mV signaal Positie  1
+	mVSetpoint2:	Float	at %vl 100080003; //mV signaal Positie  2
+	StatSetpoint1:	Int		at %vl 100081100; //Status Ai  1
+	StatSetpoint:	Int		at %vl 100081200; //Status Ai  
+	AvgSetpoint1:	Int		at %vl 100081106; //gemiddelde setting register  1
+	AvgSetpoint2:	Int		at %vl 100081206; //gemiddelde setting register  2
+	ConfgSetpoint1:	Int		at %vl 100081107; //configuratie register
+	ConfgSetpoint2:	Int		at %vl 100081207; //configuratie register 
 
 	
 //**********************Programma variabelen en registers******************************
@@ -161,9 +161,14 @@ Var
 	setpointDakVent:		Int		at %rl 1000018; //	
 	TijdVorstVeiligUit:		Int		at %rl 1000019; //
 	TijdVorstVeiligAan:		Int		at %rl 1000020; // 
-	LoopTijdEXtractor:		Int		at %rl 1000020; // 
-	
-	
+	LoopTijdEXtractor:		Int		at %rl 1000021; // 
+	StatusVent1A:			Int		at %rl 1000022; //
+	StatusVent1B:			Int		at %rl 1000023; //
+	StatusVent2A:			Int		at %rl 1000024; //
+	StatusVent2B:			Int		at %rl 1000025; //
+	StatusVentDak1:			Int		at %rl 1000026; //
+	StatusVentDak2:			Int		at %rl 1000027; //
+	StatusExtractor:		Int		at %rl 1000028; //
 	
 //Integers
 //Floats
@@ -429,9 +434,79 @@ Task tMain Autorun
 		
 		if TimerEnd(stExtractor) then
 			flExtractor := False;
-			flExtractorInAuto := False;
+			StatusExtractor := 1;
 		End_if;
-			
+//Knoppen
+		if StatusExtractor == 0 then
+			flExtractorAuto := True;
+			flExtractorUit := False;
+			flExtractorAan := False;
+		End_if;			
+		if StatusExtractor == 1 then
+			flExtractorAuto := False
+			flExtractorUit := True;
+			flExtractorAan := False;
+		End_if;			
+		if StatusExtractor == 2 then
+			flExtractorAuto := False
+			flExtractorUit := False;
+			flExtractorAan := True;
+		End_if;			
+		
+		if StatusVentDak1 == 0 then
+			flForceDakVent1Off := True;
+			flForceDakVent1 := False;
+		End_if;			
+		if StatusVentDak1 == 1 then
+			flForceDakVent1Off := False;
+			flForceDakVent1 := False;
+		End_if;			
+		if StatusVentDak1 == 2 then
+			flForceDakVent1Off := False;
+			flForceDakVent1 := True;
+		End_if;			
+		
+		if StatusVentDak2 == 0 then
+			flForceDakVent2Off := True;
+			flForceDakVent2 := False;
+		End_if;			
+		if StatusVentDak2 == 1 then
+			flForceDakVent2Off := False;
+			flForceDakVent2 := False;
+		End_if;			
+		if StatusVentDak2 == 2 then
+			flForceDakVent2Off := False;
+			flForceDakVent2 := True;
+		End_if;		
+		
+		
+		if StatusVent1A == 0 then
+			flForceVent1Off := True;
+			flForceVent1 := False;
+		End_if;			
+		if StatusVent1A == 1 then
+			flForceVent1Off := False;
+			flForceVent1 := False;
+		End_if;			
+		if StatusVent1A == 2 then
+			flForceVent1Off := False;
+			flForceVent1 := True;
+		End_if;		
+		
+		if StatusVent2A == 0 then
+			flForceVent2Off := True;
+			flForceVent2 := False;
+		End_if;			
+		if StatusVent2A == 1 then
+			flForceVent2Off := False;
+			flForceVent2 := False;
+		End_if;			
+		if StatusVent2A == 2 then
+			flForceVent2Off := False;
+			flForceVent2 := True;
+		End_if;		
+	
+		
 
 	End_While;
 End_Task

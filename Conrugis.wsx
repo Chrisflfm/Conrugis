@@ -36,10 +36,10 @@
         <DocPathName>.\Conrugis.stxp</DocPathName>
         <WindowPlacement>MCAAAAAAAAAAAAAABAAAAAAAPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPDAAAAAAADAAAAAAADGGAAAAAJICAAAAA</WindowPlacement>
         <ViewScrollHoriz>0</ViewScrollHoriz>
-        <ViewScrollVert>488</ViewScrollVert>
+        <ViewScrollVert>136</ViewScrollVert>
         <IsActiveChildFrame>1</IsActiveChildFrame>
-        <Line>529</Line>
-        <Column>13</Column>
+        <Line>505</Line>
+        <Column>15</Column>
       </ViewFrame>
     </Document>
   </ChildFrames>
@@ -49,9 +49,6 @@
     </Treenode>
     <Treenode>
       <Location>Conrugis/Program</Location>
-    </Treenode>
-    <Treenode>
-      <Location>Conrugis/System Files</Location>
     </Treenode>
   </ExpandedTreenodes>
   <ExpandedTreeNodesHWM>
