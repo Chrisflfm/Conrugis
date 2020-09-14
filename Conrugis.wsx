@@ -14,7 +14,7 @@
           <CreateDAFile>0</CreateDAFile>
           <DownloadDAFile>0</DownloadDAFile>
           <CreateExportFile>0</CreateExportFile>
-          <MonitorTask>0</MonitorTask>
+          <MonitorTask>3</MonitorTask>
           <DataDump>
             <CurrentGroupName />
             <ApplyChanges>1</ApplyChanges>
@@ -34,12 +34,42 @@
     <Document>
       <ViewFrame>
         <DocPathName>.\Conrugis.stxp</DocPathName>
-        <WindowPlacement>MCAAAAAAAAAAAAAABAAAAAAAPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPDAAAAAAADAAAAAAADGGAAAAAJICAAAAA</WindowPlacement>
+        <WindowPlacement>MCAAAAAAAAAAAAAABAAAAAAAPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPDAAAAAAADAAAAAAADGGAAAAACGCAAAAA</WindowPlacement>
         <ViewScrollHoriz>0</ViewScrollHoriz>
-        <ViewScrollVert>136</ViewScrollVert>
+        <ViewScrollVert>804</ViewScrollVert>
         <IsActiveChildFrame>1</IsActiveChildFrame>
-        <Line>505</Line>
-        <Column>15</Column>
+        <Line>838</Line>
+        <Column>8</Column>
+      </ViewFrame>
+    </Document>
+    <Document>
+      <ViewFrame>
+        <DocPathName>HWM:Conrugis System\Release\Hardware\Network\JC-340\CPU</DocPathName>
+        <WindowPlacement>MCAAAAAAAAAAAAAABAAAAAAAPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPDAAAAAAADAAAAAAADGGAAAAACGCAAAAA</WindowPlacement>
+        <ViewScrollHoriz>0</ViewScrollHoriz>
+        <ViewScrollVert>0</ViewScrollVert>
+        <Project>Conrugis</Project>
+        <Config>Release</Config>
+        <MDIWindowID>CPU</MDIWindowID>
+        <AxisKey />
+        <Setup>0</Setup>
+        <ModuleID>M312</ModuleID>
+        <HwNodeIndex>0_0</HwNodeIndex>
+        <BusNodeID />
+        <IsPubSubModule>0</IsPubSubModule>
+        <SplitterPos>160</SplitterPos>
+      </ViewFrame>
+    </Document>
+    <Document>
+      <ViewFrame>
+        <DocPathName>.\Conrugis.stxs</DocPathName>
+        <WindowPlacement>MCAAAAAAAAAAAAAABAAAAAAAPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPDAAAAAAADAAAAAAADGGAAAAACGCAAAAA</WindowPlacement>
+        <ViewScrollHoriz>1</ViewScrollHoriz>
+        <ViewScrollVert>18</ViewScrollVert>
+        <Row>26</Row>
+        <Column>3</Column>
+        <SelectionStartChar>3</SelectionStartChar>
+        <SelectionEndChar>3</SelectionEndChar>
       </ViewFrame>
     </Document>
   </ChildFrames>
@@ -49,6 +79,15 @@
     </Treenode>
     <Treenode>
       <Location>Conrugis/Program</Location>
+    </Treenode>
+    <Treenode>
+      <Location>Conrugis/Declaration</Location>
+    </Treenode>
+    <Treenode>
+      <Location>Conrugis/Setup</Location>
+    </Treenode>
+    <Treenode>
+      <Location>Conrugis/System Files</Location>
     </Treenode>
   </ExpandedTreenodes>
   <ExpandedTreeNodesHWM>

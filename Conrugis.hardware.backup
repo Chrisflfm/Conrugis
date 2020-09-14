@@ -34,7 +34,7 @@
       <TryTCP>false</TryTCP>
       <OldProtocol>false</OldProtocol>
       <CAN>false</CAN>
-      <EthernetIPAddress>192.168.250.20</EthernetIPAddress>
+      <EthernetIPAddress>192.168.1.1</EthernetIPAddress>
       <EthernetTimeout>2000</EthernetTimeout>
       <EthernetPortnumber>default</EthernetPortnumber>
       <EthernetPortnumberPCOM>default</EthernetPortnumberPCOM>
