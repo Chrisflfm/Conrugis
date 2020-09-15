@@ -680,6 +680,7 @@ End_Task
 Task tPulsRelais Autorun
 //*************************************PulsRelais****************************************
 	While True Do
+		//puls vent loods
 		if flpVentLoods then
 			StatusTimpuls := 1;
 			hrpVentLoods := true;
@@ -688,7 +689,7 @@ Task tPulsRelais Autorun
 			hrpVentLoods := False;
 			StatusTimpuls := 0;
 		End_if
-		
+		//puls vent garage
 		if flpVentGarage then
 			StatusTimpuls := 2;
 			hrpVentGarage := true;
@@ -697,7 +698,7 @@ Task tPulsRelais Autorun
 			hrpVentGarage := False;
 			StatusTimpuls := 0;
 		End_if
-		
+		//puls buitenlamp
 		if flpBuitenLamp then
 			StatusTimpuls := 3;
 			hrpBuitenLamp := true;
@@ -706,7 +707,7 @@ Task tPulsRelais Autorun
 			hrpBuitenLamp := False;
 			StatusTimpuls := 0;
 		End_if
-		
+		//puls licht garage
 		if flpLichtGarage then
 			StatusTimpuls := 4;
 			hrpLichtGarage := true;
@@ -715,7 +716,7 @@ Task tPulsRelais Autorun
 			hrpLichtGarage := False;
 			StatusTimpuls := 0;
 		End_if
-		
+		//puls licht loods
 		if flpLichtLoods then
 			StatusTimpuls := 5;
 			hrpLichtLoods := true;
@@ -725,7 +726,7 @@ Task tPulsRelais Autorun
 			StatusTimpuls := 0;
 			
 		End_if
-		
+		//puls alles uit
 		if flpAllesUit then
 			StatusTimpuls := 6;
 			blForceBuzz := true;
@@ -750,7 +751,7 @@ Task tPulsRelais Autorun
 			if ctVentLoods then
 				hrpVentLoods := True;
 			End_If
-			Delay(T#500ms);
+			Delay(T#250ms);
 			hrpLichtGarage := False;
 			hrpLichtLoods := False;
 			hrpBuitenLamp := False;
@@ -759,11 +760,12 @@ Task tPulsRelais Autorun
 			flpAllesUit := False;
 			StatusTimpuls := 0;			
 		End_if
-		
+		//alle dk in? ==> start tijd
 		if dkLichtBuiten or dkLichtGarage or dkLichtLoods or dkVentGarage or dkVentLoods then
 			StatusTimpuls := 7;
 			Delay(T#1500ms);
 		End_If
+		//na 1.5sec nog steeds in? ==> beep beep ==> alles uit
 		if (dkLichtBuiten or dkLichtGarage or dkLichtLoods or dkVentGarage or dkVentLoods) and StatusTimpuls == 7 then
 			StatusTimpuls := 8;
 			blBuzz := true;
@@ -775,6 +777,7 @@ Task tPulsRelais Autorun
 			StatusTimpuls := 0;
 		End_if
 		
+		// test beep
 		if flpTestBuzz then
 			blForceBuzz := true;
 			Delay(T#250ms);
@@ -786,14 +789,15 @@ Task tPulsRelais Autorun
 			flpTestBuzz := False;
 		End_If	
 		
-		if (dkVentGarage and ctVentGarage) or blTest then
+		// na 1 sec elke sec langer dk in is 15 min extractor tijd garage
+		if dkVentGarage and ctVentGarage then
 			Delay(T#1s);
 			telExtractorGarage := 1;
 			blForceBuzz := true;
 			Delay(T#250ms);
 			blForceBuzz := False;
 			Delay(T#1s);
-			while (dkVentGarage and ctVentGarage) or blTest do
+			while dkVentGarage and ctVentGarage do
 				telExtractorGarage := telExtractorGarage + 1;
 				blForceBuzz := true;
 				Delay(T#250ms);
@@ -801,16 +805,18 @@ Task tPulsRelais Autorun
 				Delay(T#1s);
 			End_While
 		End_If
-		
+		// extractor uit = 15 min teller op 0
 		if not ctVentGarage then
 			telExtractorGarage := 0;
 		End_If
 		
+		//start 15 min timer
 		if not blTimerExtrGarLoopt and telExtractorGarage > 0 then
 			blTimerExtrGarLoopt := True;
-			TimerStart(stExtractorGarage, T#1m);
+			TimerStart(stExtractorGarage, T#15m);
 		End_If
 		
+		//timer end 15 min bij laatste itteratie stop extractor
 		if TimerEnd(stExtractorGarage) and blTimerExtrGarLoopt then
 			telExtractorGarage := telExtractorGarage - 1;
 			blTimerExtrGarLoopt := False;
@@ -818,7 +824,40 @@ Task tPulsRelais Autorun
 				flpVentGarage := True;
 			End_If
 		End_If
-
+		
+		// na 1 sec elke sec langer dk in is 15 min extractor tijd loods
+		if dkVentLoods and ctVentLoods then
+			Delay(T#1s);
+			telExtractorLoods := 1;
+			blForceBuzz := true;
+			Delay(T#250ms);
+			blForceBuzz := False;
+			Delay(T#1s);
+			while dkVentLoods and ctVentLoods do
+				telExtractorLoods := telExtractorLoods + 1;
+				blForceBuzz := true;
+				Delay(T#250ms);
+				blForceBuzz := False;
+				Delay(T#1s);
+			End_While
+		End_If
+		// extractor uit = 15 min teller op 0
+		if not ctVentLoods then
+			telExtractorLoods := 0;
+		End_If
+		//start 15 min timer
+		if not blTimerExtrLoodsLoopt and telExtractorLoods > 0 then
+			blTimerExtrLoodsLoopt := True;
+			TimerStart(stExtractorLoods, T#15m);
+		End_If
+		//timer end 15 min bij laatste itteratie stop extractor
+		if TimerEnd(stExtractorLoods) and blTimerExtrLoodsLoopt then
+			telExtractorLoods := telExtractorLoods - 1;
+			blTimerExtrLoodsLoopt := False;
+			if (telExtractorLoods < 1) and ctVentLoods then
+				flpVentLoods := True;
+			End_If
+		End_If
 		
 	End_While	
 End_Task
