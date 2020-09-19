@@ -13,37 +13,31 @@
 	<Rows>
 		<Row>
 			<Name>
+				<![CDATA[flWeekTestGarageResult]]>
+			</Name>
+			<Flags>32769</Flags>
+		</Row>
+		<Row>
+			<Name>
+				<![CDATA[flWeekTestLoodsResult]]>
+			</Name>
+			<Flags>32769</Flags>
+		</Row>
+		<Row>
+			<Name>
+				<![CDATA[flInVorstVeilig2]]>
+			</Name>
+			<Flags>32769</Flags>
+		</Row>
+		<Row>
+			<Name>
+				<![CDATA[flInVorstVeilig1]]>
+			</Name>
+			<Flags>32769</Flags>
+		</Row>
+		<Row>
+			<Name>
 				<![CDATA[tmpRth1]]>
-			</Name>
-			<Flags>32769</Flags>
-		</Row>
-		<Row>
-			<Name>
-				<![CDATA[tmpAanv1]]>
-			</Name>
-			<Flags>32769</Flags>
-		</Row>
-		<Row>
-			<Name>
-				<![CDATA[tmpAanv2]]>
-			</Name>
-			<Flags>32769</Flags>
-		</Row>
-		<Row>
-			<Name>
-				<![CDATA[tmpRet1]]>
-			</Name>
-			<Flags>32769</Flags>
-		</Row>
-		<Row>
-			<Name>
-				<![CDATA[tmpRet2]]>
-			</Name>
-			<Flags>32769</Flags>
-		</Row>
-		<Row>
-			<Name>
-				<![CDATA[tmpRth1dak]]>
 			</Name>
 			<Flags>32769</Flags>
 		</Row>
@@ -54,93 +48,6 @@
 			<Flags>32769</Flags>
 		</Row>
 		<Row>
-			<Name>
-				<![CDATA[tmpRth2dak]]>
-			</Name>
-			<Flags>32769</Flags>
-		</Row>
-		<Row>
-			<Name>
-				<![CDATA[mVSetpoint1]]>
-			</Name>
-			<Flags>32769</Flags>
-		</Row>
-		<Row>
-			<Name>
-				<![CDATA[mVSetpoint2]]>
-			</Name>
-			<Flags>32769</Flags>
-		</Row>
-		<Row>
-			<Name>
-				<![CDATA[WensTemp1]]>
-			</Name>
-			<Flags>32769</Flags>
-		</Row>
-		<Row>
-			<Name>
-				<![CDATA[WensTemp2]]>
-			</Name>
-			<Flags>32769</Flags>
-		</Row>
-		<Row>
-			<Name>
-				<![CDATA[SetpointBedrijf1]]>
-			</Name>
-			<Flags>32769</Flags>
-		</Row>
-		<Row>
-			<Name>
-				<![CDATA[SetpointBedrijf2]]>
-			</Name>
-			<Flags>32769</Flags>
-		</Row>
-		<Row>
-			<Name>
-				<![CDATA[hrVent2a]]>
-			</Name>
-			<Flags>32769</Flags>
-		</Row>
-		<Row>
-			<Name>
-				<![CDATA[hrVent2b]]>
-			</Name>
-			<Flags>32769</Flags>
-		</Row>
-		<Row>
-			<Name>
-				<![CDATA[MinTempAanVBedrijf]]>
-			</Name>
-			<Flags>32769</Flags>
-		</Row>
-		<Row>
-			<Name>
-				<![CDATA[Ft05_Opstoken]]>
-			</Name>
-			<Flags>32769</Flags>
-		</Row>
-		<Row>
-			<Name>
-				<![CDATA[tmpAanv1]]>
-			</Name>
-			<Flags>32769</Flags>
-		</Row>
-		<Row>
-			<Name>
-				<![CDATA[laGroen]]>
-			</Name>
-			<Flags>32769</Flags>
-		</Row>
-		<Row>
-			<Name>
-				<![CDATA[laRood]]>
-			</Name>
-			<Flags>32769</Flags>
-		</Row>
-		<Row>
-			<Name>
-				<![CDATA[hrDakvent2]]>
-			</Name>
 			<Flags>32769</Flags>
 		</Row>
 		<Row>
@@ -150,72 +57,66 @@
 			<Flags>32769</Flags>
 		</Row>
 		<Row>
-			<Name>
-				<![CDATA[blTest]]>
-			</Name>
 			<Flags>32769</Flags>
 		</Row>
 		<Row>
-			<Name>
-				<![CDATA[stExtractorGarage]]>
-			</Name>
-			<Flags>32785</Flags>
-			<HierarchyData>
-				<HierarchyState>2</HierarchyState>
-				<HierarchyDepth>0</HierarchyDepth>
-				<LastChild>0</LastChild>
-				<ConsiderHierarchy>0</ConsiderHierarchy>
-				<ParentID>214442072</ParentID>
-			</HierarchyData>
-		</Row>
-		<Row>
-			<Name>
-				<![CDATA[stExtractorGarage.TimerHi]]>
-			</Name>
-			<Flags>32769</Flags>
-			<HierarchyData>
-				<HierarchyState>0</HierarchyState>
-				<HierarchyDepth>1</HierarchyDepth>
-				<LastChild>0</LastChild>
-				<ConsiderHierarchy>0</ConsiderHierarchy>
-				<ParentID>214442072</ParentID>
-			</HierarchyData>
-		</Row>
-		<Row>
-			<Name>
-				<![CDATA[stExtractorGarage.TimerLo]]>
-			</Name>
-			<Flags>32769</Flags>
-			<HierarchyData>
-				<HierarchyState>0</HierarchyState>
-				<HierarchyDepth>1</HierarchyDepth>
-				<LastChild>1</LastChild>
-				<ConsiderHierarchy>0</ConsiderHierarchy>
-				<ParentID>214442072</ParentID>
-			</HierarchyData>
-		</Row>
-		<Row>
-			<Name>
-				<![CDATA[ctVentGarage]]>
-			</Name>
 			<Flags>32769</Flags>
 		</Row>
 		<Row>
-			<Name>
-				<![CDATA[telExtractorGarage]]>
-			</Name>
 			<Flags>32769</Flags>
 		</Row>
 		<Row>
-			<Name>
-				<![CDATA[blTimerExtrGarLoopt]]>
-			</Name>
 			<Flags>32769</Flags>
 		</Row>
 		<Row>
-			<Name>
-				<![CDATA[hrpVentGarage]]>
-			</Name>
+			<Flags>32769</Flags>
+		</Row>
+		<Row>
+			<Flags>32769</Flags>
+		</Row>
+		<Row>
+			<Flags>32769</Flags>
+		</Row>
+		<Row>
+			<Flags>32769</Flags>
+		</Row>
+		<Row>
+			<Flags>32769</Flags>
+		</Row>
+		<Row>
+			<Flags>32769</Flags>
+		</Row>
+		<Row>
+			<Flags>32769</Flags>
+		</Row>
+		<Row>
+			<Flags>32769</Flags>
+		</Row>
+		<Row>
+			<Flags>32769</Flags>
+		</Row>
+		<Row>
+			<Flags>32769</Flags>
+		</Row>
+		<Row>
+			<Flags>32769</Flags>
+		</Row>
+		<Row>
+			<Flags>32769</Flags>
+		</Row>
+		<Row>
+			<Flags>32769</Flags>
+		</Row>
+		<Row>
+			<Flags>32769</Flags>
+		</Row>
+		<Row>
+			<Flags>32769</Flags>
+		</Row>
+		<Row>
+			<Flags>32769</Flags>
+		</Row>
+		<Row>
 			<Flags>32769</Flags>
 		</Row>
 		<Row>
