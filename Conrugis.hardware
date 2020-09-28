@@ -16,6 +16,54 @@
         <ID>M315</ID>
         <Name>JX2-Systembus</Name>
       </Node>
+      <Node>
+        <ID>M306</ID>
+        <Name>JX3-DIO16</Name>
+        <UserName>Mod1</UserName>
+        <IOModuleNr>2</IOModuleNr>
+      </Node>
+      <Node>
+        <ID>M316</ID>
+        <Name>JX3-DO16</Name>
+        <UserName>Mod2</UserName>
+        <IOModuleNr>3</IOModuleNr>
+      </Node>
+      <Node>
+        <ID>M310</ID>
+        <Name>JX3-THI2-RTD</Name>
+        <UserName>Mod3</UserName>
+        <IOModuleNr>4</IOModuleNr>
+      </Node>
+      <Node>
+        <ID>M310</ID>
+        <Name>JX3-THI2-RTD</Name>
+        <UserName>Mod4</UserName>
+        <IOModuleNr>5</IOModuleNr>
+      </Node>
+      <Node>
+        <ID>M310</ID>
+        <Name>JX3-THI2-RTD</Name>
+        <UserName>Mod5</UserName>
+        <IOModuleNr>6</IOModuleNr>
+      </Node>
+      <Node>
+        <ID>M310</ID>
+        <Name>JX3-THI2-RTD</Name>
+        <UserName>Mod6</UserName>
+        <IOModuleNr>7</IOModuleNr>
+      </Node>
+      <Node>
+        <ID>M301</ID>
+        <Name>JX3-AI4</Name>
+        <UserName>Mod7</UserName>
+        <IOModuleNr>8</IOModuleNr>
+      </Node>
+      <Node>
+        <ID>M306</ID>
+        <Name>JX3-DIO16</Name>
+        <UserName>Mod8</UserName>
+        <IOModuleNr>9</IOModuleNr>
+      </Node>
     </Node>
     <ControllerData>
       <Type>24</Type>

@@ -97,12 +97,16 @@ Var
 	ComSetpoint:	Int		at %vl 100080001; //Command register AI 
 	mVSetpoint1:	Float	at %vl 100080002; //mV signaal Positie  1
 	mVSetpoint2:	Float	at %vl 100080003; //mV signaal Positie  2
+	mVWaterdruk:	Float	at %vl 100080004; //mV signaal Positie  3
 	StatSetpoint1:	Int		at %vl 100081100; //Status Ai  1
-	StatSetpoint:	Int		at %vl 100081200; //Status Ai  
+	StatSetpoint:	Int		at %vl 100081200; //Status Ai  2
+	StatWaterDruk:	Int		at %vl 100081300; //Status Ai  3
 	AvgSetpoint1:	Int		at %vl 100081106; //gemiddelde setting register  1
 	AvgSetpoint2:	Int		at %vl 100081206; //gemiddelde setting register  2
-	ConfgSetpoint1:	Int		at %vl 100081107; //configuratie register
-	ConfgSetpoint2:	Int		at %vl 100081207; //configuratie register 
+	AvgWaterDruk:	Int		at %vl 100081306; //gemiddelde setting register  3
+	ConfgSetpoint1:	Int		at %vl 100081107; //configuratie register 1
+	ConfgSetpoint2:	Int		at %vl 100081207; //configuratie register 2
+	ConfWaterdruk:	Int		at %vl 100081307; //configuratie register 3
 
 	
 //**********************Programma variabelen en registers******************************
@@ -158,12 +162,14 @@ Var
 			
 //**********************Fouten*******************************************
 	Ft01_Flow1:				Bool	at %MX 100; //Geen flow in garage
-	Ft02_Flow2:				Bool	at %MX 102; //geen flow in loods
-	Ft03_H2Odruk:			Bool	at %MX 103; //waterdruk weggevallen
-	Ft04_Vorstgevaar:		Bool	at %MX 104; //temperatuur te laag in de ruimte
-	Ft05_Opstoken:			Bool	at %MX 105; //Opstoken nodig
-	Ft06_WeekTestGarFaalt:	Bool	at %MX 106;
-	Ft07_WeekTestLoodsFaalt:Bool	at %MX 107;
+	Ft02_Flow2:				Bool	at %MX 101; //geen flow in loods
+	Ft03_H2Odruk:			Bool	at %MX 102; //waterdruk weggevallen
+	Ft04_Vorstgevaar:		Bool	at %MX 103; //temperatuur te laag in de ruimte
+	Ft05_Opstoken:			Bool	at %MX 104; //Opstoken nodig
+	Ft06_WeekTestGarFaalt:	Bool	at %MX 105;
+	Ft07_WeekTestLoodsFaalt:Bool	at %MX 106;
+	Ft08_Waterdruklaag:		Bool	at %MX 107;
+	Ft09_Waterdrukkritiek:	Bool	at %MX 108;
 
 //Booleans
 	bInAuto:				Bool;
@@ -192,7 +198,11 @@ Var
 	blMinTempAanVBedrijf1:	Bool;
 	blMinTempAanVBedrijf2:	Bool;
 	blTmerMinTempAanVBdrf1:	Bool;
-	blTmerMinTempAanVBdrf2:	Bool;	
+	blTmerMinTempAanVBdrf2:	Bool;
+	ft05BedrijfGarage:		Bool;	
+	ft05BedrijfLoods:		Bool;
+	ft05VorstVeiligGarage:	Bool;	
+	ft05VorstVeiligLoods:	Bool;
 //Integers
 //	intPrevSec:				Int;
 	
@@ -227,8 +237,6 @@ Var
 	StatusVentDak1:			Int		at %rl 1000026; //
 	StatusVentDak2:			Int		at %rl 1000027; //
 	StatusErr:				Int		at %rl 1000028; //
-	WensTemp1:				Int		at %rl 1000029; //
-	WensTemp2:				Int		at %rl 1000030; //
 	StatusTimpuls:			Int		at %rl 1000031; //
 	swKlepGarage:			Int		at %rl 1000032; //
 	swKlepLoods:			Int		at %rl 1000033; //
@@ -239,6 +247,7 @@ Var
 	MaxTempBuitenDakvent:	int		at %rl 1000038; //
 	VorstVeiligregimeGarage:int		at %rl 1000039; //
 	VorstVeiligregimeLoods:	int		at %rl 1000040; //
+
 	
 //MQTT registers Munerica
 	Buiten_Temp:			Int		at %rl 1000100; //
@@ -250,6 +259,11 @@ Var
 //Floats
 	SetpointBedrijf1:		Float	at %rl 1000050; //
 	SetpointBedrijf2:		Float	at %rl 1000055; //
+	WaterDruk:				Float	at %rl 1000060; //
+	WaterDruklaag:			Float	at %rl 1000065; //
+	WaterDrukKritiek:		Float	at %rl 1000070; //
+	WensTemp1:				Float	at %rl 1000075; //
+	WensTemp2:				Float	at %rl 1000080; //
 //**********************RTC**********************************************
 	Milliseconds:			Int		at %vl 102910; //
 	Seconds:				Int		at %vl 102911; //
@@ -364,14 +378,17 @@ Task tMain Autorun
 	AvgTmpRth2 := 16; //uitmiddelen  laatste 16
 	AvgTmpRth1dak := 16; //uitmiddelen  laatste 16
 	AvgTmpRth2dak := 16; //uitmiddelen  laatste 16
-	AvgSetpoint1 := 50; //uitmiddelen  laatste 16
-	AvgSetpoint2 := 50; //uitmiddelen  laatste 16
+	
+	
 
 //Config AI
 	ConfgSetpoint1 := 5; //0-10V
 	AvgSetpoint1 := 16; //uitmiddelen  laatste 16
 	ConfgSetpoint1 := 5; //0-10V
 	AvgSetpoint1 := 16; //uitmiddelen  laatste 16
+	ConfWaterdruk := 5; //0-10V
+	AvgWaterDruk := 16; //uitmiddelen  laatste 16
+
 
 //Reset fouten
 	Ft01_Flow1 := False;
@@ -379,6 +396,10 @@ Task tMain Autorun
 	Ft03_H2Odruk := False;
 	Ft04_Vorstgevaar := False;
 	Ft05_Opstoken := False;
+	Ft06_WeekTestGarFaalt := False;
+	Ft07_WeekTestLoodsFaalt := False;
+	Ft08_Waterdruklaag := False;
+	Ft09_Waterdrukkritiek := False;
 
 //**************************************Start Main loop**************************************
 	bInAuto := True;
@@ -391,11 +412,8 @@ Task tMain Autorun
 		blLoodsLuisterdNaarCt := False;
 		blLoodsLuisterdNaartmp := False;
 		
-		//***********************************************in Vorstveilig als temp aanvoer te laag --> uncomment deze sectie verwijder twee lijnen onder deze sectie********************
-		
-		
-		////Vorsteveilig sturing Garage
-		////kijken of er een situatie geweest is waardoor ze op basis van water temp in vorstveilig moet gaan	garage
+		//Vorsteveilig sturing Garage
+		//kijken of er een situatie geweest is waardoor ze op basis van water temp in vorstveilig moet gaan	garage
 		//if (tmpAanv1 < (MinTempAanVBedrijf - (HysteresischAanv/2))  and ctFlow1) and not blTmerMinTempAanVBdrf1 then
 		//	blTmerMinTempAanVBdrf1 := True;
 		//	TimerStart(stMinTempAanVBedrijf1,T#5m)
@@ -427,7 +445,7 @@ Task tMain Autorun
 		blMinTempAanVBedrijf2 := False;	
 		
 		//garage snachts als er niemand is in vorstveilig		
-		if not ctLichtGarage and (hours > TijdVorstVeiligAan or Hours < TijdVorstVeiligUit) then
+		if (not ctLichtGarage) and (hours > TijdVorstVeiligAan or Hours < TijdVorstVeiligUit) then
 			blGarageLuisterdNaarTyd := True;
 			VorstVeiligregimeGarage := 0;	
 		End_If
@@ -495,7 +513,7 @@ Task tMain Autorun
 			if not flInVorstVeilig1 then
 				flActInVorstVeilig1 := False;
 				//Setpoint uitrekenen
-				WensTemp1 := -5 + (mVSetpoint1*10/32767);
+				WensTemp1 := -5 + (mVSetpoint1*10/32767); // --> naar volt
 				SetpointBedrijf1 := BaseSetpointBedrijf + WensTemp1;
 			
 				//Garage
@@ -544,7 +562,7 @@ Task tMain Autorun
 			if not flInVorstVeilig2  then
 				flActInVorstVeilig2 := False;
 				//Setpoint uitrekenen
-				WensTemp2 := 5 + (mVSetpoint2*-10/32767);
+				WensTemp2 := 5 + (mVSetpoint2*-10/32767); // --> naar Volt
 				SetpointBedrijf2 := BaseSetpointBedrijf + WensTemp2;
 				//Loods
 				If tmpRth2 < SetpointBedrijf2 - (HysteresischBedrijf/2) then
@@ -631,19 +649,19 @@ Task tMain Autorun
 		End_If;
 
 // Alm visualisatie en sonorisatie
-		if Ft01_Flow1 or Ft02_Flow2 or Ft03_H2Odruk or Ft04_Vorstgevaar or (Ft05_Opstoken and KnipperBit) then
+		if Ft01_Flow1 or Ft02_Flow2 or Ft03_H2Odruk or Ft04_Vorstgevaar  or Ft08_Waterdruklaag or Ft09_Waterdrukkritiek then
 			flRood := True;
 		else
 			flRood := False;
 		End_if;
 		
-		if Ft01_Flow1 or Ft02_Flow2 or Ft03_H2Odruk or Ft04_Vorstgevaar or Ft05_Opstoken then
+		if Ft01_Flow1 or Ft02_Flow2 or Ft03_H2Odruk or Ft04_Vorstgevaar or (Ft05_Opstoken and KnipperBit) or Ft08_Waterdruklaag or Ft09_Waterdrukkritiek then
 			flGroen := False;
 		else
 			flGroen := True;
 		End_if;
 		
-		if blForceBuzz or ((Ft01_Flow1 or Ft02_Flow2 or Ft03_H2Odruk or Ft04_Vorstgevaar ) and not flMute  and not flAck) then
+		if blForceBuzz or ((Ft01_Flow1 or Ft02_Flow2 or Ft03_H2Odruk or Ft04_Vorstgevaar or Ft08_Waterdruklaag or Ft09_Waterdrukkritiek ) and not flMute  and not flAck) then
 			blBuzzT1 := True;
 		Else
 			blBuzzT1 := False;
@@ -654,7 +672,7 @@ Task tMain Autorun
 			Ft07_WeekTestLoodsFaalt := False;
 		End_If
 		
-		if not Ft01_Flow1 and not Ft02_Flow2 and not Ft03_H2Odruk and not Ft04_Vorstgevaar and not Ft06_WeekTestGarFaalt and not Ft07_WeekTestLoodsFaalt then
+		if not Ft01_Flow1 and not Ft02_Flow2 and not Ft03_H2Odruk and not Ft04_Vorstgevaar and not Ft06_WeekTestGarFaalt and not Ft07_WeekTestLoodsFaalt and not Ft08_Waterdruklaag and not Ft09_Waterdrukkritiek then
 			flAck := False;
 		End_If
 		
@@ -682,6 +700,22 @@ Task tMain Autorun
 			StatusErr :=5;
 		End_If
 		
+		if Ft06_WeekTestGarFaalt then
+			StatusErr :=6;
+		End_If
+		
+		if Ft07_WeekTestLoodsFaalt then
+			StatusErr :=7;
+		End_If
+		
+		if Ft08_Waterdruklaag then
+			StatusErr :=8;
+		End_If
+		
+		if Ft09_Waterdrukkritiek then
+			StatusErr :=9;
+		End_If
+
 //Dakventilatoren
 		if StatusVentDak1 == 1 then
 			flForceDakVent1Off := False;
@@ -830,13 +864,13 @@ Task tVeiligheden Autorun
 			hrPomp2 := False;
 		End_If
 		
-		if (flPomp1 or Ft04_Vorstgevaar or swKlepGarage == 3 or blForceWeekTest) and not (swKlepGarage == 1) then
+		if (flPomp1 or Ft04_Vorstgevaar or swKlepGarage == 3 or blForceWeekTest) and not (swKlepGarage == 1) and not Ft09_Waterdrukkritiek then
 			hrKlepGarage := False;
 		else
 			hrKlepGarage := True;
 		end_if;
 		
-		if (flPomp2 or Ft04_Vorstgevaar or swKlepLoods == 3 or blForceWeekTest) and not (swKlepLoods == 1) then
+		if (flPomp2 or Ft04_Vorstgevaar or swKlepLoods == 3 or blForceWeekTest) and not (swKlepLoods == 1) and not Ft09_Waterdrukkritiek then
 			hrKlepLoods := False;
 		else
 			hrKlepLoods := True;
@@ -1076,6 +1110,7 @@ Task WeekTest Autorun
 				flWeekTestLoodsResult:= True;
 			End_If
 			flWeekTestBezig := False;
+			blForceWeekTest := False;
 		End_If			
 		
 		if  Hours >= 2 and blWeekTestUitgevoerd then
@@ -1096,10 +1131,9 @@ Task tError Autorun
 		blTimeOutPmp1Act := True;
 	End_If;
 	if TimerEnd(stTimeOutPomp1) and not ctFlow1 and hrPomp1 then
-		//*****************************************************************************verwijder comentaar // als flow 1 werkt**************************************************
-		//Ft01_Flow1 := True;
+		Ft01_Flow1 := True;
 	End_If;
-	if not hrPomp1 then
+	if not hrPomp1 or ctFlow1 then
 		blTimeOutPmp1Act := False;
 		Ft01_Flow1 := False;
 	End_If;
@@ -1111,7 +1145,7 @@ Task tError Autorun
 	if TimerEnd(stTimeOutPomp2) and not ctFlow2 and hrPomp2 then
 		Ft02_Flow2 := True;
 	End_If;
-	if not hrPomp2 then
+	if not hrPomp2 or ctFlow2 then
 		blTimeOutPmp2Act := False;
 		Ft02_Flow2 := False;
 	End_If;
@@ -1130,21 +1164,59 @@ Task tError Autorun
 		Ft04_Vorstgevaar := False;
 	end_if;
 	
-	if tmpAanv1 < MinTempAanVBedrijf and blPomp1Ok and not flInVorstVeilig1 then
-		Ft05_Opstoken := True;
+	if tmpAanv1 < MinTempAanVVorstVlg and blPomp1Ok and flInVorstVeilig1 Then
+		ft05VorstVeiligGarage := True;
 	end_if;
-	if tmpAanv2 < MinTempAanVBedrijf and blPomp2Ok and not flInVorstVeilig2 then
-		Ft05_Opstoken := True;
-	end_if;
-	if tmpAanv1 < MinTempAanVVorstVlg and blPomp1Ok and flInVorstVeilig1 then
-		Ft05_Opstoken := True;
-	end_if;
+
 	if tmpAanv2 < MinTempAanVVorstVlg and blPomp2Ok and flInVorstVeilig2 then
-		Ft05_Opstoken := True;
+		ft05VorstVeiligLoods := True;
 	end_if;
-	if tmpAanv1 >= MinTempAanVBedrijf or tmpAanv1 >= MinTempAanVBedrijf then
-		 Ft05_Opstoken := False;
+
+	if tmpAanv1 < MinTempAanVBedrijf and blPomp1Ok and not flInVorstVeilig1 then
+		ft05BedrijfGarage := True;
+	end_if;
+
+	if tmpAanv2 < MinTempAanVBedrijf and blPomp2Ok and not flInVorstVeilig2 then
+		ft05BedrijfLoods := True;
+	end_if;
+
+
+	if tmpAanv1 >= MinTempAanVBedrijf and not flInVorstVeilig1 then
+		 ft05BedrijfGarage := False;
 	End_If;
+
+	if tmpAanv2 >= MinTempAanVBedrijf and not flInVorstVeilig2 then
+		 ft05BedrijfLoods := False;
+	End_If;
+	
+	if tmpAanv1 >= MinTempAanVVorstVlg and flInVorstVeilig2 then
+		 ft05VorstVeiligGarage := False;
+	End_If;
+	
+	if tmpAanv2 >= MinTempAanVVorstVlg and flInVorstVeilig2 then
+		 ft05VorstVeiligLoods := False;
+	End_If;
+	
+
+	if ft05BedrijfGarage or ft05BedrijfLoods or ft05VorstVeiligGarage or ft05VorstVeiligLoods then
+		Ft05_Opstoken := True;
+	else
+		Ft05_Opstoken := False;
+	End_If
+
+
+	WaterDruk := ((((mVWaterdruk /32767	)*10)*600)/1000); //((((analoge waarde / max ad conv)*10V)*400Kpa)/1000) --> bar
+	if WaterDruk <= WaterDruklaag then 
+		Ft08_Waterdruklaag := True;
+	else
+		Ft08_Waterdruklaag := False;
+	End_If
+	
+	if WaterDruk <= WaterDrukKritiek then 
+		Ft09_Waterdrukkritiek	  := True;
+	else
+		Ft09_Waterdrukkritiek := False;
+	End_If
 		
 	End_While	
 End_Task

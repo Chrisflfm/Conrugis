@@ -14,7 +14,7 @@
           <CreateDAFile>0</CreateDAFile>
           <DownloadDAFile>0</DownloadDAFile>
           <CreateExportFile>0</CreateExportFile>
-          <MonitorTask>0</MonitorTask>
+          <MonitorTask>4</MonitorTask>
           <DataDump>
             <CurrentGroupName />
             <ApplyChanges>1</ApplyChanges>
@@ -29,36 +29,21 @@
     </Project>
   </Projects>
   <Breakpoints />
-  <Bookmarks>
-    <Bookmark>
-      <Index>0</Index>
-      <Filename>.\Conrugis.stxp</Filename>
-      <Line>395</Line>
-    </Bookmark>
-    <Bookmark>
-      <Index>1</Index>
-      <Filename>.\Conrugis.stxp</Filename>
-      <Line>271</Line>
-    </Bookmark>
-    <Bookmark>
-      <Index>2</Index>
-      <Filename>.\Conrugis.stxp</Filename>
-      <Line>1052</Line>
-    </Bookmark>
-  </Bookmarks>
+  <Bookmarks />
   <ChildFrames>
     <Document>
       <ViewFrame>
         <DocPathName>.\Conrugis.stxp</DocPathName>
         <WindowPlacement>MCAAAAAAAAAAAAAABAAAAAAAPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPDAAAAAAADAAAAAAADGGAAAAAMBCAAAAA</WindowPlacement>
         <ViewScrollHoriz>0</ViewScrollHoriz>
-        <ViewScrollVert>40</ViewScrollVert>
-        <Line>543</Line>
-        <Column>26</Column>
-        <SelectionStartLine>543</SelectionStartLine>
-        <SelectionStartColumn>10</SelectionStartColumn>
-        <SelectionEndLine>543</SelectionEndLine>
-        <SelectionEndColumn>26</SelectionEndColumn>
+        <ViewScrollVert>1182</ViewScrollVert>
+        <IsActiveChildFrame>1</IsActiveChildFrame>
+        <Line>1201</Line>
+        <Column>15</Column>
+        <SelectionStartLine>1201</SelectionStartLine>
+        <SelectionStartColumn>2</SelectionStartColumn>
+        <SelectionEndLine>1201</SelectionEndLine>
+        <SelectionEndColumn>15</SelectionEndColumn>
       </ViewFrame>
     </Document>
     <Document>
@@ -84,12 +69,29 @@
         <DocPathName>.\Conrugis.stxs</DocPathName>
         <WindowPlacement>MCAAAAAAAAAAAAAABAAAAAAAPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPDAAAAAAADAAAAAAADGGAAAAAMBCAAAAA</WindowPlacement>
         <ViewScrollHoriz>1</ViewScrollHoriz>
-        <ViewScrollVert>1</ViewScrollVert>
-        <IsActiveChildFrame>1</IsActiveChildFrame>
-        <Row>6</Row>
+        <ViewScrollVert>11</ViewScrollVert>
+        <Row>35</Row>
         <Column>1</Column>
-        <SelectionStartChar>7</SelectionStartChar>
-        <SelectionEndChar>7</SelectionEndChar>
+        <SelectionStartChar>0</SelectionStartChar>
+        <SelectionEndChar>21</SelectionEndChar>
+      </ViewFrame>
+    </Document>
+    <Document>
+      <ViewFrame>
+        <DocPathName>HWM:Conrugis System\Release\Hardware\Network\JC-340\JX3-THI2-RTD (Mod6)</DocPathName>
+        <WindowPlacement>MCAAAAAAAAAAAAAABAAAAAAAPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPDAAAAAAADAAAAAAADGGAAAAAMBCAAAAA</WindowPlacement>
+        <ViewScrollHoriz>0</ViewScrollHoriz>
+        <ViewScrollVert>0</ViewScrollVert>
+        <Project>Conrugis</Project>
+        <Config>Release</Config>
+        <MDIWindowID>AI2</MDIWindowID>
+        <AxisKey />
+        <Setup>0</Setup>
+        <ModuleID>M310</ModuleID>
+        <HwNodeIndex>0_7</HwNodeIndex>
+        <BusNodeID />
+        <IsPubSubModule>0</IsPubSubModule>
+        <SplitterPos>136</SplitterPos>
       </ViewFrame>
     </Document>
   </ChildFrames>

@@ -13,8 +13,125 @@
 	<Rows>
 		<Row>
 			<Name>
-				<![CDATA[flWeekTestGarageResult]]>
+				<![CDATA[blTimeOutPmp2Act]]>
 			</Name>
+			<Flags>32769</Flags>
+		</Row>
+		<Row>
+			<Name>
+				<![CDATA[stTimeOutPomp2]]>
+			</Name>
+			<Flags>32785</Flags>
+			<HierarchyData>
+				<HierarchyState>2</HierarchyState>
+				<HierarchyDepth>0</HierarchyDepth>
+				<LastChild>0</LastChild>
+				<ConsiderHierarchy>0</ConsiderHierarchy>
+				<ParentID>216444432</ParentID>
+			</HierarchyData>
+		</Row>
+		<Row>
+			<Name>
+				<![CDATA[stTimeOutPomp2.TimerHi]]>
+			</Name>
+			<Flags>32769</Flags>
+			<HierarchyData>
+				<HierarchyState>0</HierarchyState>
+				<HierarchyDepth>1</HierarchyDepth>
+				<LastChild>0</LastChild>
+				<ConsiderHierarchy>0</ConsiderHierarchy>
+				<ParentID>216444432</ParentID>
+			</HierarchyData>
+		</Row>
+		<Row>
+			<Name>
+				<![CDATA[stTimeOutPomp2.TimerLo]]>
+			</Name>
+			<Flags>32769</Flags>
+			<HierarchyData>
+				<HierarchyState>0</HierarchyState>
+				<HierarchyDepth>1</HierarchyDepth>
+				<LastChild>1</LastChild>
+				<ConsiderHierarchy>0</ConsiderHierarchy>
+				<ParentID>216444432</ParentID>
+			</HierarchyData>
+		</Row>
+		<Row>
+			<Name>
+				<![CDATA[hrPomp2]]>
+			</Name>
+			<Flags>32769</Flags>
+		</Row>
+		<Row>
+			<Name>
+				<![CDATA[ctFlow2]]>
+			</Name>
+			<Flags>32769</Flags>
+		</Row>
+		<Row>
+			<Flags>32769</Flags>
+		</Row>
+		<Row>
+			<Name>
+				<![CDATA[blTimeOutPmp1Act]]>
+			</Name>
+			<Flags>32769</Flags>
+		</Row>
+		<Row>
+			<Name>
+				<![CDATA[stTimeOutPomp1]]>
+			</Name>
+			<Flags>32785</Flags>
+			<HierarchyData>
+				<HierarchyState>2</HierarchyState>
+				<HierarchyDepth>0</HierarchyDepth>
+				<LastChild>0</LastChild>
+				<ConsiderHierarchy>0</ConsiderHierarchy>
+				<ParentID>233614600</ParentID>
+			</HierarchyData>
+		</Row>
+		<Row>
+			<Name>
+				<![CDATA[stTimeOutPomp1.TimerHi]]>
+			</Name>
+			<Flags>32769</Flags>
+			<HierarchyData>
+				<HierarchyState>0</HierarchyState>
+				<HierarchyDepth>1</HierarchyDepth>
+				<LastChild>0</LastChild>
+				<ConsiderHierarchy>0</ConsiderHierarchy>
+				<ParentID>233614600</ParentID>
+			</HierarchyData>
+		</Row>
+		<Row>
+			<Name>
+				<![CDATA[stTimeOutPomp1.TimerLo]]>
+			</Name>
+			<Flags>32769</Flags>
+			<HierarchyData>
+				<HierarchyState>0</HierarchyState>
+				<HierarchyDepth>1</HierarchyDepth>
+				<LastChild>1</LastChild>
+				<ConsiderHierarchy>0</ConsiderHierarchy>
+				<ParentID>233614600</ParentID>
+			</HierarchyData>
+		</Row>
+		<Row>
+			<Name>
+				<![CDATA[hrPomp1]]>
+			</Name>
+			<Flags>32769</Flags>
+		</Row>
+		<Row>
+			<Name>
+				<![CDATA[ctFlow1]]>
+			</Name>
+			<Flags>32769</Flags>
+		</Row>
+		<Row>
+			<Flags>32769</Flags>
+		</Row>
+		<Row>
 			<Flags>32769</Flags>
 		</Row>
 		<Row>
@@ -25,25 +142,64 @@
 		</Row>
 		<Row>
 			<Name>
-				<![CDATA[flInVorstVeilig2]]>
+				<![CDATA[flWeekTestGarageResult]]>
+			</Name>
+			<Flags>32769</Flags>
+		</Row>
+		<Row>
+			<Flags>32769</Flags>
+		</Row>
+		<Row>
+			<Name>
+				<![CDATA[Ft01_Flow1]]>
 			</Name>
 			<Flags>32769</Flags>
 		</Row>
 		<Row>
 			<Name>
-				<![CDATA[flInVorstVeilig1]]>
+				<![CDATA[Ft02_Flow2]]>
 			</Name>
 			<Flags>32769</Flags>
 		</Row>
 		<Row>
 			<Name>
-				<![CDATA[tmpRth1]]>
+				<![CDATA[Ft03_H2Odruk]]>
 			</Name>
 			<Flags>32769</Flags>
 		</Row>
 		<Row>
 			<Name>
-				<![CDATA[tmpRth2]]>
+				<![CDATA[Ft04_Vorstgevaar]]>
+			</Name>
+			<Flags>32769</Flags>
+		</Row>
+		<Row>
+			<Name>
+				<![CDATA[Ft05_Opstoken]]>
+			</Name>
+			<Flags>32769</Flags>
+		</Row>
+		<Row>
+			<Name>
+				<![CDATA[Ft06_WeekTestGarFaalt]]>
+			</Name>
+			<Flags>32769</Flags>
+		</Row>
+		<Row>
+			<Name>
+				<![CDATA[Ft07_WeekTestLoodsFaalt]]>
+			</Name>
+			<Flags>32769</Flags>
+		</Row>
+		<Row>
+			<Name>
+				<![CDATA[Ft08_Waterdruklaag]]>
+			</Name>
+			<Flags>32769</Flags>
+		</Row>
+		<Row>
+			<Name>
+				<![CDATA[Ft09_Waterdrukkritiek]]>
 			</Name>
 			<Flags>32769</Flags>
 		</Row>
@@ -51,102 +207,57 @@
 			<Flags>32769</Flags>
 		</Row>
 		<Row>
+			<Name>
+				<![CDATA[laBlauw1]]>
+			</Name>
+			<Flags>32769</Flags>
+		</Row>
+		<Row>
+			<Name>
+				<![CDATA[laGroen]]>
+			</Name>
+			<Flags>32769</Flags>
+		</Row>
+		<Row>
+			<Name>
+				<![CDATA[laRood]]>
+			</Name>
 			<Flags>32769</Flags>
 		</Row>
 		<Row>
 			<Flags>32769</Flags>
 		</Row>
 		<Row>
+			<Name>
+				<![CDATA[ft05BedrijfGarage]]>
+			</Name>
+			<Flags>32769</Flags>
+		</Row>
+		<Row>
+			<Name>
+				<![CDATA[ft05BedrijfLoods]]>
+			</Name>
+			<Flags>32769</Flags>
+		</Row>
+		<Row>
+			<Name>
+				<![CDATA[ft05VorstVeiligGarage]]>
+			</Name>
+			<Flags>32769</Flags>
+		</Row>
+		<Row>
+			<Name>
+				<![CDATA[ft05VorstVeiligLoods]]>
+			</Name>
 			<Flags>32769</Flags>
 		</Row>
 		<Row>
 			<Flags>32769</Flags>
 		</Row>
 		<Row>
-			<Flags>32769</Flags>
-		</Row>
-		<Row>
-			<Flags>32769</Flags>
-		</Row>
-		<Row>
-			<Flags>32769</Flags>
-		</Row>
-		<Row>
-			<Flags>32769</Flags>
-		</Row>
-		<Row>
-			<Flags>32769</Flags>
-		</Row>
-		<Row>
-			<Flags>32769</Flags>
-		</Row>
-		<Row>
-			<Flags>32769</Flags>
-		</Row>
-		<Row>
-			<Flags>32769</Flags>
-		</Row>
-		<Row>
-			<Flags>32769</Flags>
-		</Row>
-		<Row>
-			<Flags>32769</Flags>
-		</Row>
-		<Row>
-			<Flags>32769</Flags>
-		</Row>
-		<Row>
-			<Flags>32769</Flags>
-		</Row>
-		<Row>
-			<Flags>32769</Flags>
-		</Row>
-		<Row>
-			<Flags>32769</Flags>
-		</Row>
-		<Row>
-			<Flags>32769</Flags>
-		</Row>
-		<Row>
-			<Flags>32769</Flags>
-		</Row>
-		<Row>
-			<Flags>32769</Flags>
-		</Row>
-		<Row>
-			<Flags>32769</Flags>
-		</Row>
-		<Row>
-			<Flags>32769</Flags>
-		</Row>
-		<Row>
-			<Flags>32769</Flags>
-		</Row>
-		<Row>
-			<Flags>32769</Flags>
-		</Row>
-		<Row>
-			<Flags>32769</Flags>
-		</Row>
-		<Row>
-			<Flags>32769</Flags>
-		</Row>
-		<Row>
-			<Flags>32769</Flags>
-		</Row>
-		<Row>
-			<Flags>32769</Flags>
-		</Row>
-		<Row>
-			<Flags>32769</Flags>
-		</Row>
-		<Row>
-			<Flags>32769</Flags>
-		</Row>
-		<Row>
-			<Flags>32769</Flags>
-		</Row>
-		<Row>
+			<Name>
+				<![CDATA[MinTempAanVBedrijf]]>
+			</Name>
 			<Flags>32769</Flags>
 		</Row>
 		<Row>
