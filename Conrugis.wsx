@@ -14,7 +14,7 @@
           <CreateDAFile>0</CreateDAFile>
           <DownloadDAFile>0</DownloadDAFile>
           <CreateExportFile>0</CreateExportFile>
-          <MonitorTask>4</MonitorTask>
+          <MonitorTask>0</MonitorTask>
           <DataDump>
             <CurrentGroupName />
             <ApplyChanges>1</ApplyChanges>
@@ -34,22 +34,17 @@
     <Document>
       <ViewFrame>
         <DocPathName>.\Conrugis.stxp</DocPathName>
-        <WindowPlacement>MCAAAAAAAAAAAAAABAAAAAAAPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPDAAAAAAADAAAAAAADGGAAAAAMBCAAAAA</WindowPlacement>
+        <WindowPlacement>MCAAAAAAAAAAAAAABAAAAAAAPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPDAAAAAAADAAAAAAADGGAAAAAJKCAAAAA</WindowPlacement>
         <ViewScrollHoriz>0</ViewScrollHoriz>
-        <ViewScrollVert>1182</ViewScrollVert>
-        <IsActiveChildFrame>1</IsActiveChildFrame>
-        <Line>1201</Line>
-        <Column>15</Column>
-        <SelectionStartLine>1201</SelectionStartLine>
-        <SelectionStartColumn>2</SelectionStartColumn>
-        <SelectionEndLine>1201</SelectionEndLine>
-        <SelectionEndColumn>15</SelectionEndColumn>
+        <ViewScrollVert>234</ViewScrollVert>
+        <Line>258</Line>
+        <Column>0</Column>
       </ViewFrame>
     </Document>
     <Document>
       <ViewFrame>
         <DocPathName>HWM:Conrugis System\Release\Hardware\Network\JC-340\CPU</DocPathName>
-        <WindowPlacement>MCAAAAAAAAAAAAAABAAAAAAAPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPDAAAAAAADAAAAAAADGGAAAAAMBCAAAAA</WindowPlacement>
+        <WindowPlacement>MCAAAAAAAAAAAAAABAAAAAAAPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPDAAAAAAADAAAAAAADGGAAAAAJKCAAAAA</WindowPlacement>
         <ViewScrollHoriz>0</ViewScrollHoriz>
         <ViewScrollVert>0</ViewScrollVert>
         <Project>Conrugis</Project>
@@ -67,31 +62,14 @@
     <Document>
       <ViewFrame>
         <DocPathName>.\Conrugis.stxs</DocPathName>
-        <WindowPlacement>MCAAAAAAAAAAAAAABAAAAAAAPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPDAAAAAAADAAAAAAADGGAAAAAMBCAAAAA</WindowPlacement>
+        <WindowPlacement>MCAAAAAAAAAAAAAABAAAAAAAPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPDAAAAAAADAAAAAAADGGAAAAAJKCAAAAA</WindowPlacement>
         <ViewScrollHoriz>1</ViewScrollHoriz>
-        <ViewScrollVert>11</ViewScrollVert>
-        <Row>35</Row>
-        <Column>1</Column>
+        <ViewScrollVert>1</ViewScrollVert>
+        <IsActiveChildFrame>1</IsActiveChildFrame>
+        <Row>21</Row>
+        <Column>3</Column>
         <SelectionStartChar>0</SelectionStartChar>
-        <SelectionEndChar>21</SelectionEndChar>
-      </ViewFrame>
-    </Document>
-    <Document>
-      <ViewFrame>
-        <DocPathName>HWM:Conrugis System\Release\Hardware\Network\JC-340\JX3-THI2-RTD (Mod6)</DocPathName>
-        <WindowPlacement>MCAAAAAAAAAAAAAABAAAAAAAPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPDAAAAAAADAAAAAAADGGAAAAAMBCAAAAA</WindowPlacement>
-        <ViewScrollHoriz>0</ViewScrollHoriz>
-        <ViewScrollVert>0</ViewScrollVert>
-        <Project>Conrugis</Project>
-        <Config>Release</Config>
-        <MDIWindowID>AI2</MDIWindowID>
-        <AxisKey />
-        <Setup>0</Setup>
-        <ModuleID>M310</ModuleID>
-        <HwNodeIndex>0_7</HwNodeIndex>
-        <BusNodeID />
-        <IsPubSubModule>0</IsPubSubModule>
-        <SplitterPos>136</SplitterPos>
+        <SelectionEndChar>0</SelectionEndChar>
       </ViewFrame>
     </Document>
   </ChildFrames>
@@ -107,9 +85,6 @@
     </Treenode>
     <Treenode>
       <Location>Conrugis/Setup</Location>
-    </Treenode>
-    <Treenode>
-      <Location>Conrugis/System Files</Location>
     </Treenode>
   </ExpandedTreenodes>
   <ExpandedTreeNodesHWM>

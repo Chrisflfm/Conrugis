@@ -170,6 +170,7 @@ Var
 	Ft07_WeekTestLoodsFaalt:Bool	at %MX 106;
 	Ft08_Waterdruklaag:		Bool	at %MX 107;
 	Ft09_Waterdrukkritiek:	Bool	at %MX 108;
+	Ft10_MoederbordTemp:	Bool	at %MX 109;
 
 //Booleans
 	bInAuto:				Bool;
@@ -199,12 +200,17 @@ Var
 	blMinTempAanVBedrijf2:	Bool;
 	blTmerMinTempAanVBdrf1:	Bool;
 	blTmerMinTempAanVBdrf2:	Bool;
+	blDelayGarage:			Bool;
+	blDelayLoods:			Bool;
 	ft05BedrijfGarage:		Bool;	
 	ft05BedrijfLoods:		Bool;
 	ft05VorstVeiligGarage:	Bool;	
 	ft05VorstVeiligLoods:	Bool;
+	
 //Integers
 //	intPrevSec:				Int;
+	TussenWaarde1:			float;
+	TussenWaarde2:			float;
 	
 //Register numbers: 1000000 ... 1001999
 //Registers
@@ -247,14 +253,27 @@ Var
 	MaxTempBuitenDakvent:	int		at %rl 1000038; //
 	VorstVeiligregimeGarage:int		at %rl 1000039; //
 	VorstVeiligregimeLoods:	int		at %rl 1000040; //
-
+	MaxKaarTemperatuur:		int		at %rl 1000041; //
+	VentDraaiTijd:			int		at %rl 1000042; //
+	TijdFactor:				int		at %rl 1000043; //
+	MinBufferVorstVeilig:	int		at %rl 1000044; //
 	
-//MQTT registers Munerica
+//MQTT registers Munerica & Conrugis
 	Buiten_Temp:			Int		at %rl 1000100; //
 	Temp_garage_H:			Int		at %rl 1000101; //
 	Temp_garage_:			Int		at %rl 1000102; //
 	Temp_stal_H:			Int		at %rl 1000103; //
 	Temp_stal_L:			Int		at %rl 1000104; //
+	Keteltemperatuur:		Int		at %rl 1000105; //
+	Kaarttemperatuur:		Int		at %rl 1000106; //
+	RegelvariabeleKetel:	Int		at %rl 1000107; //	
+	TemperatuurRookGas:		Int		at %rl 1000108; //
+	Bedrijfsuren:			Int		at %rl 1000109; //
+	sindslaatsteonderhoud:	Int		at %rl 1000110; //
+	BufferBoven:			Int		at %rl 1000111; //
+	BufferMidden:			Int		at %rl 1000112; //
+	BufferOnder:			Int		at %rl 1000113; //
+	BufferLading:			Int		at %rl 1000114; //
 //Integers
 //Floats
 	SetpointBedrijf1:		Float	at %rl 1000050; //
@@ -264,6 +283,10 @@ Var
 	WaterDrukKritiek:		Float	at %rl 1000070; //
 	WensTemp1:				Float	at %rl 1000075; //
 	WensTemp2:				Float	at %rl 1000080; //
+	TotVentDraaiTijdGarage:	Float	at %rl 1000085; //
+	TotVentDraaiTijdLoods:	Float	at %rl 1000090; //
+	Debug:					Float	at %rl 1000095; //
+	Debug2:					Float	at %rl 1000210; //
 //**********************RTC**********************************************
 	Milliseconds:			Int		at %vl 102910; //
 	Seconds:				Int		at %vl 102911; //
@@ -279,11 +302,11 @@ Var
 //**********************Timers********************************************
 	stTimeOutPomp1:			Timer;
 	stTimeOutPomp2:			Timer;
-	stExtractorGarage:		Timer;
-	stExtractorLoods:		Timer;
+	stExtractorGarage:		Timer 	at %rl 1000200; //
+	stExtractorLoods:		Timer	at %rl 1000202; //
 	stWeekTest:				Timer;
-	stMinTempAanVBedrijf1:	Timer;
-	stMinTempAanVBedrijf2:	Timer;
+	stMinTempAanVBedrijf1:	Timer;	
+	stMinTempAanVBedrijf2:	Timer;	
 End_var
 
 Task tMain Autorun
@@ -330,7 +353,9 @@ Task tMain Autorun
 	rotDakVentloods := 0;
 	blTmerMinTempAanVBdrf1 := False;
 	blTmerMinTempAanVBdrf2 := False;
-	
+	TijdFactor := 60000;
+	blDelayGarage:=False;
+	blDelayLoods:=False;
 //Start temp meting Retour
 	ComTmpRet1 := 104; //4 draads
 	ComTmpRet1 := 107; //Celsius
@@ -400,6 +425,8 @@ Task tMain Autorun
 	Ft07_WeekTestLoodsFaalt := False;
 	Ft08_Waterdruklaag := False;
 	Ft09_Waterdrukkritiek := False;
+	Ft10_MoederbordTemp := False;
+	
 
 //**************************************Start Main loop**************************************
 	bInAuto := True;
@@ -649,19 +676,19 @@ Task tMain Autorun
 		End_If;
 
 // Alm visualisatie en sonorisatie
-		if Ft01_Flow1 or Ft02_Flow2 or Ft03_H2Odruk or Ft04_Vorstgevaar  or Ft08_Waterdruklaag or Ft09_Waterdrukkritiek then
+		if Ft01_Flow1 or Ft02_Flow2 or Ft03_H2Odruk or Ft04_Vorstgevaar  or Ft08_Waterdruklaag or Ft09_Waterdrukkritiek or Ft10_MoederbordTemp then
 			flRood := True;
 		else
 			flRood := False;
 		End_if;
 		
-		if Ft01_Flow1 or Ft02_Flow2 or Ft03_H2Odruk or Ft04_Vorstgevaar or (Ft05_Opstoken and KnipperBit) or Ft08_Waterdruklaag or Ft09_Waterdrukkritiek then
+		if Ft01_Flow1 or Ft02_Flow2 or Ft03_H2Odruk or Ft04_Vorstgevaar or (Ft05_Opstoken and KnipperBit) or Ft08_Waterdruklaag or Ft09_Waterdrukkritiek or Ft10_MoederbordTemp then
 			flGroen := False;
 		else
 			flGroen := True;
 		End_if;
 		
-		if blForceBuzz or ((Ft01_Flow1 or Ft02_Flow2 or Ft03_H2Odruk or Ft04_Vorstgevaar or Ft08_Waterdruklaag or Ft09_Waterdrukkritiek ) and not flMute  and not flAck) then
+		if blForceBuzz or ((Ft01_Flow1 or Ft02_Flow2 or Ft03_H2Odruk or Ft04_Vorstgevaar or Ft08_Waterdruklaag or Ft09_Waterdrukkritiek or Ft10_MoederbordTemp) and not flMute  and not flAck) then
 			blBuzzT1 := True;
 		Else
 			blBuzzT1 := False;
@@ -672,7 +699,7 @@ Task tMain Autorun
 			Ft07_WeekTestLoodsFaalt := False;
 		End_If
 		
-		if not Ft01_Flow1 and not Ft02_Flow2 and not Ft03_H2Odruk and not Ft04_Vorstgevaar and not Ft06_WeekTestGarFaalt and not Ft07_WeekTestLoodsFaalt and not Ft08_Waterdruklaag and not Ft09_Waterdrukkritiek then
+		if not Ft01_Flow1 and not Ft02_Flow2 and not Ft03_H2Odruk and not Ft04_Vorstgevaar and not Ft06_WeekTestGarFaalt and not Ft07_WeekTestLoodsFaalt and not Ft08_Waterdruklaag and not Ft09_Waterdrukkritiek and not Ft10_MoederbordTemp then
 			flAck := False;
 		End_If
 		
@@ -714,6 +741,10 @@ Task tMain Autorun
 		
 		if Ft09_Waterdrukkritiek then
 			StatusErr :=9;
+		End_If
+		
+		if Ft10_MoederbordTemp then
+			StatusErr :=10;
 		End_If
 
 //Dakventilatoren
@@ -854,13 +885,15 @@ Task tVeiligheden Autorun
 		
 		if ctKlepGarage then
 			hrPomp1 := True;
-		else
+		End_If
+		if hrKlepGarage then
 			hrPomp1 := False;
 		End_If
 		
 		if ctKlepLoods then
 			hrPomp2 := True;
-		else
+		End_If
+		if hrKlepLoods then
 			hrPomp2 := False;
 		End_If
 		
@@ -972,12 +1005,12 @@ Task tPulsRelais Autorun
 			StatusTimpuls := 0;			
 		End_if
 		//alle dk in? ==> start tijd
-		if dkLichtBuiten or dkLichtGarage or dkLichtLoods or dkVentGarage or dkVentLoods then
+		if dkLichtBuiten or dkLichtGarage or dkLichtLoods then
 			StatusTimpuls := 7;
 			Delay(T#1500ms);
 		End_If
 		//na 1.5sec nog steeds in? ==> beep beep ==> alles uit
-		if (dkLichtBuiten or dkLichtGarage or dkLichtLoods or dkVentGarage or dkVentLoods) and StatusTimpuls == 7 then
+		if (dkLichtBuiten or dkLichtGarage or dkLichtLoods) and StatusTimpuls == 7 then
 			StatusTimpuls := 8;
 			blBuzzT3 := true;
 			Delay(T#210ms);
@@ -1004,17 +1037,24 @@ Task tPulsRelais Autorun
 		if dkVentGarage and ctVentGarage then
 			Delay(T#1s);
 			telExtractorGarage := 1;
-			blForceBuzz := true;
+			blBuzzT2 := true;
 			Delay(T#250ms);
-			blForceBuzz := False;
+			blBuzzT2 := False;
 			Delay(T#1s);
+			//Label ExtGarage = 200:
 			while dkVentGarage and ctVentGarage do
 				telExtractorGarage := telExtractorGarage + 1;
-				blForceBuzz := true;
+				blDelayGarage = True;
+				blBuzzT2 := true;
 				Delay(T#250ms);
-				blForceBuzz := False;
+				blBuzzT2 := False;
 				Delay(T#1s);
+				blDelayGarage = False;
 			End_While
+			//if dkVentGarage and ctVentGarage and not blDelayGarage then
+			//	goto ExtGarage;
+			//End_If
+			
 		End_If
 		// extractor uit = 15 min teller op 0
 		if not ctVentGarage then
@@ -1024,8 +1064,12 @@ Task tPulsRelais Autorun
 		//start 15 min timer
 		if not blTimerExtrGarLoopt and telExtractorGarage > 0 then
 			blTimerExtrGarLoopt := True;
-			TimerStart(stExtractorGarage, T#15m);
+			TimerStart(stExtractorGarage, VentDraaiTijd * TijdFactor);
 		End_If
+		
+		TussenWaarde1 := TimerValueActual(stExtractorGarage);
+		TussenWaarde2 := TussenWaarde1/TijdFactor;
+		TotVentDraaiTijdGarage := (telExtractorGarage * VentDraaiTijd) + TussenWaarde2; 
 		
 		//timer end 15 min bij laatste itteratie stop extractor
 		if TimerEnd(stExtractorGarage) and blTimerExtrGarLoopt then
@@ -1040,17 +1084,21 @@ Task tPulsRelais Autorun
 		if dkVentLoods and ctVentLoods then
 			Delay(T#1s);
 			telExtractorLoods := 1;
-			blForceBuzz := true;
+			blBuzzT2 := true;
 			Delay(T#250ms);
-			blForceBuzz := False;
+			blBuzzT2 := False;
 			Delay(T#1s);
+			Label ExtLoods = 201:
 			while dkVentLoods and ctVentLoods do
 				telExtractorLoods := telExtractorLoods + 1;
-				blForceBuzz := true;
+				blBuzzT2 := true;
 				Delay(T#250ms);
-				blForceBuzz := False;
+				blBuzzT2 := False;
 				Delay(T#1s);
 			End_While
+			if dkVentLoods and ctVentLoods then
+				goto ExtLoods
+			End_If
 		End_If
 		// extractor uit = 15 min teller op 0
 		if not ctVentLoods then
@@ -1059,8 +1107,13 @@ Task tPulsRelais Autorun
 		//start 15 min timer
 		if not blTimerExtrLoodsLoopt and telExtractorLoods > 0 then
 			blTimerExtrLoodsLoopt := True;
-			TimerStart(stExtractorLoods, T#15m);
+			TimerStart(stExtractorLoods, VentDraaiTijd * TijdFactor);
 		End_If
+		
+		TussenWaarde1 := TimerValueActual(stExtractorLoods);
+		TussenWaarde2 := TussenWaarde1/TijdFactor;
+		TotVentDraaiTijdLoods := (telExtractorLoods * VentDraaiTijd) + TussenWaarde2; 
+		
 		//timer end 15 min bij laatste itteratie stop extractor
 		if TimerEnd(stExtractorLoods) and blTimerExtrLoodsLoopt then
 			telExtractorLoods := telExtractorLoods - 1;
@@ -1127,27 +1180,31 @@ Task tError Autorun
 //*************************************tError****************************************
 	While True Do
 	if hrPomp1 and not blTimeOutPmp1Act then
-		TimerStart(stTimeOutPomp1,T#30s);
+		TimerStart(stTimeOutPomp1,T#90s);
 		blTimeOutPmp1Act := True;
 	End_If;
 	if TimerEnd(stTimeOutPomp1) and not ctFlow1 and hrPomp1 then
 		Ft01_Flow1 := True;
 	End_If;
-	if not hrPomp1 or ctFlow1 then
-		blTimeOutPmp1Act := False;
+	if not ctFlow1 then
 		Ft01_Flow1 := False;
+	End_If;
+	if not hrPomp1 then
+		blTimeOutPmp1Act := False;
 	End_If;
 	
 	if hrPomp2 and not blTimeOutPmp2Act then
-		TimerStart(stTimeOutPomp2,T#30s);
+		TimerStart(stTimeOutPomp2,T#90s);
 		blTimeOutPmp2Act := True;
 	End_If;
 	if TimerEnd(stTimeOutPomp2) and not ctFlow2 and hrPomp2 then
 		Ft02_Flow2 := True;
 	End_If;
-	if not hrPomp2 or ctFlow2 then
-		blTimeOutPmp2Act := False;
+	if ctFlow2 then
 		Ft02_Flow2 := False;
+	End_If;
+	if not hrPomp2 then
+		blTimeOutPmp2Act := False;
 	End_If;
 	
 	if ctPressH2O then
@@ -1164,36 +1221,36 @@ Task tError Autorun
 		Ft04_Vorstgevaar := False;
 	end_if;
 	
-	if tmpAanv1 < MinTempAanVVorstVlg and blPomp1Ok and flInVorstVeilig1 Then
+	if ((tmpAanv1 < MinTempAanVVorstVlg and blPomp1Ok and flInVorstVeilig1) or (flInVorstVeilig1 and BufferLading < MinBufferVorstVeilig)) and Keteltemperatuur < 55 Then
 		ft05VorstVeiligGarage := True;
 	end_if;
 
-	if tmpAanv2 < MinTempAanVVorstVlg and blPomp2Ok and flInVorstVeilig2 then
+	if ((tmpAanv2 < MinTempAanVVorstVlg and blPomp2Ok and flInVorstVeilig2) or (flInVorstVeilig1 and BufferLading < MinBufferVorstVeilig)) and Keteltemperatuur < 55 Then
 		ft05VorstVeiligLoods := True;
 	end_if;
 
-	if tmpAanv1 < MinTempAanVBedrijf and blPomp1Ok and not flInVorstVeilig1 then
+	if tmpAanv1 < MinTempAanVBedrijf and blPomp1Ok and not flInVorstVeilig1 and Keteltemperatuur < 55 then
 		ft05BedrijfGarage := True;
 	end_if;
 
-	if tmpAanv2 < MinTempAanVBedrijf and blPomp2Ok and not flInVorstVeilig2 then
+	if tmpAanv2 < MinTempAanVBedrijf and blPomp2Ok and not flInVorstVeilig2 and Keteltemperatuur < 55 then
 		ft05BedrijfLoods := True;
 	end_if;
 
 
-	if tmpAanv1 >= MinTempAanVBedrijf and not flInVorstVeilig1 then
+	if (tmpAanv1 >= MinTempAanVBedrijf and not flInVorstVeilig1) or Keteltemperatuur > 57 then
 		 ft05BedrijfGarage := False;
 	End_If;
 
-	if tmpAanv2 >= MinTempAanVBedrijf and not flInVorstVeilig2 then
+	if (tmpAanv2 >= MinTempAanVBedrijf and not flInVorstVeilig2) or Keteltemperatuur > 57 then
 		 ft05BedrijfLoods := False;
 	End_If;
 	
-	if tmpAanv1 >= MinTempAanVVorstVlg and flInVorstVeilig2 then
+	if (tmpAanv1 >= MinTempAanVVorstVlg and flInVorstVeilig2) or Keteltemperatuur > 57 then
 		 ft05VorstVeiligGarage := False;
 	End_If;
 	
-	if tmpAanv2 >= MinTempAanVVorstVlg and flInVorstVeilig2 then
+	if (tmpAanv2 >= MinTempAanVVorstVlg and flInVorstVeilig2) or Keteltemperatuur > 57 then
 		 ft05VorstVeiligLoods := False;
 	End_If;
 	
@@ -1217,6 +1274,13 @@ Task tError Autorun
 	else
 		Ft09_Waterdrukkritiek := False;
 	End_If
+	
+	if Kaarttemperatuur >= MaxKaarTemperatuur then 
+		Ft10_MoederbordTemp := True;
+	else
+		Ft10_MoederbordTemp := False;
+	End_If
+	
 		
 	End_While	
 End_Task

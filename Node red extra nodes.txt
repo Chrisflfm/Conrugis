@@ -1,0 +1,3 @@
+node-red-contrib-calc
+node-red-contrib-modbus
+node-red-dashboard

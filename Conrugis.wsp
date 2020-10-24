@@ -146,7 +146,7 @@
 			</Compiler>
 			<Controller>
 				<Type>24</Type>
-				<Version>129</Version>
+				<Version>131</Version>
 				<AutoRun>1</AutoRun>
 				<Autoflash>0</Autoflash>
 				<OldProtocol>0</OldProtocol>
