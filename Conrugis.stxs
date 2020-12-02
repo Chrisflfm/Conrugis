@@ -168,24 +168,49 @@
 			<Flags>32769</Flags>
 		</Row>
 		<Row>
+			<Name>
+				<![CDATA[PrevPiAliveValue]]>
+			</Name>
 			<Flags>32769</Flags>
 		</Row>
 		<Row>
+			<Name>
+				<![CDATA[ftPiAlive]]>
+			</Name>
 			<Flags>32769</Flags>
 		</Row>
 		<Row>
+			<Name>
+				<![CDATA[stPiAlive]]>
+			</Name>
+			<Flags>32785</Flags>
+			<HierarchyData>
+				<HierarchyState>1</HierarchyState>
+				<HierarchyDepth>0</HierarchyDepth>
+				<LastChild>0</LastChild>
+				<ConsiderHierarchy>0</ConsiderHierarchy>
+				<ParentID>221194488</ParentID>
+			</HierarchyData>
+		</Row>
+		<Row>
+			<Name>
+				<![CDATA[CPUTemperature]]>
+			</Name>
 			<Flags>32769</Flags>
 		</Row>
 		<Row>
+			<Name>
+				<![CDATA[Alive]]>
+			</Name>
 			<Flags>32769</Flags>
+			<Comment>
+				<![CDATA[BoolftPiAlive:]]>
+			</Comment>
 		</Row>
 		<Row>
-			<Flags>32769</Flags>
-		</Row>
-		<Row>
-			<Flags>32769</Flags>
-		</Row>
-		<Row>
+			<Name>
+				<![CDATA[Ft11_Raspberry_piTemp]]>
+			</Name>
 			<Flags>32769</Flags>
 		</Row>
 		<Row>

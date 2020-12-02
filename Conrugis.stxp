@@ -158,7 +158,9 @@ Var
 	flWeekTestBezig:		Bool	at %MX 44;	//
 	flWeekTestGarageResult:	Bool	at %MX 45;	//
 	flWeekTestLoodsResult:	Bool	at %MX 46;	//
-		
+	flPiAlive:				Bool	at %MX 47;
+	ftPiAlive:				Bool	at %MX 48;	//
+	
 			
 //**********************Fouten*******************************************
 	Ft01_Flow1:				Bool	at %MX 100; //Geen flow in garage
@@ -171,6 +173,7 @@ Var
 	Ft08_Waterdruklaag:		Bool	at %MX 107;
 	Ft09_Waterdrukkritiek:	Bool	at %MX 108;
 	Ft10_MoederbordTemp:	Bool	at %MX 109;
+	Ft11_Raspberry_piTemp:	Bool	at %MX 110;
 
 //Booleans
 	bInAuto:				Bool;
@@ -206,7 +209,7 @@ Var
 	ft05BedrijfLoods:		Bool;
 	ft05VorstVeiligGarage:	Bool;	
 	ft05VorstVeiligLoods:	Bool;
-	
+		
 //Integers
 //	intPrevSec:				Int;
 	TussenWaarde1:			float;
@@ -257,6 +260,7 @@ Var
 	VentDraaiTijd:			int		at %rl 1000042; //
 	TijdFactor:				int		at %rl 1000043; //
 	MinBufferVorstVeilig:	int		at %rl 1000044; //
+	PrevPiAliveValue:		int		at %rl 1000045; //
 	
 //MQTT registers Munerica & Conrugis
 	Buiten_Temp:			Int		at %rl 1000100; //
@@ -274,6 +278,7 @@ Var
 	BufferMidden:			Int		at %rl 1000112; //
 	BufferOnder:			Int		at %rl 1000113; //
 	BufferLading:			Int		at %rl 1000114; //
+	Alive:					Int		at %rl 1000115;	//		
 //Integers
 //Floats
 	SetpointBedrijf1:		Float	at %rl 1000050; //
@@ -287,6 +292,7 @@ Var
 	TotVentDraaiTijdLoods:	Float	at %rl 1000090; //
 	Debug:					Float	at %rl 1000095; //
 	Debug2:					Float	at %rl 1000210; //
+	CPUTemperature:			Float	at %rl 1000215; //
 //**********************RTC**********************************************
 	Milliseconds:			Int		at %vl 102910; //
 	Seconds:				Int		at %vl 102911; //
@@ -305,8 +311,9 @@ Var
 	stExtractorGarage:		Timer 	at %rl 1000200; //
 	stExtractorLoods:		Timer	at %rl 1000202; //
 	stWeekTest:				Timer;
-	stMinTempAanVBedrijf1:	Timer;	
-	stMinTempAanVBedrijf2:	Timer;	
+	//stMinTempAanVBedrijf1:	Timer;	
+	//stMinTempAanVBedrijf2:	Timer;	
+	stPiAlive:				Timer;
 End_var
 
 Task tMain Autorun
@@ -1044,12 +1051,12 @@ Task tPulsRelais Autorun
 			//Label ExtGarage = 200:
 			while dkVentGarage and ctVentGarage do
 				telExtractorGarage := telExtractorGarage + 1;
-				blDelayGarage = True;
+				blDelayGarage := True;
 				blBuzzT2 := true;
 				Delay(T#250ms);
 				blBuzzT2 := False;
 				Delay(T#1s);
-				blDelayGarage = False;
+				blDelayGarage := False;
 			End_While
 			//if dkVentGarage and ctVentGarage and not blDelayGarage then
 			//	goto ExtGarage;
@@ -1280,7 +1287,30 @@ Task tError Autorun
 	else
 		Ft10_MoederbordTemp := False;
 	End_If
+	if CPUTemperature >= MaxKaarTemperatuur then
+		Ft11_Raspberry_piTemp := True;
+	else
+		Ft11_Raspberry_piTemp := False;
+	End_If
 	
 		
 	End_While	
 End_Task
+
+Task tRPI Autorun
+	//Task raspberry pi bewaking
+	PrevPiAliveValue := 0;
+	While true Do
+		TimerStart(stPiAlive,T#20s);
+		when PrevPiAliveValue <> Alive or TimerEnd(stPiAlive) continue;
+		if TimerEnd(stPiAlive) Then
+			ftPiAlive := True;
+		else
+			ftPiAlive := False;
+		End_If
+		PrevPiAliveValue := Alive; 
+		
+	End_While	
+End_Task
+
+

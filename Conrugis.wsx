@@ -34,17 +34,17 @@
     <Document>
       <ViewFrame>
         <DocPathName>.\Conrugis.stxp</DocPathName>
-        <WindowPlacement>MCAAAAAAAAAAAAAABAAAAAAAPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPDAAAAAAADAAAAAAADGGAAAAAJKCAAAAA</WindowPlacement>
+        <WindowPlacement>MCAAAAAAAAAAAAAABAAAAAAAPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPDAAAAAAADAAAAAAADGGAAAAAGACAAAAA</WindowPlacement>
         <ViewScrollHoriz>0</ViewScrollHoriz>
-        <ViewScrollVert>234</ViewScrollVert>
-        <Line>258</Line>
-        <Column>0</Column>
+        <ViewScrollVert>1272</ViewScrollVert>
+        <Line>1297</Line>
+        <Column>8</Column>
       </ViewFrame>
     </Document>
     <Document>
       <ViewFrame>
         <DocPathName>HWM:Conrugis System\Release\Hardware\Network\JC-340\CPU</DocPathName>
-        <WindowPlacement>MCAAAAAAAAAAAAAABAAAAAAAPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPDAAAAAAADAAAAAAADGGAAAAAJKCAAAAA</WindowPlacement>
+        <WindowPlacement>MCAAAAAAAAAAAAAABAAAAAAAPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPDAAAAAAADAAAAAAADGGAAAAAGACAAAAA</WindowPlacement>
         <ViewScrollHoriz>0</ViewScrollHoriz>
         <ViewScrollVert>0</ViewScrollVert>
         <Project>Conrugis</Project>
@@ -62,14 +62,14 @@
     <Document>
       <ViewFrame>
         <DocPathName>.\Conrugis.stxs</DocPathName>
-        <WindowPlacement>MCAAAAAAAAAAAAAABAAAAAAAPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPDAAAAAAADAAAAAAADGGAAAAAJKCAAAAA</WindowPlacement>
+        <WindowPlacement>MCAAAAAAAAAAAAAABAAAAAAAPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPDAAAAAAADAAAAAAADGGAAAAAGACAAAAA</WindowPlacement>
         <ViewScrollHoriz>1</ViewScrollHoriz>
         <ViewScrollVert>1</ViewScrollVert>
         <IsActiveChildFrame>1</IsActiveChildFrame>
-        <Row>21</Row>
-        <Column>3</Column>
-        <SelectionStartChar>0</SelectionStartChar>
-        <SelectionEndChar>0</SelectionEndChar>
+        <Row>26</Row>
+        <Column>1</Column>
+        <SelectionStartChar>21</SelectionStartChar>
+        <SelectionEndChar>21</SelectionEndChar>
       </ViewFrame>
     </Document>
   </ChildFrames>
@@ -85,6 +85,9 @@
     </Treenode>
     <Treenode>
       <Location>Conrugis/Setup</Location>
+    </Treenode>
+    <Treenode>
+      <Location>Conrugis/System Files</Location>
     </Treenode>
   </ExpandedTreenodes>
   <ExpandedTreeNodesHWM>

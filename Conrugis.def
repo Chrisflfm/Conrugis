@@ -6,6 +6,7 @@
 .TASK #16777218 "tPulsRelais"
 .TASK #16777219 "WeekTest"
 .TASK #16777220 "tError"
+.TASK #16777221 "tRPI"
 .INTERN #1280 "TaskSetPriority"
 .INTERN #1281 "TaskSetCycleTimeAndPriority"
 .INTERN #1282 "TaskGetRuntimeInPromille"
