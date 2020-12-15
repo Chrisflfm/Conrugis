@@ -14,7 +14,7 @@
           <CreateDAFile>0</CreateDAFile>
           <DownloadDAFile>0</DownloadDAFile>
           <CreateExportFile>0</CreateExportFile>
-          <MonitorTask>0</MonitorTask>
+          <MonitorTask>4</MonitorTask>
           <DataDump>
             <CurrentGroupName />
             <ApplyChanges>1</ApplyChanges>
@@ -36,9 +36,13 @@
         <DocPathName>.\Conrugis.stxp</DocPathName>
         <WindowPlacement>MCAAAAAAAAAAAAAABAAAAAAAPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPDAAAAAAADAAAAAAADGGAAAAAGACAAAAA</WindowPlacement>
         <ViewScrollHoriz>0</ViewScrollHoriz>
-        <ViewScrollVert>1272</ViewScrollVert>
-        <Line>1297</Line>
-        <Column>8</Column>
+        <ViewScrollVert>614</ViewScrollVert>
+        <Line>638</Line>
+        <Column>70</Column>
+        <SelectionStartLine>638</SelectionStartLine>
+        <SelectionStartColumn>52</SelectionStartColumn>
+        <SelectionEndLine>638</SelectionEndLine>
+        <SelectionEndColumn>70</SelectionEndColumn>
       </ViewFrame>
     </Document>
     <Document>
@@ -66,10 +70,10 @@
         <ViewScrollHoriz>1</ViewScrollHoriz>
         <ViewScrollVert>1</ViewScrollVert>
         <IsActiveChildFrame>1</IsActiveChildFrame>
-        <Row>26</Row>
+        <Row>16</Row>
         <Column>1</Column>
-        <SelectionStartChar>21</SelectionStartChar>
-        <SelectionEndChar>21</SelectionEndChar>
+        <SelectionStartChar>18</SelectionStartChar>
+        <SelectionEndChar>18</SelectionEndChar>
       </ViewFrame>
     </Document>
   </ChildFrames>
@@ -85,9 +89,6 @@
     </Treenode>
     <Treenode>
       <Location>Conrugis/Setup</Location>
-    </Treenode>
-    <Treenode>
-      <Location>Conrugis/System Files</Location>
     </Treenode>
   </ExpandedTreenodes>
   <ExpandedTreeNodesHWM>

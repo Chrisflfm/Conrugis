@@ -209,11 +209,17 @@ Var
 	ft05BedrijfLoods:		Bool;
 	ft05VorstVeiligGarage:	Bool;	
 	ft05VorstVeiligLoods:	Bool;
+	blDebug:				Bool;
+	flDakvent1Vorst:		Bool;
+	flDakvent2Vorst:		Bool;				
 		
 //Integers
-//	intPrevSec:				Int;
-	TussenWaarde1:			float;
-	TussenWaarde2:			float;
+	intFordce0Gar:			Int;
+	intFordce0Loods:		Int;
+	TussenWaarde1Gar:		float;
+	TussenWaarde2Gar:		float;
+	TussenWaarde1Loods:		float;
+	TussenWaarde2Loods:		float;
 	
 //Register numbers: 1000000 ... 1001999
 //Registers
@@ -259,8 +265,9 @@ Var
 	MaxKaarTemperatuur:		int		at %rl 1000041; //
 	VentDraaiTijd:			int		at %rl 1000042; //
 	TijdFactor:				int		at %rl 1000043; //
-	MinBufferVorstVeilig:	int		at %rl 1000044; //
+	MinBuffer:				int		at %rl 1000044; //
 	PrevPiAliveValue:		int		at %rl 1000045; //
+	MinBuitenTempOpstoken:	int		at %rl 1000046; //
 	
 //MQTT registers Munerica & Conrugis
 	Buiten_Temp:			Int		at %rl 1000100; //
@@ -646,12 +653,26 @@ Task tMain Autorun
 			flDakvent1 := False;
 		End_if;
 		
+		if flActInVorstVeilig1 and tmpRth1dak >= SetpointVorstVeilig + 1 and tmpRth1 <= SetpointVorstVeilig + 1 then
+			flDakvent1Vorst := True;
+		End_if;
+		if not flActInVorstVeilig1 or tmpRth1dak < SetpointVorstVeilig or tmpRth1 >= SetpointVorstVeilig + 2  then
+			flDakvent1Vorst := False;
+		End_if;
+		
 //Dakvent loods
 		if ((tmpRth2dak > (setpointDakVent + (HysteresischDak/2))) and (Buiten_Temp <= (MaxTempBuitenDakvent - (HysteresischDak/2)))) or flForceDakVent2 then
 			flDakvent2 := True;
 		End_if;
 		if ((tmpRth2dak <= (setpointDakVent - (HysteresischDak/2))) or (Buiten_Temp > (MaxTempBuitenDakvent + (HysteresischDak/2)))) and not flForceDakVent2 then
 			flDakvent2 := False;
+		End_if;
+		
+		if flActInVorstVeilig2 and tmpRth1dak >= SetpointVorstVeilig + 1 and tmpRth2 <= SetpointVorstVeilig + 1 then
+			flDakvent2Vorst := True;
+		End_if;
+		if not flActInVorstVeilig2 or tmpRth1dak < SetpointVorstVeilig or tmpRth2 >= SetpointVorstVeilig + 2  then
+			flDakvent2Vorst := False;
 		End_if;
 		
 // set clock
@@ -854,13 +875,13 @@ Task tVeiligheden Autorun
 			laRood := False;
 		end_if;
 		
-		if flDakvent1 And not flForceDakVent1Off then
+		if (flDakvent1 or flDakvent1Vorst) And not flForceDakVent1Off then
 			hrDakvent1 := True;
 		else
 			hrDakvent1 := False;
 		end_if;
 		
-		if flDakvent2 And not flForceDakVent2Off then
+		if (flDakvent2 or flDakvent2Vorst) And not flForceDakVent2Off then
 			hrDakvent2 := True;
 		else
 			hrDakvent2 := False;
@@ -1066,17 +1087,20 @@ Task tPulsRelais Autorun
 		// extractor uit = 15 min teller op 0
 		if not ctVentGarage then
 			telExtractorGarage := 0;
+			TussenWaarde2Gar :=0;
+			intFordce0Gar := 0			
 		End_If
 		
 		//start 15 min timer
 		if not blTimerExtrGarLoopt and telExtractorGarage > 0 then
+			intFordce0Gar :=1;
 			blTimerExtrGarLoopt := True;
 			TimerStart(stExtractorGarage, VentDraaiTijd * TijdFactor);
 		End_If
 		
-		TussenWaarde1 := TimerValueActual(stExtractorGarage);
-		TussenWaarde2 := TussenWaarde1/TijdFactor;
-		TotVentDraaiTijdGarage := (telExtractorGarage * VentDraaiTijd) + TussenWaarde2; 
+		TussenWaarde1Gar := TimerValueActual(stExtractorGarage) * intFordce0Gar;
+		TussenWaarde2Gar := TussenWaarde1Gar/TijdFactor;
+		TotVentDraaiTijdGarage := (telExtractorGarage * VentDraaiTijd) + TussenWaarde2Gar; 
 		
 		//timer end 15 min bij laatste itteratie stop extractor
 		if TimerEnd(stExtractorGarage) and blTimerExtrGarLoopt then
@@ -1110,16 +1134,19 @@ Task tPulsRelais Autorun
 		// extractor uit = 15 min teller op 0
 		if not ctVentLoods then
 			telExtractorLoods := 0;
+			TussenWaarde2Loods :=0;
+			intFordce0Loods :=0;
 		End_If
 		//start 15 min timer
 		if not blTimerExtrLoodsLoopt and telExtractorLoods > 0 then
+			intFordce0Loods :=1;
 			blTimerExtrLoodsLoopt := True;
 			TimerStart(stExtractorLoods, VentDraaiTijd * TijdFactor);
 		End_If
 		
-		TussenWaarde1 := TimerValueActual(stExtractorLoods);
-		TussenWaarde2 := TussenWaarde1/TijdFactor;
-		TotVentDraaiTijdLoods := (telExtractorLoods * VentDraaiTijd) + TussenWaarde2; 
+		TussenWaarde1Loods := TimerValueActual(stExtractorLoods) * intFordce0Loods;
+		TussenWaarde2Loods := TussenWaarde1Loods/TijdFactor;
+		TotVentDraaiTijdLoods := (telExtractorLoods * VentDraaiTijd) + TussenWaarde2Loods; 
 		
 		//timer end 15 min bij laatste itteratie stop extractor
 		if TimerEnd(stExtractorLoods) and blTimerExtrLoodsLoopt then
@@ -1228,36 +1255,36 @@ Task tError Autorun
 		Ft04_Vorstgevaar := False;
 	end_if;
 	
-	if ((tmpAanv1 < MinTempAanVVorstVlg and blPomp1Ok and flInVorstVeilig1) or (flInVorstVeilig1 and BufferLading < MinBufferVorstVeilig)) and Keteltemperatuur < 55 Then
+	if flInVorstVeilig1 and BufferLading < MinBuffer and Buiten_Temp <= MinBuitenTempOpstoken Then
 		ft05VorstVeiligGarage := True;
 	end_if;
 
-	if ((tmpAanv2 < MinTempAanVVorstVlg and blPomp2Ok and flInVorstVeilig2) or (flInVorstVeilig1 and BufferLading < MinBufferVorstVeilig)) and Keteltemperatuur < 55 Then
+	if flInVorstVeilig2 and BufferLading < MinBuffer and Buiten_Temp <= MinBuitenTempOpstoken Then
 		ft05VorstVeiligLoods := True;
 	end_if;
 
-	if tmpAanv1 < MinTempAanVBedrijf and blPomp1Ok and not flInVorstVeilig1 and Keteltemperatuur < 55 then
+	if (not flInVorstVeilig1) and blPomp1Ok and BufferLading < MinBuffer Then
 		ft05BedrijfGarage := True;
 	end_if;
 
-	if tmpAanv2 < MinTempAanVBedrijf and blPomp2Ok and not flInVorstVeilig2 and Keteltemperatuur < 55 then
+	if (not flInVorstVeilig2) and blPomp2Ok and BufferLading < MinBuffer Then
 		ft05BedrijfLoods := True;
 	end_if;
 
 
-	if (tmpAanv1 >= MinTempAanVBedrijf and not flInVorstVeilig1) or Keteltemperatuur > 57 then
+	if  flInVorstVeilig1 or BufferLading > MinBuffer or Keteltemperatuur > 57 then
 		 ft05BedrijfGarage := False;
 	End_If;
 
-	if (tmpAanv2 >= MinTempAanVBedrijf and not flInVorstVeilig2) or Keteltemperatuur > 57 then
+	if  flInVorstVeilig2 or BufferLading > MinBuffer  or Keteltemperatuur > 57  then
 		 ft05BedrijfLoods := False;
 	End_If;
 	
-	if (tmpAanv1 >= MinTempAanVVorstVlg and flInVorstVeilig2) or Keteltemperatuur > 57 then
+	if (not flInVorstVeilig1) or BufferLading > MinBuffer or Buiten_Temp >= MinBuitenTempOpstoken or Keteltemperatuur > 57 then
 		 ft05VorstVeiligGarage := False;
 	End_If;
 	
-	if (tmpAanv2 >= MinTempAanVVorstVlg and flInVorstVeilig2) or Keteltemperatuur > 57 then
+	if (not flInVorstVeilig2) or BufferLading > MinBuffer or Buiten_Temp >= MinBuitenTempOpstoken or Keteltemperatuur > 57 then
 		 ft05VorstVeiligLoods := False;
 	End_If;
 	
