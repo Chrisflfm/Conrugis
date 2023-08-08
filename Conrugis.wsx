@@ -14,12 +14,12 @@
           <CreateDAFile>0</CreateDAFile>
           <DownloadDAFile>0</DownloadDAFile>
           <CreateExportFile>0</CreateExportFile>
-          <MonitorTask>4</MonitorTask>
+          <MonitorTask>6</MonitorTask>
           <DataDump>
             <CurrentGroupName />
             <ApplyChanges>1</ApplyChanges>
-            <DownloadFilename />
-            <UploadFilename />
+            <DownloadFilename>.\Release\Conrugis20220420.stxda</DownloadFilename>
+            <UploadFilename>.\Release\Conrugis20220420.stxda</UploadFilename>
             <OverwriteExisting>0</OverwriteExisting>
             <ForceOldDAFormat>0</ForceOldDAFormat>
             <OpenDocumentAfterUpload>1</OpenDocumentAfterUpload>
@@ -34,46 +34,34 @@
     <Document>
       <ViewFrame>
         <DocPathName>.\Conrugis.stxp</DocPathName>
-        <WindowPlacement>MCAAAAAAAAAAAAAABAAAAAAAPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPDAAAAAAADAAAAAAADGGAAAAAGACAAAAA</WindowPlacement>
+        <WindowPlacement>MCAAAAAAAAAAAAAABAAAAAAAPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPDAAAAAAADAAAAAAAJGGAAAAADHCAAAAA</WindowPlacement>
         <ViewScrollHoriz>0</ViewScrollHoriz>
-        <ViewScrollVert>614</ViewScrollVert>
-        <Line>638</Line>
-        <Column>70</Column>
-        <SelectionStartLine>638</SelectionStartLine>
-        <SelectionStartColumn>52</SelectionStartColumn>
-        <SelectionEndLine>638</SelectionEndLine>
-        <SelectionEndColumn>70</SelectionEndColumn>
+        <ViewScrollVert>930</ViewScrollVert>
+        <Line>959</Line>
+        <Column>36</Column>
       </ViewFrame>
     </Document>
     <Document>
       <ViewFrame>
-        <DocPathName>HWM:Conrugis System\Release\Hardware\Network\JC-340\CPU</DocPathName>
-        <WindowPlacement>MCAAAAAAAAAAAAAABAAAAAAAPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPDAAAAAAADAAAAAAADGGAAAAAGACAAAAA</WindowPlacement>
+        <DocPathName>.\Variables.stxp</DocPathName>
+        <WindowPlacement>MCAAAAAAAAAAAAAABAAAAAAAPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPDAAAAAAADAAAAAAAJGGAAAAADHCAAAAA</WindowPlacement>
         <ViewScrollHoriz>0</ViewScrollHoriz>
-        <ViewScrollVert>0</ViewScrollVert>
-        <Project>Conrugis</Project>
-        <Config>Release</Config>
-        <MDIWindowID>CPU</MDIWindowID>
-        <AxisKey />
-        <Setup>0</Setup>
-        <ModuleID>M312</ModuleID>
-        <HwNodeIndex>0_0</HwNodeIndex>
-        <BusNodeID />
-        <IsPubSubModule>0</IsPubSubModule>
-        <SplitterPos>321</SplitterPos>
+        <ViewScrollVert>330</ViewScrollVert>
+        <IsActiveChildFrame>1</IsActiveChildFrame>
+        <Line>359</Line>
+        <Column>15</Column>
       </ViewFrame>
     </Document>
     <Document>
       <ViewFrame>
         <DocPathName>.\Conrugis.stxs</DocPathName>
-        <WindowPlacement>MCAAAAAAAAAAAAAABAAAAAAAPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPDAAAAAAADAAAAAAADGGAAAAAGACAAAAA</WindowPlacement>
+        <WindowPlacement>MCAAAAAAAAAAAAAABAAAAAAAPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPDAAAAAAADAAAAAAAJGGAAAAADHCAAAAA</WindowPlacement>
         <ViewScrollHoriz>1</ViewScrollHoriz>
         <ViewScrollVert>1</ViewScrollVert>
-        <IsActiveChildFrame>1</IsActiveChildFrame>
-        <Row>16</Row>
+        <Row>5</Row>
         <Column>1</Column>
-        <SelectionStartChar>18</SelectionStartChar>
-        <SelectionEndChar>18</SelectionEndChar>
+        <SelectionStartChar>0</SelectionStartChar>
+        <SelectionEndChar>0</SelectionEndChar>
       </ViewFrame>
     </Document>
   </ChildFrames>
@@ -85,10 +73,19 @@
       <Location>Conrugis/Program</Location>
     </Treenode>
     <Treenode>
+      <Location>Conrugis/Program/Include</Location>
+    </Treenode>
+    <Treenode>
       <Location>Conrugis/Declaration</Location>
     </Treenode>
     <Treenode>
       <Location>Conrugis/Setup</Location>
+    </Treenode>
+    <Treenode>
+      <Location>Conrugis/Oscilloscope</Location>
+    </Treenode>
+    <Treenode>
+      <Location>Conrugis/System Files</Location>
     </Treenode>
   </ExpandedTreenodes>
   <ExpandedTreeNodesHWM>

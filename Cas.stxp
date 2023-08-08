@@ -1,0 +1,207 @@
+Var
+// *********************In en outputs*********************************
+//simulatie met flags 121 ... 200
+dk1:				Bool	at %MX 121;	//Drukknop 1
+dk2:				Bool	at %MX 122;	//Drukknop 2
+dk3:				Bool	at %MX 123;	//Drukknop 3
+dk4:				Bool	at %MX 124;	//Drukknop 4
+schakelaar1:		Bool	at %MX 125;	//schakelaar 1
+schakelaar2:		Bool	at %MX 126;	//schakelaar 2
+schakelaar3:		Bool	at %MX 127;	//schakelaar 3
+schakelaar4:		Bool	at %MX 128;	//schakelaar 4
+la1:				Bool	at %MX 129;	//Lamp 1
+la2:				Bool	at %MX 130;	//Lamp 2
+la3:				Bool	at %MX 131;	//Lamp 3
+la4:				Bool	at %MX 132;	//Lamp 4
+laRoodPoort:		Bool	at %MX 133;	//Rood
+laOranjePoort:		Bool	at %MX 134;	//Oranje
+laGroenPoort:		Bool	at %MX 135;	//Groen
+ctPoortOpen:		Bool	at %MX 136;	//poort is open
+ctPoortgesloten:	Bool	at %MX 137;	//poort is gesloten
+laErrorPoort:		Bool	at %MX 138;	//poort in fout
+Casknipperbit:		Bool	at %MX 139;	//
+lsPoortOpenDicht:	Bool	at %MX 140; //laatste staat open(1)/dicht(0)
+// *********************Analoog IO*********************************
+//simulatie met registers 1001000....100199
+anaIn1:				Int		at %rl 1001000; //analoog in 1
+anaIn2:				Int		at %rl 1001001; //analoog in 2
+anaIn3:				Int		at %rl 1001002; //analoog in 3
+anaIn4:				Int		at %rl 1001003; //analoog in 4
+anaOut1:			Int		at %rl 1001004; //analoog Out 1
+anaOut2:			Int		at %rl 1001005; //analoog Out 2
+anaOut3:			Int		at %rl 1001006; //analoog Out 3
+anaOut4:			Int		at %rl 1001007; //analoog Out 4
+
+// *********************Flags*********************************
+//Flag numbers: 0 ... 255
+//0...120 bezet
+//121...200 IO
+//202 ...255 vrij
+flPoortBeweegt:		Bool	at %MX 202;	//Flag 1
+ftTOPoortBeweegt:	Bool	at %MX 203;	//Timeout poort beweegt
+ftPoort:			Bool	at %MX 204;	//Poort in fout
+flTimeOutPoortLoopt:Bool	at %MX 205;	//Poort in fout
+flBewegingSet:		Bool;
+errorAanwezig:		Bool;
+// *********************Registers*********************************
+//Register numbers: 1000000 ... 1001999
+//Register numbers: 1001000 ... 1001999 vrij
+int1:				Int		at %rl 1001100; //register 1
+float1:				float	at %rl 1001101; //register 1
+int2:				Int		at %rl 1001102; //register 1
+timeValue:			Int;
+// *********************Timers*********************************
+stTimeOutPoort:			Timer;
+stTimerLamp:			Timer at %rl 1001103;
+
+End_var
+
+Task tCas Autorun
+// als poort beweegt oranje, bij gelsoten rood bij open groen
+	//init
+	laRoodPoort := False;
+	laOranjePoort := False;
+	laGroenPoort := False;
+	flPoortBeweegt := False;
+	lsPoortOpenDicht := false;
+	flBewegingSet := False;
+	While True Do
+		//Loop
+		
+		// Poort in beweging
+		if  not ctPoortOpen and not ctPoortgesloten then
+			flPoortBeweegt := True;
+		Else
+			flPoortBeweegt := False;
+		End_If
+		
+		if ctPoortOpen and not flBewegingSet then
+			lsPoortOpenDicht := True;
+			flBewegingSet := True;
+		End_If
+		
+		if ctPoortgesloten and not flBewegingSet then
+			lsPoortOpenDicht := False;
+			flBewegingSet := True;
+		End_If
+		
+		if flPoortBeweegt then
+			flBewegingSet := False;
+		End_If
+		
+		if not errorAanwezig and(flPoortBeweegt and not lsPoortOpenDicht and Casknipperbit) then
+			laOranjePoort := True;
+		Else
+			laOranjePoort := False;
+		End_If
+		
+		//Poort open
+		if ctPoortOpen and not errorAanwezig  then
+			laGroenPoort := True;
+		Else
+			laGroenPoort := False;
+		End_If
+		
+		//poort gesloten
+		if ctPoortgesloten or (lsPoortOpenDicht and flPoortBeweegt) or errorAanwezig then
+			laRoodPoort := True;
+		Else
+			laRoodPoort := False;
+		End_If		
+		
+		//Fouten
+		if ctPoortOpen and ctPoortgesloten then
+			ftPoort := True;			
+		Else
+			ftPoort := False; 
+		End_If
+		
+		if flPoortBeweegt and not flTimeOutPoortLoopt then
+			TimerStart(stTimeOutPoort,T#5s);
+			flTimeOutPoortLoopt := True;
+		End_If
+		
+		if not flPoortBeweegt then
+			flTimeOutPoortLoopt := False;
+		End_If
+			
+		if TimerEnd(stTimeOutPoort) and flPoortBeweegt then
+			ftTOPoortBeweegt := True;
+		else
+			ftTOPoortBeweegt := False;
+		End_If
+		
+		if (ftTOPoortBeweegt or ftPoort) and Casknipperbit then
+			laErrorPoort := True;
+		Else
+			laErrorPoort := False;
+		End_If
+			
+		if (ftPoort or ftTOPoortBeweegt) then
+			errorAanwezig := True;
+		else
+			errorAanwezig := False;
+		End_If
+						
+	End_While;
+End_Task
+
+Task Oefeningen Autorun
+	timeValue := 0;
+	While True Do
+		
+		//when dk1 then
+		//	la1 := True;
+		//end_when;
+		//when dk2 then
+		//	la1 := False; 
+		//End_when;
+		// dk1 then
+		//a1 := True;
+		//imerStart(stTimerLamp, T#10s);
+		//d_if;
+		// TimerEnd(stTimerLamp) then
+		//a1:= False;
+		//end_if;
+		
+		if dk1 then
+			la1 := True;
+			timeValue := timeValue + 2000;
+			TimerStart(stTimerLamp, timeValue);	
+		end_if
+		when not dk1 then
+		end_when
+		
+		if TimerEnd(stTimerLamp) then
+			la1:= False;
+			timeValue := 0;
+		End_If
+		
+		if dk2 then
+			TimerStart(stTimerLamp, 0);
+		end_if
+		
+	End_While;
+
+End_Task
+
+Task tSynoptiek Autorun
+
+	While True Do
+		anaout1 := anaIn1;
+		anaout2 := anaIn2;
+		anaout3 := anaIn3;
+		anaout4 := anaIn4;
+		
+		//la1 := dk1;
+		//la3 := schakelaar3;
+		
+		If Seconds mod 2 == 0 then 
+			Casknipperbit := true;
+		Else 
+			Casknipperbit := false;
+		End_If
+					
+	End_While;
+
+End_Task

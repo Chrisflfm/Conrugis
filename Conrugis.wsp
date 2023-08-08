@@ -32,6 +32,14 @@
 					<Name>Include</Name>
 					<SystemGroup>2</SystemGroup>
 					<DocumentType>11</DocumentType>
+					<Files>
+						<File>
+							<Name>.\Variables.stxp</Name>
+						</File>
+						<File>
+							<Name>.\Cas.stxp</Name>
+						</File>
+					</Files>
 				</File>
 			</Files>
 		</File>
@@ -58,6 +66,9 @@
 				<File>
 					<Name>.\Conrugis.stxs</Name>
 				</File>
+				<File>
+					<Name>.\CasDebug.stxs</Name>
+				</File>
 			</Files>
 		</File>
 		<File IsGroup="1">
@@ -69,6 +80,11 @@
 			<Name>Oscilloscope</Name>
 			<SystemGroup>1</SystemGroup>
 			<DocumentType>27</DocumentType>
+			<Files>
+				<File>
+					<Name>.\waterdruk.zsxof</Name>
+				</File>
+			</Files>
 		</File>
 		<File IsGroup="1">
 			<Name>Library</Name>

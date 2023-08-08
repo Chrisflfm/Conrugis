@@ -13,222 +13,26 @@
 	<Rows>
 		<Row>
 			<Name>
-				<![CDATA[PrevPiAliveValue]]>
+				<![CDATA[FactDieselStal]]>
 			</Name>
 			<Flags>32769</Flags>
 		</Row>
 		<Row>
 			<Name>
-				<![CDATA[ftPiAlive]]>
+				<![CDATA[OffsetDieselStal]]>
 			</Name>
 			<Flags>32769</Flags>
 		</Row>
 		<Row>
 			<Name>
-				<![CDATA[stPiAlive]]>
-			</Name>
-			<Flags>32785</Flags>
-			<HierarchyData>
-				<HierarchyState>1</HierarchyState>
-				<HierarchyDepth>0</HierarchyDepth>
-				<LastChild>0</LastChild>
-				<ConsiderHierarchy>0</ConsiderHierarchy>
-				<ParentID>0</ParentID>
-			</HierarchyData>
-		</Row>
-		<Row>
-			<Name>
-				<![CDATA[CPUTemperature]]>
+				<![CDATA[InhoudDieselStal]]>
 			</Name>
 			<Flags>32769</Flags>
 		</Row>
 		<Row>
 			<Name>
-				<![CDATA[Alive]]>
+				<![CDATA[mVDieselStal]]>
 			</Name>
-			<Flags>32769</Flags>
-			<Comment>
-				<![CDATA[BoolftPiAlive:]]>
-			</Comment>
-		</Row>
-		<Row>
-			<Name>
-				<![CDATA[Ft11_Raspberry_piTemp]]>
-			</Name>
-			<Flags>32769</Flags>
-		</Row>
-		<Row>
-			<Name>
-				<![CDATA[MaxKaarTemperatuur]]>
-			</Name>
-			<Flags>32769</Flags>
-		</Row>
-		<Row>
-			<Name>
-				<![CDATA[blDebug]]>
-			</Name>
-			<Flags>32769</Flags>
-		</Row>
-		<Row>
-			<Name>
-				<![CDATA[MinBuitenTempOpstoken]]>
-			</Name>
-			<Flags>32769</Flags>
-		</Row>
-		<Row>
-			<Name>
-				<![CDATA[MinBuffer]]>
-			</Name>
-			<Flags>32769</Flags>
-		</Row>
-		<Row>
-			<Name>
-				<![CDATA[TotVentDraaiTijdGarage]]>
-			</Name>
-			<Flags>32769</Flags>
-		</Row>
-		<Row>
-			<Name>
-				<![CDATA[TotVentDraaiTijdLoods]]>
-			</Name>
-			<Flags>32769</Flags>
-		</Row>
-		<Row>
-			<Name>
-				<![CDATA[stWeekTEst]]>
-			</Name>
-			<Flags>32785</Flags>
-			<HierarchyData>
-				<HierarchyState>2</HierarchyState>
-				<HierarchyDepth>0</HierarchyDepth>
-				<LastChild>0</LastChild>
-				<ConsiderHierarchy>0</ConsiderHierarchy>
-				<ParentID>119560648</ParentID>
-			</HierarchyData>
-		</Row>
-		<Row>
-			<Name>
-				<![CDATA[stWeekTEst.TimerHi]]>
-			</Name>
-			<Flags>32769</Flags>
-			<HierarchyData>
-				<HierarchyState>0</HierarchyState>
-				<HierarchyDepth>1</HierarchyDepth>
-				<LastChild>0</LastChild>
-				<ConsiderHierarchy>0</ConsiderHierarchy>
-				<ParentID>119560648</ParentID>
-			</HierarchyData>
-		</Row>
-		<Row>
-			<Name>
-				<![CDATA[stWeekTEst.TimerLo]]>
-			</Name>
-			<Flags>32769</Flags>
-			<HierarchyData>
-				<HierarchyState>0</HierarchyState>
-				<HierarchyDepth>1</HierarchyDepth>
-				<LastChild>1</LastChild>
-				<ConsiderHierarchy>0</ConsiderHierarchy>
-				<ParentID>119560648</ParentID>
-			</HierarchyData>
-		</Row>
-		<Row>
-			<Name>
-				<![CDATA[dTVentBijschakelen]]>
-			</Name>
-			<Flags>32769</Flags>
-		</Row>
-		<Row>
-			<Flags>32769</Flags>
-		</Row>
-		<Row>
-			<Flags>32769</Flags>
-		</Row>
-		<Row>
-			<Flags>32769</Flags>
-		</Row>
-		<Row>
-			<Flags>32769</Flags>
-		</Row>
-		<Row>
-			<Flags>32769</Flags>
-		</Row>
-		<Row>
-			<Flags>32769</Flags>
-		</Row>
-		<Row>
-			<Flags>32769</Flags>
-		</Row>
-		<Row>
-			<Flags>32769</Flags>
-		</Row>
-		<Row>
-			<Flags>32769</Flags>
-		</Row>
-		<Row>
-			<Flags>32769</Flags>
-		</Row>
-		<Row>
-			<Flags>32769</Flags>
-		</Row>
-		<Row>
-			<Flags>32769</Flags>
-		</Row>
-		<Row>
-			<Flags>32769</Flags>
-		</Row>
-		<Row>
-			<Flags>32769</Flags>
-		</Row>
-		<Row>
-			<Flags>32769</Flags>
-		</Row>
-		<Row>
-			<Flags>32769</Flags>
-		</Row>
-		<Row>
-			<Flags>32769</Flags>
-		</Row>
-		<Row>
-			<Flags>32769</Flags>
-		</Row>
-		<Row>
-			<Flags>32769</Flags>
-		</Row>
-		<Row>
-			<Flags>32769</Flags>
-		</Row>
-		<Row>
-			<Flags>32769</Flags>
-		</Row>
-		<Row>
-			<Flags>32769</Flags>
-		</Row>
-		<Row>
-			<Flags>32769</Flags>
-		</Row>
-		<Row>
-			<Flags>32769</Flags>
-		</Row>
-		<Row>
-			<Flags>32769</Flags>
-		</Row>
-		<Row>
-			<Flags>32769</Flags>
-		</Row>
-		<Row>
-			<Flags>32769</Flags>
-		</Row>
-		<Row>
-			<Flags>32769</Flags>
-		</Row>
-		<Row>
-			<Flags>32769</Flags>
-		</Row>
-		<Row>
-			<Flags>32769</Flags>
-		</Row>
-		<Row>
 			<Flags>32769</Flags>
 		</Row>
 		<Row>
@@ -237,9 +41,9 @@
 	</Rows>
 	<Columns>
 		<ColumnWidthHeader>42</ColumnWidthHeader>
-		<ColumnWidthName>180</ColumnWidthName>
+		<ColumnWidthName>254</ColumnWidthName>
 		<ColumnWidthValue>80</ColumnWidthValue>
-		<ColumnWidthContent>130</ColumnWidthContent>
+		<ColumnWidthContent>290</ColumnWidthContent>
 		<ColumnWidthType>80</ColumnWidthType>
 		<ColumnWidthComment>1098</ColumnWidthComment>
 	</Columns>

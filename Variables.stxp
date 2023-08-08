@@ -1,0 +1,423 @@
+//File DA: F:\My documents\My JetSymProjects\Conrugis\Release
+
+Var
+// *********************In en outputs*********************************
+	ctFlow1:		Bool	at %IX 100000201; //
+	ctFlow2:		Bool	at %IX 100000202; //
+	ctVorstVeilig1:	Bool	at %IX 100000203; //
+	ctVorstVeilig2:	Bool	at %IX 100000204; //
+	ctPressH2O:		Bool	at %IX 100000205; //
+	ctLichtGarage:	Bool	at %IX 100000206; //
+	ctLichtLoods:	Bool	at %IX 100000207; //
+	ctBuitenLamp:	Bool	at %IX 100000208; //
+	ctKlepGarage:	Bool	at %IX 100000209; //
+	ctKlepLoods:	Bool	at %IX 100000210; //
+	ctVentGarage:	Bool	at %IX 100000211; //
+	ctVentLoods:	Bool	at %IX 100000212; //
+	hrKlepGarage:	Bool	at %QX 100000213; //
+	hrKlepLoods:	Bool	at %QX 100000214; //
+	hrpLichtGarage:	Bool	at %QX 100000215; //
+	hrpLichtLoods:	Bool	at %QX 100000216; //
+	
+	hrVent1A:		Bool	at %QX 100000301; //
+	hrVent1B:		Bool	at %QX 100000302; //
+	hrVent2A:		Bool	at %QX 100000303; //
+	hrVent2B:		Bool	at %QX 100000304; //
+	hrPomp1:		Bool	at %QX 100000305; //
+	hrPomp2:		Bool	at %QX 100000306; //
+	hrDakvent1:		Bool	at %QX 100000307; //
+	hrDakvent2:		Bool	at %QX 100000308; //
+	laBlauw1:		Bool	at %QX 100000309; //
+	laBlauw2:		Bool	at %QX 100000310; //
+	laRood:			Bool	at %QX 100000311; //
+	laGroen:		Bool	at %QX 100000312; //
+	hrBuzz:			Bool	at %QX 100000313; //
+	hrpBuitenLamp:	Bool	at %QX 100000314; //
+	hrpVentGarage:	Bool	at %QX 100000315; //
+	hrpVentLoods:	Bool	at %QX 100000316; //
+
+	dkLichtGarage:	Bool	at %IX 100000901; //
+	dkLichtLoods:	Bool	at %IX 100000902; //
+	dkLichtBuiten:	Bool	at %IX 100000903; //
+	dkVentGarage:	Bool	at %IX 100000904; //
+	dkVentLoods:	Bool	at %IX 100000905; //
+	ctY1PG:			Bool	at %IX 100000906; //
+	ctFlowY1PG:		Bool	at %IX 100000907; //
+	rthVorstvrijPG:	Bool	at %IX 100000908; //
+	hrY2PG:			Bool	at %QX 100000909; //
+	hrKachelAan:	Bool	at %QX 100000910; //
+	hrM6pmpPG:		Bool	at %QX 100000911; //
+	hrY1PG:			Bool	at %QX 100000912; //
+	hrPulsPoort:	Bool	at %QX 100000913; //
+	resIO914:		Bool	at %QX 100000914; //
+	forceLow15:		Bool	at %QX 100000915; //
+	forceLow16:		Bool	at %QX 100000916; //
+	ctY2PG:			Bool	at %IX 100000915; //
+	rthRuimtePG:	Bool	at %IX 100000916; //
+
+// *********************Tempratuur sensoren*********************************
+// Retour temp	
+	Ret_ModState:	Int		at %vl 100040000; //1 module status
+	tmpRet1:		Float	at %vl 100040002; //Temp1 retour 1
+	tmpRet2:		Float	at %vl 100040003; //Temp2 retour 2
+	ComTmpRet1:		Int		at %vl 100041101; //Command register retour 1
+	ComTmpRet2:		Int		at %vl 100041201; //Command register retour 2
+	StaTtmpRet1:	Int		at %vl 100041100; //Temp retour 1
+	StaTtmpRet2:	Int		at %vl 100041200; //Temp retour 2
+	AvgTmpRet1:		Int		at %vl 100041106; //Temperatuur 1 meting uitmiddelen retour 1
+	AvgTmpRet2:		Int		at %vl 100041206; //Temperatuur 1 meting uitmiddelen retour 2
+// Ruimte temp 		
+	Rth_ModState:	Int		at %vl 100050000; //1 module status
+	tmpRth1:		Float	at %vl 100050002; //Temp1 ruimte 1
+	tmpRth2:		Float	at %vl 100050003; //Temp2 ruimte 2
+	ComTmpRth1:		Int		at %vl 100051101; //Command register ruimte 1
+	ComTmpRth2:		Int		at %vl 100051201; //Command register ruimte 2
+	StaTtmpRtht1:	Int		at %vl 100051100; //Temp ruimte 1
+	StaTtmpRtht2:	Int		at %vl 100051200; //Temp ruimte 2
+	AvgTmpRth1:		Int		at %vl 100051106; //Temperatuur 1 meting uitmiddelen ruimte 1
+	AvgTmpRth2:		Int		at %vl 100051206; //Temperatuur 1 meting uitmiddelen ruimte 2
+// Ruimte temp dak		
+	Rthdak_ModState:Int		at %vl 100060000; //1 module status
+	tmpRth1dak:		Float	at %vl 100060002; //Temp1 ruimte 1 dak
+	tmpRth2dak:		Float	at %vl 100060003; //Temp2 ruimte 2 dak
+	ComTmpRth1dak:	Int		at %vl 100061101; //Command register ruimte 1 dak
+	ComTmpRth2dak:	Int		at %vl 100061201; //Command register ruimte 2 dak
+	StaTtmpRtht1dak:Int		at %vl 100061100; //Temp ruimte 1 dak
+	StaTtmpRtht2dak:Int		at %vl 100061200; //Temp ruimte 2 dak
+	AvgTmpRth1dak:	Int		at %vl 100061106; //Temperatuur 1 meting uitmiddelen ruimte 1 dak
+	AvgTmpRth2dak:	Int		at %vl 100061206; //Temperatuur 1 meting uitmiddelen ruimte 2 dak
+// Aanvoer temp	
+	Aanv_ModState:	Int		at %vl 100070000; //1 module status
+	tmpAanv1:		Float	at %vl 100070002; //Temp1 Aanv 1
+	tmpAanv2:		Float	at %vl 100070003; //Temp2 Aanv 2
+	ComTmpAanv1:	Int		at %vl 100071101; //Command register Aanv 1
+	ComTmpAanv2:	Int		at %vl 100071201; //Command register Aanv 2
+	StaTtmpAanv1:	Int		at %vl 100071100; //Temp Aanv 1
+	StaTtmpAanv2:	Int		at %vl 100071200; //Temp Aanv 2
+	AvgTmpAanv1:	Int		at %vl 100071106; //Temperatuur 1 meting uitmiddelen Aanv 1
+	AvgTmpAanv2:	Int		at %vl 100071206; //Temperatuur 1 meting uitmiddelen Aanv 2
+// *********************Analoog IO*********************************
+//Analoog in
+	AI_Mod:			Int		at %vl 100080000; //Status AI module 
+	ComSetpoint:	Int		at %vl 100080001; //Command register AI 
+	mVSetpoint1:	Float	at %vl 100080002; //mV signaal Positie  1
+	mVSetpoint2:	Float	at %vl 100080003; //mV signaal Positie  2
+	mVWaterdruk:	Float	at %vl 100080004; //mV signaal Positie  3
+	mVDieselStal:	Float	at %vl 100080005; //mV signaal Positie  4
+	StatSetpoint1:	Int		at %vl 100081100; //Status Ai  1
+	StatSetpoint:	Int		at %vl 100081200; //Status Ai  2
+	StatWaterDruk:	Int		at %vl 100081300; //Status Ai  3
+	StatDieselStal:	Int		at %vl 100081400; //Status Ai  4
+	AvgSetpoint1:	Int		at %vl 100081106; //gemiddelde setting register  1
+	AvgSetpoint2:	Int		at %vl 100081206; //gemiddelde setting register  2
+	AvgWaterDruk:	Int		at %vl 100081306; //gemiddelde setting register  3
+	AvgDieselStal:	Int		at %vl 100081406; //gemiddelde setting register  4
+	ConfgSetpoint1:	Int		at %vl 100081107; //configuratie register 1
+	ConfgSetpoint2:	Int		at %vl 100081207; //configuratie register 2
+	ConfWaterdruk:	Int		at %vl 100081307; //configuratie register 3
+	ConfDieselStal:	Int		at %vl 100081407; //configuratie register 4
+
+	
+//**********************Programma variabelen en registers******************************
+
+// Flags
+	flVent1A:				Bool	at %MX 1;	//
+	flVent1B:				Bool	at %MX 2;	//
+	flVent2A:				Bool	at %MX 3;	//
+	flVent2B:				Bool	at %MX 4;	//
+	flPomp1:				Bool	at %MX 5;	//
+	flPomp2:				Bool	at %MX 6;	//
+	flDakvent1:				Bool	at %MX 7;	//
+	flDakvent2:				Bool	at %MX 8;	//
+	flBlauw1:				Bool	at %MX 9;	//
+	flBlauw2:				Bool	at %MX 10;	//
+	flRood:					Bool	at %MX 11;	//
+	flGroen:				Bool	at %MX 12;	//
+	flOpstoken:				Bool	at %MX 13;	//
+	flExtractor:			Bool	at %MX 14;	//
+	flAlm1_85V:				Bool	at %MX 15;	//
+	flAlm2_52V:				Bool	at %MX 16;	//
+	flAlm3_37V:				Bool	at %MX 17;	//
+	flAlm4_29V:				Bool	at %MX 18;	//
+	flSetClock:				Bool	at %MX 19;	//
+	flInVorstVeilig1:		Bool	at %MX 20;	//
+	flInVorstVeilig2:		Bool	at %MX 21;	//
+	flForceDakVent1:		Bool	at %MX 22;	//
+	flForceDakVent2:		Bool	at %MX 23;	//
+	flForceDakVent1Off:		Bool	at %MX 24;	//
+	flForceDakVent2Off:		Bool	at %MX 25;	//	
+	flForceVent1Off:		Bool	at %MX 26;	//
+	flForceVent2Off:		Bool	at %MX 27;	//	
+	flForceVent1:			Bool	at %MX 28;	//
+	flForceVent2:			Bool	at %MX 29;	//	
+	flMute:					Bool	at %MX 30;	//	
+	flpVentGarage:			Bool	at %MX 31;	//	
+	flpVentLoods:			Bool	at %MX 32;	//	
+	flpLichtGarage:			Bool	at %MX 33;	//	
+	flpLichtLoods:			Bool	at %MX 34;	//	
+	flpBuitenLamp:			Bool	at %MX 35;	//	
+	flAck:					Bool	at %MX 36;	//
+	flpAllesUit:			Bool	at %MX 37;	//
+	flpTestBuzz:			Bool	at %MX 38;	//
+	flStartWeekTest:		Bool	at %MX 39;
+	flNormaalBedrijfGarage:	Bool	at %MX 40;
+	flNormaalBedrijfLoods:	Bool	at %MX 41;
+	flActInVorstVeilig1:	Bool	at %MX 42;	//
+	flActInVorstVeilig2:	Bool	at %MX 43;	//
+	flWeekTestBezig:		Bool	at %MX 44;	//
+	flWeekTestGarageResult:	Bool	at %MX 45;	//
+	flWeekTestLoodsResult:	Bool	at %MX 46;	//
+	flPiAlive:				Bool	at %MX 47;
+	ftPiAlive:				Bool	at %MX 48;	//
+	flTest:					Bool	at %MX 49;	//
+	flVortsveiligIsSet:		Bool	at %MX 50;	//	
+	flpBuitenLampTest:		Bool	at %MX 51;	//	
+	flRes52:				Bool	at %MX 52;	//	
+	flpCalorPulsActive:		Bool	at %MX 53;	//	
+	flpManueelBuitenlmp:	Bool	at %MX 54;	//	
+	flSchemerSchSonLx:		Bool	at %MX 55;	//	
+	flError:				Bool	at %MX 56;	//	
+	flNotError:				Bool	at %MX 57;	//
+	flLampGarDspConrugis:	Bool	at %MX 58;	//	
+	flPoortViaDsp:			Bool	at %MX 59;	//	
+	
+			
+//**********************Fouten*******************************************
+	Ft01_Flow1:				Bool	at %MX 100; //Geen flow in garage
+	Ft02_Flow2:				Bool	at %MX 101; //geen flow in loods
+	Ft03_H2Odruk:			Bool	at %MX 102; //waterdruk weggevallen
+	Ft04_Vorstgevaar:		Bool	at %MX 103; //temperatuur te laag in de ruimte
+	Ft05_Opstoken:			Bool	at %MX 104; //Opstoken nodig
+	Ft08_Waterdruklaag:		Bool	at %MX 107;
+	Ft09_Waterdrukkritiek:	Bool	at %MX 108;
+	Ft10_MoederbordTemp:	Bool	at %MX 109;
+	Ft11_Raspberry_piTemp:	Bool	at %MX 110;
+	Ft12_GlobalError:		Bool	at %MX 111;
+	Ft_FlowPoortgebouw:		Bool	at %MX 112;
+	
+//remanente merkers
+	Ft06_WeekTestGarFaalt:	Bool	at %MX 200;
+	Ft07_WeekTestLoodsFaalt:Bool	at %MX 201;
+
+//Booleans
+	bInAuto:				Bool;
+	blTimeOutPmp1Act:		Bool;
+	blTimeOutPmp2Act:		Bool;
+	blPomp1Ok:				Bool;
+	blPomp2Ok:				Bool;
+	KnipperBit:				Bool;
+	blBuzzT1:				Bool;
+	blBuzzT2:				Bool;
+	blBuzzT3:				Bool;
+	blBuzzT4:				Bool;
+	blForceBuzz:			Bool;
+	blTimerExtrGarLoopt:	Bool;
+	blTimerExtrLoodsLoopt:	Bool;
+	blTest:					Bool;
+	blWeekTestUitgevoerd:	Bool;
+	blForceWeekTest:		Bool;
+	blBuzzKnipper:			Bool;
+	blGarageLuisterdNaarCt:	Bool;
+	blGarageLuisterdNaarTyd:Bool;
+	blGarageLuisterdNaartmp:Bool;
+	blLoodsLuisterdNaarCt:	Bool;
+	blLoodsLuisterdNaarTyd:	Bool;
+	blLoodsLuisterdNaartmp:	Bool;
+	blMinTempAanVBedrijf1:	Bool;
+	blMinTempAanVBedrijf2:	Bool;
+	blTmerMinTempAanVBdrf1:	Bool;
+	blTmerMinTempAanVBdrf2:	Bool;
+	blDelayGarage:			Bool;
+	blDelayLoods:			Bool;
+	ft05BedrijfGarage:		Bool;	
+	ft05BedrijfLoods:		Bool;
+	ft05VorstVeiligGarage:	Bool;	
+	ft05VorstVeiligLoods:	Bool;
+	flDakvent1Vorst:		Bool;
+	flDakvent2Vorst:		Bool;				
+	flbuitenlampWait:		Bool;				
+	flbuitenlampRemote:		Bool;				
+	flM6pmpPG:				Bool;
+	blTimeOuthrM6pmpPG:		Bool;
+	flHrY1:					Bool;
+	flhrPulsPoort:			Bool;
+	flTimeOutKlepPoortGeb:	Bool;	
+	//flTimeOutPompPoortGeb:	Bool;	
+	//flTimeOutFlowPoortGeb:	Bool;
+			
+//Internal registers
+	intFordce0Gar:			Int;
+	intFordce0Loods:		Int;
+	TussenWaarde1Gar:		float;
+	TussenWaarde2Gar:		float;
+	TussenWaarde1Loods:		float;
+	TussenWaarde2Loods:		float;
+	resetBootWatchers:		bool;
+	
+	
+//Register numbers: 1000000 ... 1001999
+//Registers
+	regTimeOutPomp:			Int		at %rl 1000000; //Time out geen flow als pomp draait
+	AlarmTempVorst:			Int		at %rl 1000001; //Ruimte temp lager dan alarm
+	MinTempAanVBedrijf:		Int		at %rl 1000002; //Temp aanvoer in bedrijf lager dan alarm opstoken
+	MinTempAanVVorstVlg:	Int		at %rl 1000003; //Temp aanvoer in vorstveilig lager dan alarm opstoken
+	BaseSetpointBedrijf:	Int		at %rl 1000004; //Setpoint met thermostaat in de middenstand
+	SetpointVorstVeilig:	Int		at %rl 1000005; //Setpoint in vorstveilig
+	regHours:				Int		at %rl 1000006; //Automatische synchronisatie met pannel op dit tijdstip (uren)
+	regMinutes:				Int		at %rl 1000007; //Automatische synchronisatie met pannel op dit tijdstip (min)
+	regSeconds:				Int		at %rl 1000008; //Automatische synchronisatie met pannel op dit tijdstip (sec)
+	TimerValueGarageStal:	Int		at %rl 1000009; //
+	TimerValueGarageLoods:	Int		at %rl 1000010; //
+	HysteresischBedrijf:	Int		at %rl 1000011; //Hysteresisch ruimte temp tijdens bedrijf waarde = span 50/50 verdeeld
+	HysteresischVorstV:		Int		at %rl 1000012; //Hysteresisch ruimte temp tijdens vorstveilig waarde = span 50/50 verdeeld
+	HysteresischDak:		Int		at %rl 1000013; //Hysteresisch temp onder dak aan uitschaklen dakventiatoren waarde = span 50/50 verdeeld
+	MinTempAanvoer1:		Int		at %rl 1000014; //Aanvoer hoger dan deze temp dan schakelen ventilaoren heater in Garage
+	MinTempAanvoer2:		Int		at %rl 1000015; //Aanvoer hoger dan deze temp dan schakelen ventilaoren heater in Loods
+	HysteresischAanv:		Int		at %rl 1000016; //Hysteresisch voor in en uit schakelen heater ventilatoren waarde = span 50/50 verdeeld
+	dTVentBijschakelen:		Int		at %rl 1000017; //Als er meer verschil is dan dTVentBijschakelen tussen het vorstveilig setpunt en de ruimte temp waord de tweede vent bij in geschakeld
+	setpointDakVent:		Int		at %rl 1000018; //Als de temperatuur onder het dak hoger is dan setpointDakVent	schakeld de dakventilator in
+	TijdVorstVeiligUit:		Int		at %rl 1000019; //Schakeld 's morgens de vorstbeileging uit en gaat naar bedrijf.
+	TijdVorstVeiligAan:		Int		at %rl 1000020; //Schakeld 's avonds de vorstbeileging in
+	LoopTijdEXtractor:		Int		at %rl 1000021; // 
+	StatusVent1A:			Int		at %rl 1000022; //
+	StatusVent1B:			Int		at %rl 1000023; //
+	StatusVent2A:			Int		at %rl 1000024; //
+	StatusVent2B:			Int		at %rl 1000025; //
+	StatusVentDak1:			Int		at %rl 1000026; //
+	StatusVentDak2:			Int		at %rl 1000027; //
+	StatusErr:				Int		at %rl 1000028; //
+	StatusTimpuls:			Int		at %rl 1000031; //
+	swKlepGarage:			Int		at %rl 1000032; //
+	swKlepLoods:			Int		at %rl 1000033; //
+	telExtractorGarage:		Int		at %rl 1000034; //
+	telExtractorLoods:		Int		at %rl 1000035; //
+	rotDakVentGarage:		Int		at %rl 1000036; //
+	rotDakVentLoods:		Int		at %rl 1000037; //
+	MaxTempBuitenDakvent:	int		at %rl 1000038; //
+	VorstVeiligregimeGarage:int		at %rl 1000039; //
+	VorstVeiligregimeLoods:	int		at %rl 1000040; //
+	MaxKaarTemperatuur:		int		at %rl 1000041; //
+	VentDraaiTijd:			int		at %rl 1000042; //
+	TijdFactor:				int		at %rl 1000043; // 1 min = 600*60 = 36000
+	MinBuffer:				int		at %rl 1000044; //
+	PrevPiAliveValue:		int		at %rl 1000045; //
+	MinBuitenTempOpstoken:	int		at %rl 1000046; //
+	BootCounter:			int		at %rl 1000047; //
+	VorigeBootCounter:		int		at %rl 1000048; //
+	res49:					int		at %rl 1000049; //
+	SetpointBedrijf1:		Float	at %rl 1000050; //
+	SetpointBedrijf2:		Float	at %rl 1000055; //
+	WaterDruk:				Float	at %rl 1000060; //
+	WaterDruklaag:			Float	at %rl 1000065; //
+	WaterDrukKritiek:		Float	at %rl 1000070; //
+	WensTemp1:				Float	at %rl 1000075; //
+	WensTemp2:				Float	at %rl 1000080; //
+	TotVentDraaiTijdGarage:	Float	at %rl 1000085; //
+	TotVentDraaiTijdLoods:	Float	at %rl 1000090; //
+	TijdfactorMin:			int		at %rl 1000095; //
+	regConrugis2Calor:		int		at %rl 1000096; //
+	regCalor2Conrugis:		int		at %rl 1000097; //
+	regCalorTest:			int		at %rl 1000098; //
+	TimerMQTTtest:			int		at %rl 1000099; //
+	
+	
+//MQTT registers Munerica & Conrugis
+	Buiten_Temp:			Int		at %rl 1000100; //
+	Temp_garage_H:			Int		at %rl 1000101; //
+	Temp_garage_:			Int		at %rl 1000102; //
+	Temp_stal_H:			Int		at %rl 1000103; //
+	Temp_stal_L:			Int		at %rl 1000104; //
+	Keteltemperatuur:		Int		at %rl 1000105; //
+	Kaarttemperatuur:		Int		at %rl 1000106; //
+	RegelvariabeleKetel:	Int		at %rl 1000107; //	
+	TemperatuurRookGas:		Int		at %rl 1000108; //
+	Bedrijfsuren:			Int		at %rl 1000109; //
+	sindslaatsteonderhoud:	Int		at %rl 1000110; //
+	BufferBoven:			Int		at %rl 1000111; //
+	BufferMidden:			Int		at %rl 1000112; //
+	BufferOnder:			Int		at %rl 1000113; //
+	BufferLading:			Int		at %rl 1000114; //
+	Alive:					Int		at %rl 1000115;	//
+	PLCAlive:				Int		at %rl 1000116;	//	
+	Buiten_Temp_Calor:		regstring[8]  AT %VL 1000117; //
+	
+// netcopy data registers inbound	
+	SchemerschakSonoLux:	int		at %vl 1001500; //0 licht, 1 donker
+	ManueelBuitenlmp:	    int		at %vl 1001501;
+    PoortOpdrachtIB:		int		at %vl 1001502;
+	KeteltemperatuurIB:		int		at %vl 1001503;
+	BufferBovenIB:			int		at %vl 1001504;
+	BufferMiddenIB:			int		at %vl 1001505;
+	BufferOnderIB:			int		at %vl 1001506;
+	BufferLadingIB:			int		at %vl 1001507;
+	AliveIB: 			    int		at %vl 1001508;
+	netData10:				int		at %vl 1001509;
+	
+// netcopy data registers outbound naar Munerica	
+	PoortOpdrachtOB:		int		at %vl 1001600; 
+	rctBuitenLamp:	   		int		at %vl 1001601;
+    RuweTankinhoudStal:		int		at %vl 1001602;
+	TankinhoudStal:			int		at %vl 1001603;
+	netData5OB:				int		at %vl 1001604;
+	netData6OB:				int		at %vl 1001605;
+	netData7OB:				int		at %vl 1001606;
+	netData8OB:				int		at %vl 1001607;
+	netData9OB:  		    int		at %vl 1001608;
+	netData10OB:			int		at %vl 1001669;	
+	
+	rebootInterval0:		Int		at %rl 1000149;
+	rebootInterval1:		Int		at %rl 1000150;
+	rebootInterval2:		Int		at %rl 1000151;
+	rebootInterval3:		Int		at %rl 1000152;
+	rebootInterval4:		Int		at %rl 1000153;
+	rebootInterval5:		Int		at %rl 1000154;
+	rebootInterval6:		Int		at %rl 1000155;
+	rebootInterval7:		Int		at %rl 1000156;
+	rebootInterval8:		Int		at %rl 1000157;
+	rebootInterval9:		Int		at %rl 1000158;
+	rebootInterval10:		Int		at %rl 1000159;	
+	rebootTimer:			Int		at %rl 1000160;	
+	Task7Dalaycounter:		Int		at %rl 1000161;	
+	
+	regComState:			Int		at %rl 1000400; //
+	MQTTin:					Int		at %rl 1000401; //
+	MaxMQTTtime:			int		at %rl 1000402; //
+	
+		
+	Debug2:					Float	at %rl 1000210; //
+	InhoudDieselStal:		Float	at %rl 1000211; //
+	FactDieselStal:			Float	at %rl 1000212; //
+	OffsetDieselStal:		Float	at %rl 1000213; //
+	CPUTemperature:			Float	at %rl 1000215; //
+//**********************RTC**********************************************
+	Milliseconds:			Int		at %vl 102910; //
+	Seconds:				Int		at %vl 102911; //
+	Minutes:				Int		at %vl 102912; //
+	Hours:					Int		at %vl 102913; //
+	Weekday:				Int		at %vl 102914; //Weekday (0 = Sunday)
+	Day:					Int		at %vl 102915; //
+	Month:					Int		at %vl 102916; //
+	Year:					Int		at %vl 102917; //
+	SecondsAfterBoot:		Int		at %vl 201001;	
+//**********************System settings***********************************
+	TimeoutRegAccess:		Int		at %vl 100002764;
+	SysCommandReg:			Int		at %vl 202961;//102 = Restart the controller
+	SysCommandPswReg:		Int		at %vl 202960;//Write value 1112502132 (0x424f6f74) to password register 202960.
+	GlobalError:			Int		at %vl 200008;// Global error register 0 == no error
+	
+//**********************Timers********************************************
+	stTimeOutPomp1:			Timer;
+	stTimeOutPomp2:			Timer;
+	stFt11:					Timer;
+	stExtractorGarage:		Timer 	at %rl 1000200; //
+	stExtractorLoods:		Timer	at %rl 1000202; //
+	stWeekTest:				Timer;
+	stTimeOuthrM6pmpPG:		Timer;	
+	stPiAlive:				Timer;
+	stTimeOutKlepPoortGeb:	Timer;	
+	
+	
+	
+	
+End_var
+

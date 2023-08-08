@@ -1,332 +1,18 @@
-Var
-// *********************In en outputs*********************************
-	ctFlow1:		Bool	at %IX 100000201; //
-	ctFlow2:		Bool	at %IX 100000202; //
-	ctVorstVeilig1:	Bool	at %IX 100000203; //
-	ctVorstVeilig2:	Bool	at %IX 100000204; //
-	ctPressH2O:		Bool	at %IX 100000205; //
-	ctLichtGarage:	Bool	at %IX 100000206; //
-	ctLichtLoods:	Bool	at %IX 100000207; //
-	ctBuitenLamp:	Bool	at %IX 100000208; //
-	ctKlepGarage:	Bool	at %IX 100000209; //
-	ctKlepLoods:	Bool	at %IX 100000210; //
-	ctVentGarage:	Bool	at %IX 100000211; //
-	ctVentLoods:	Bool	at %IX 100000212; //
-	hrKlepGarage:	Bool	at %QX 100000213; //
-	hrKlepLoods:	Bool	at %QX 100000214; //
-	hrpLichtGarage:	Bool	at %QX 100000215; //
-	hrpLichtLoods:	Bool	at %QX 100000216; //
-	
-	hrVent1A:		Bool	at %QX 100000301; //
-	hrVent1B:		Bool	at %QX 100000302; //
-	hrVent2A:		Bool	at %QX 100000303; //
-	hrVent2B:		Bool	at %QX 100000304; //
-	hrPomp1:		Bool	at %QX 100000305; //
-	hrPomp2:		Bool	at %QX 100000306; //
-	hrDakvent1:		Bool	at %QX 100000307; //
-	hrDakvent2:		Bool	at %QX 100000308; //
-	laBlauw1:		Bool	at %QX 100000309; //
-	laBlauw2:		Bool	at %QX 100000310; //
-	laRood:			Bool	at %QX 100000311; //
-	laGroen:		Bool	at %QX 100000312; //
-	hrBuzz:			Bool	at %QX 100000313; //
-	hrpBuitenLamp:	Bool	at %QX 100000314; //
-	hrpVentGarage:	Bool	at %QX 100000315; //
-	hrpVentLoods:	Bool	at %QX 100000316; //
-
-	dkLichtGarage:	Bool	at %IX 100000901; //
-	dkLichtLoods:	Bool	at %IX 100000902; //
-	dkLichtBuiten:	Bool	at %IX 100000903; //
-	dkVentGarage:	Bool	at %IX 100000904; //
-	dkVentLoods:	Bool	at %IX 100000905; //
-	resI906:		Bool	at %IX 100000906; //
-	resI907:		Bool	at %IX 100000907; //
-	resI908:		Bool	at %IX 100000908; //
-	resIO909:		Bool	at %QX 100000909; //
-	resIO910:		Bool	at %QX 100000910; //
-	resIO911:		Bool	at %QX 100000911; //
-	resIO912:		Bool	at %QX 100000912; //
-	resIO913:		Bool	at %QX 100000913; //
-	resIO914:		Bool	at %QX 100000914; //
-	resIO915:		Bool	at %QX 100000915; //
-	resIO916:		Bool	at %QX 100000916; //
-// *********************Tempratuur sensoren*********************************
-// Retour temp	
-	Ret_ModState:	Int		at %vl 100040000; //1 module status
-	tmpRet1:		Float	at %vl 100040002; //Temp1 retour 1
-	tmpRet2:		Float	at %vl 100040003; //Temp2 retour 2
-	ComTmpRet1:		Int		at %vl 100041101; //Command register retour 1
-	ComTmpRet2:		Int		at %vl 100041201; //Command register retour 2
-	StaTtmpRet1:	Int		at %vl 100041100; //Temp retour 1
-	StaTtmpRet2:	Int		at %vl 100041200; //Temp retour 2
-	AvgTmpRet1:		Int		at %vl 100041106; //Temperatuur 1 meting uitmiddelen retour 1
-	AvgTmpRet2:		Int		at %vl 100041206; //Temperatuur 1 meting uitmiddelen retour 2
-// Ruimte temp 		
-	Rth_ModState:	Int		at %vl 100050000; //1 module status
-	tmpRth1:		Float	at %vl 100050002; //Temp1 ruimte 1
-	tmpRth2:		Float	at %vl 100050003; //Temp2 ruimte 2
-	ComTmpRth1:		Int		at %vl 100051101; //Command register ruimte 1
-	ComTmpRth2:		Int		at %vl 100051201; //Command register ruimte 2
-	StaTtmpRtht1:	Int		at %vl 100051100; //Temp ruimte 1
-	StaTtmpRtht2:	Int		at %vl 100051200; //Temp ruimte 2
-	AvgTmpRth1:		Int		at %vl 100051106; //Temperatuur 1 meting uitmiddelen ruimte 1
-	AvgTmpRth2:		Int		at %vl 100051206; //Temperatuur 1 meting uitmiddelen ruimte 2
-// Ruimte temp dak		
-	Rthdak_ModState:Int		at %vl 100060000; //1 module status
-	tmpRth1dak:		Float	at %vl 100060002; //Temp1 ruimte 1 dak
-	tmpRth2dak:		Float	at %vl 100060003; //Temp2 ruimte 2 dak
-	ComTmpRth1dak:	Int		at %vl 100061101; //Command register ruimte 1 dak
-	ComTmpRth2dak:	Int		at %vl 100061201; //Command register ruimte 2 dak
-	StaTtmpRtht1dak:Int		at %vl 100061100; //Temp ruimte 1 dak
-	StaTtmpRtht2dak:Int		at %vl 100061200; //Temp ruimte 2 dak
-	AvgTmpRth1dak:	Int		at %vl 100061106; //Temperatuur 1 meting uitmiddelen ruimte 1 dak
-	AvgTmpRth2dak:	Int		at %vl 100061206; //Temperatuur 1 meting uitmiddelen ruimte 2 dak
-// Aanvoer temp	
-	Aanv_ModState:	Int		at %vl 100070000; //1 module status
-	tmpAanv1:		Float	at %vl 100070002; //Temp1 Aanv 1
-	tmpAanv2:		Float	at %vl 100070003; //Temp2 Aanv 2
-	ComTmpAanv1:	Int		at %vl 100071101; //Command register Aanv 1
-	ComTmpAanv2:	Int		at %vl 100071201; //Command register Aanv 2
-	StaTtmpAanv1:	Int		at %vl 100071100; //Temp Aanv 1
-	StaTtmpAanv2:	Int		at %vl 100071200; //Temp Aanv 2
-	AvgTmpAanv1:	Int		at %vl 100071106; //Temperatuur 1 meting uitmiddelen Aanv 1
-	AvgTmpAanv2:	Int		at %vl 100071206; //Temperatuur 1 meting uitmiddelen Aanv 2
-// *********************Analoog IO*********************************
-//Analoog in
-	AI_Mod:			Int		at %vl 100080000; //Status AI module 
-	ComSetpoint:	Int		at %vl 100080001; //Command register AI 
-	mVSetpoint1:	Float	at %vl 100080002; //mV signaal Positie  1
-	mVSetpoint2:	Float	at %vl 100080003; //mV signaal Positie  2
-	mVWaterdruk:	Float	at %vl 100080004; //mV signaal Positie  3
-	StatSetpoint1:	Int		at %vl 100081100; //Status Ai  1
-	StatSetpoint:	Int		at %vl 100081200; //Status Ai  2
-	StatWaterDruk:	Int		at %vl 100081300; //Status Ai  3
-	AvgSetpoint1:	Int		at %vl 100081106; //gemiddelde setting register  1
-	AvgSetpoint2:	Int		at %vl 100081206; //gemiddelde setting register  2
-	AvgWaterDruk:	Int		at %vl 100081306; //gemiddelde setting register  3
-	ConfgSetpoint1:	Int		at %vl 100081107; //configuratie register 1
-	ConfgSetpoint2:	Int		at %vl 100081207; //configuratie register 2
-	ConfWaterdruk:	Int		at %vl 100081307; //configuratie register 3
-
-	
-//**********************Programma variabelen en registers******************************
-
-// Flags
-	flVent1A:				Bool	at %MX 1;	//
-	flVent1B:				Bool	at %MX 2;	//
-	flVent2A:				Bool	at %MX 3;	//
-	flVent2B:				Bool	at %MX 4;	//
-	flPomp1:				Bool	at %MX 5;	//
-	flPomp2:				Bool	at %MX 6;	//
-	flDakvent1:				Bool	at %MX 7;	//
-	flDakvent2:				Bool	at %MX 8;	//
-	flBlauw1:				Bool	at %MX 9;	//
-	flBlauw2:				Bool	at %MX 10;	//
-	flRood:					Bool	at %MX 11;	//
-	flGroen:				Bool	at %MX 12;	//
-	flOpstoken:				Bool	at %MX 13;	//
-	flExtractor:			Bool	at %MX 14;	//
-	flAlm1_85V:				Bool	at %MX 15;	//
-	flAlm2_52V:				Bool	at %MX 16;	//
-	flAlm3_37V:				Bool	at %MX 17;	//
-	flAlm4_29V:				Bool	at %MX 18;	//
-	flSetClock:				Bool	at %MX 19;	//
-	flInVorstVeilig1:		Bool	at %MX 20;	//
-	flInVorstVeilig2:		Bool	at %MX 21;	//
-	flForceDakVent1:		Bool	at %MX 22;	//
-	flForceDakVent2:		Bool	at %MX 23;	//
-	flForceDakVent1Off:		Bool	at %MX 24;	//
-	flForceDakVent2Off:		Bool	at %MX 25;	//	
-	flForceVent1Off:		Bool	at %MX 26;	//
-	flForceVent2Off:		Bool	at %MX 27;	//	
-	flForceVent1:			Bool	at %MX 28;	//
-	flForceVent2:			Bool	at %MX 29;	//	
-	flMute:					Bool	at %MX 30;	//	
-	flpVentGarage:			Bool	at %MX 31;	//	
-	flpVentLoods:			Bool	at %MX 32;	//	
-	flpLichtGarage:			Bool	at %MX 33;	//	
-	flpLichtLoods:			Bool	at %MX 34;	//	
-	flpBuitenLamp:			Bool	at %MX 35;	//	
-	flAck:					Bool	at %MX 36;	//
-	flpAllesUit:			Bool	at %MX 37;	//
-	flpTestBuzz:			Bool	at %MX 38;	//
-	flStartWeekTest:		Bool	at %MX 39;
-	flNormaalBedrijfGarage:	Bool	at %MX 40;
-	flNormaalBedrijfLoods:	Bool	at %MX 41;
-	flActInVorstVeilig1:	Bool	at %MX 42;	//
-	flActInVorstVeilig2:	Bool	at %MX 43;	//
-	flWeekTestBezig:		Bool	at %MX 44;	//
-	flWeekTestGarageResult:	Bool	at %MX 45;	//
-	flWeekTestLoodsResult:	Bool	at %MX 46;	//
-	flPiAlive:				Bool	at %MX 47;
-	ftPiAlive:				Bool	at %MX 48;	//
-	
-			
-//**********************Fouten*******************************************
-	Ft01_Flow1:				Bool	at %MX 100; //Geen flow in garage
-	Ft02_Flow2:				Bool	at %MX 101; //geen flow in loods
-	Ft03_H2Odruk:			Bool	at %MX 102; //waterdruk weggevallen
-	Ft04_Vorstgevaar:		Bool	at %MX 103; //temperatuur te laag in de ruimte
-	Ft05_Opstoken:			Bool	at %MX 104; //Opstoken nodig
-	Ft06_WeekTestGarFaalt:	Bool	at %MX 105;
-	Ft07_WeekTestLoodsFaalt:Bool	at %MX 106;
-	Ft08_Waterdruklaag:		Bool	at %MX 107;
-	Ft09_Waterdrukkritiek:	Bool	at %MX 108;
-	Ft10_MoederbordTemp:	Bool	at %MX 109;
-	Ft11_Raspberry_piTemp:	Bool	at %MX 110;
-
-//Booleans
-	bInAuto:				Bool;
-	blTimeOutPmp1Act:		Bool;
-	blTimeOutPmp2Act:		Bool;
-	blPomp1Ok:				Bool;
-	blPomp2Ok:				Bool;
-	KnipperBit:				Bool;
-	blBuzzT1:				Bool;
-	blBuzzT2:				Bool;
-	blBuzzT3:				Bool;
-	blBuzzT4:				Bool;
-	blForceBuzz:			Bool;
-	blTimerExtrGarLoopt:	Bool;
-	blTimerExtrLoodsLoopt:	Bool;
-	blTest:					Bool;
-	blWeekTestUitgevoerd:	Bool;
-	blForceWeekTest:		Bool;
-	blBuzzKnipper:			Bool;
-	blGarageLuisterdNaarCt:	Bool;
-	blGarageLuisterdNaarTyd:Bool;
-	blGarageLuisterdNaartmp:Bool;
-	blLoodsLuisterdNaarCt:	Bool;
-	blLoodsLuisterdNaarTyd:	Bool;
-	blLoodsLuisterdNaartmp:	Bool;
-	blMinTempAanVBedrijf1:	Bool;
-	blMinTempAanVBedrijf2:	Bool;
-	blTmerMinTempAanVBdrf1:	Bool;
-	blTmerMinTempAanVBdrf2:	Bool;
-	blDelayGarage:			Bool;
-	blDelayLoods:			Bool;
-	ft05BedrijfGarage:		Bool;	
-	ft05BedrijfLoods:		Bool;
-	ft05VorstVeiligGarage:	Bool;	
-	ft05VorstVeiligLoods:	Bool;
-	blDebug:				Bool;
-	flDakvent1Vorst:		Bool;
-	flDakvent2Vorst:		Bool;				
-		
-//Integers
-	intFordce0Gar:			Int;
-	intFordce0Loods:		Int;
-	TussenWaarde1Gar:		float;
-	TussenWaarde2Gar:		float;
-	TussenWaarde1Loods:		float;
-	TussenWaarde2Loods:		float;
-	
-//Register numbers: 1000000 ... 1001999
-//Registers
-	regTimeOutPomp:			Int		at %rl 1000000; //Time out geen flow als pomp draait
-	AlarmTempVorst:			Int		at %rl 1000001; //Ruimte temp lager dan alarm
-	MinTempAanVBedrijf:		Int		at %rl 1000002; //Temp aanvoer in bedrijf lager dan alarm opstoken
-	MinTempAanVVorstVlg:	Int		at %rl 1000003; //Temp aanvoer in vorstveilig lager dan alarm opstoken
-	BaseSetpointBedrijf:	Int		at %rl 1000004; //Setpoint met thermostaat in de middenstand
-	SetpointVorstVeilig:	Int		at %rl 1000005; //Setpoint in vorstveilig
-	regHours:				Int		at %rl 1000006; //Automatische synchronisatie met pannel op dit tijdstip (uren)
-	regMinutes:				Int		at %rl 1000007; //Automatische synchronisatie met pannel op dit tijdstip (min)
-	regSeconds:				Int		at %rl 1000008; //Automatische synchronisatie met pannel op dit tijdstip (sec)
-	res9:					Int		at %rl 1000009; //
-	res10:					Int		at %rl 1000010; //
-	HysteresischBedrijf:	Int		at %rl 1000011; //Hysteresisch ruimte temp tijdens bedrijf waarde = span 50/50 verdeeld
-	HysteresischVorstV:		Int		at %rl 1000012; //Hysteresisch ruimte temp tijdens vorstveilig waarde = span 50/50 verdeeld
-	HysteresischDak:		Int		at %rl 1000013; //Hysteresisch temp onder dak aan uitschaklen dakventiatoren waarde = span 50/50 verdeeld
-	MinTempAanvoer1:		Int		at %rl 1000014; //Aanvoer hoger dan deze temp dan schakelen ventilaoren heater in Garage
-	MinTempAanvoer2:		Int		at %rl 1000015; //Aanvoer hoger dan deze temp dan schakelen ventilaoren heater in Loods
-	HysteresischAanv:		Int		at %rl 1000016; //Hysteresisch voor in en uit schakelen heater ventilatoren waarde = span 50/50 verdeeld
-	dTVentBijschakelen:		Int		at %rl 1000017; //Als er meer verschil is dan dTVentBijschakelen tussen het vorstveilig setpunt en de ruimte temp waord de tweede vent bij in geschakeld
-	setpointDakVent:		Int		at %rl 1000018; //Als de temperatuur onder het dak hoger is dan setpointDakVent	schakeld de dakventilator in
-	TijdVorstVeiligUit:		Int		at %rl 1000019; //Schakeld 's morgens de vorstbeileging uit en gaat naar bedrijf.
-	TijdVorstVeiligAan:		Int		at %rl 1000020; //Schakeld 's avonds de vorstbeileging in
-	LoopTijdEXtractor:		Int		at %rl 1000021; // 
-	StatusVent1A:			Int		at %rl 1000022; //
-	StatusVent1B:			Int		at %rl 1000023; //
-	StatusVent2A:			Int		at %rl 1000024; //
-	StatusVent2B:			Int		at %rl 1000025; //
-	StatusVentDak1:			Int		at %rl 1000026; //
-	StatusVentDak2:			Int		at %rl 1000027; //
-	StatusErr:				Int		at %rl 1000028; //
-	StatusTimpuls:			Int		at %rl 1000031; //
-	swKlepGarage:			Int		at %rl 1000032; //
-	swKlepLoods:			Int		at %rl 1000033; //
-	telExtractorGarage:		Int		at %rl 1000034; //
-	telExtractorLoods:		Int		at %rl 1000035; //
-	rotDakVentGarage:		Int		at %rl 1000036; //
-	rotDakVentLoods:		Int		at %rl 1000037; //
-	MaxTempBuitenDakvent:	int		at %rl 1000038; //
-	VorstVeiligregimeGarage:int		at %rl 1000039; //
-	VorstVeiligregimeLoods:	int		at %rl 1000040; //
-	MaxKaarTemperatuur:		int		at %rl 1000041; //
-	VentDraaiTijd:			int		at %rl 1000042; //
-	TijdFactor:				int		at %rl 1000043; //
-	MinBuffer:				int		at %rl 1000044; //
-	PrevPiAliveValue:		int		at %rl 1000045; //
-	MinBuitenTempOpstoken:	int		at %rl 1000046; //
-	
-//MQTT registers Munerica & Conrugis
-	Buiten_Temp:			Int		at %rl 1000100; //
-	Temp_garage_H:			Int		at %rl 1000101; //
-	Temp_garage_:			Int		at %rl 1000102; //
-	Temp_stal_H:			Int		at %rl 1000103; //
-	Temp_stal_L:			Int		at %rl 1000104; //
-	Keteltemperatuur:		Int		at %rl 1000105; //
-	Kaarttemperatuur:		Int		at %rl 1000106; //
-	RegelvariabeleKetel:	Int		at %rl 1000107; //	
-	TemperatuurRookGas:		Int		at %rl 1000108; //
-	Bedrijfsuren:			Int		at %rl 1000109; //
-	sindslaatsteonderhoud:	Int		at %rl 1000110; //
-	BufferBoven:			Int		at %rl 1000111; //
-	BufferMidden:			Int		at %rl 1000112; //
-	BufferOnder:			Int		at %rl 1000113; //
-	BufferLading:			Int		at %rl 1000114; //
-	Alive:					Int		at %rl 1000115;	//		
-//Integers
-//Floats
-	SetpointBedrijf1:		Float	at %rl 1000050; //
-	SetpointBedrijf2:		Float	at %rl 1000055; //
-	WaterDruk:				Float	at %rl 1000060; //
-	WaterDruklaag:			Float	at %rl 1000065; //
-	WaterDrukKritiek:		Float	at %rl 1000070; //
-	WensTemp1:				Float	at %rl 1000075; //
-	WensTemp2:				Float	at %rl 1000080; //
-	TotVentDraaiTijdGarage:	Float	at %rl 1000085; //
-	TotVentDraaiTijdLoods:	Float	at %rl 1000090; //
-	Debug:					Float	at %rl 1000095; //
-	Debug2:					Float	at %rl 1000210; //
-	CPUTemperature:			Float	at %rl 1000215; //
-//**********************RTC**********************************************
-	Milliseconds:			Int		at %vl 102910; //
-	Seconds:				Int		at %vl 102911; //
-	Minutes:				Int		at %vl 102912; //
-	Hours:					Int		at %vl 102913; //
-	Weekday:				Int		at %vl 102914; //Weekday (0 = Sunday)
-	Day:					Int		at %vl 102915; //
-	Month:					Int		at %vl 102916; //
-	Year:					Int		at %vl 102917; //
-	
-
-
-//**********************Timers********************************************
-	stTimeOutPomp1:			Timer;
-	stTimeOutPomp2:			Timer;
-	stExtractorGarage:		Timer 	at %rl 1000200; //
-	stExtractorLoods:		Timer	at %rl 1000202; //
-	stWeekTest:				Timer;
-	//stMinTempAanVBedrijf1:	Timer;	
-	//stMinTempAanVBedrijf2:	Timer;	
-	stPiAlive:				Timer;
-End_var
+#include "Variables.stxp"
+#include "Cas.stxp"
 
 Task tMain Autorun
-//Init flags
-	FlagClear(0,100); //Clear eerste 100 flags
+//Init system
+	
+	 TimeoutRegAccess:= 100;
+//Init flags en fouten
+	FlagClear(0,120); //Clear eerste 121 flags
 //Init outputs en flags
+	forceLow15 := False;
+	forceLow16 := False;
+	hrM6pmpPG :=  False;
+	hrY1PG :=  False;
+	hrY2PG :=  False;
 	hrVent1A := False;
 	hrVent1B := False;
 	hrVent2A := False;		
@@ -339,6 +25,7 @@ Task tMain Autorun
 	laBlauw2 := False;
 	laRood := False;
 	laGroen := False;
+	hrPulsPoort := False;
 	hrBuzz :=  False;
 	StatusTimpuls :=0;
 	flAck := False;
@@ -367,9 +54,11 @@ Task tMain Autorun
 	rotDakVentloods := 0;
 	blTmerMinTempAanVBdrf1 := False;
 	blTmerMinTempAanVBdrf2 := False;
-	TijdFactor := 60000;
+	//TijdFactor := 60000;
 	blDelayGarage:=False;
 	blDelayLoods:=False;
+	PLCAlive := 1;
+	PoortOpdrachtOB := 0;
 //Start temp meting Retour
 	ComTmpRet1 := 104; //4 draads
 	ComTmpRet1 := 107; //Celsius
@@ -417,8 +106,6 @@ Task tMain Autorun
 	AvgTmpRth2 := 16; //uitmiddelen  laatste 16
 	AvgTmpRth1dak := 16; //uitmiddelen  laatste 16
 	AvgTmpRth2dak := 16; //uitmiddelen  laatste 16
-	
-	
 
 //Config AI
 	ConfgSetpoint1 := 5; //0-10V
@@ -427,23 +114,14 @@ Task tMain Autorun
 	AvgSetpoint1 := 16; //uitmiddelen  laatste 16
 	ConfWaterdruk := 5; //0-10V
 	AvgWaterDruk := 16; //uitmiddelen  laatste 16
-
-
-//Reset fouten
-	Ft01_Flow1 := False;
-	Ft02_Flow2 := False;
-	Ft03_H2Odruk := False;
-	Ft04_Vorstgevaar := False;
-	Ft05_Opstoken := False;
-	Ft06_WeekTestGarFaalt := False;
-	Ft07_WeekTestLoodsFaalt := False;
-	Ft08_Waterdruklaag := False;
-	Ft09_Waterdrukkritiek := False;
-	Ft10_MoederbordTemp := False;
+	ConfDieselStal := 5; //0-10V
+	AvgDieselStal := 16; //uitmiddelen  laatste 16
 	
+
 
 //**************************************Start Main loop**************************************
 	bInAuto := True;
+	BootCounter := BootCounter +1;
 	While bInAuto Do
 		//vorst veilig reset voor beslssingsboom
 		blGarageLuisterdNaarTyd := False;
@@ -452,36 +130,6 @@ Task tMain Autorun
 		blLoodsLuisterdNaarTyd := False;
 		blLoodsLuisterdNaarCt := False;
 		blLoodsLuisterdNaartmp := False;
-		
-		//Vorsteveilig sturing Garage
-		//kijken of er een situatie geweest is waardoor ze op basis van water temp in vorstveilig moet gaan	garage
-		//if (tmpAanv1 < (MinTempAanVBedrijf - (HysteresischAanv/2))  and ctFlow1) and not blTmerMinTempAanVBdrf1 then
-		//	blTmerMinTempAanVBdrf1 := True;
-		//	TimerStart(stMinTempAanVBedrijf1,T#5m)
-		//end_if
-		//if TimerEnd(stMinTempAanVBedrijf1) and (tmpAanv1 < (MinTempAanVBedrijf - (HysteresischAanv/2))  and ctFlow1) then
-		//	blMinTempAanVBedrijf1 := True;
-	
-		//End_If
-		////water is weer warm genoeg garage
-		//if tmpAanv1 > (MinTempAanVBedrijf + (HysteresischAanv/2)) then
-		//	blMinTempAanVBedrijf1 := False;
-		//	blTmerMinTempAanVBdrf1 := False;
-		//end_if
-		////kijken of er een situatie geweest is waardoor ze op basis van water temp in vorstveilig moet gaan loods
-		//if (tmpAanv2 < (MinTempAanVBedrijf - (HysteresischAanv/2)) and ctFlow2) and not blTmerMinTempAanVBdrf2 then
-		//	blTmerMinTempAanVBdrf2 := True;
-		//	TimerStart(stMinTempAanVBedrijf2,T#5m)
-		//end_if
-		//if TimerEnd(stMinTempAanVBedrijf2) and (tmpAanv2 < (MinTempAanVBedrijf - (HysteresischAanv/2))  and ctFlow2)  then
-		//	blMinTempAanVBedrijf2 := True;
-		//end_if
-		////water loods weer warm genoeg
-		//if tmpAanv2 > (MinTempAanVBedrijf + (HysteresischAanv/2))  then
-		//	blMinTempAanVBedrijf2 := False;
-		//	blTmerMinTempAanVBdrf2 := False;
-		//end_if
-		
 		blMinTempAanVBedrijf1 := False;
 		blMinTempAanVBedrijf2 := False;	
 		
@@ -581,7 +229,7 @@ Task tMain Autorun
 				If tmpRth1 < SetpointVorstVeilig - (HysteresischVorstV/2) then
 					flPomp1 := True;
 				End_If;
-				If tmpRth1 >= SetpointVorstVeilig - (HysteresischVorstV/2) then
+				If tmpRth1 >= SetpointVorstVeilig + (HysteresischVorstV/2) then
 					flPomp1 := False;
 				End_If;
 				if flPomp1 or flForceVent1 then
@@ -591,7 +239,8 @@ Task tMain Autorun
 				End_If;
 				if flVent1A and tmpRet1 < SetpointVorstVeilig - dTVentBijschakelen or flForceVent1 then
 					flVent1B := True;
-				else
+				End_If
+				if tmpRet1 >= SetpointVorstVeilig and not flForceVent1 then
 					flVent1B := False;
 				End_If;
 				flBlauw1 := True;
@@ -628,7 +277,7 @@ Task tMain Autorun
 				If tmpRth2 < SetpointVorstVeilig - (HysteresischVorstV/2) or flForceVent2 then
 					flPomp2 := True;
 				End_If;
-				If tmpRth2 >= SetpointVorstVeilig - (HysteresischVorstV/2) and not flForceVent2 then
+				If tmpRth2 >= SetpointVorstVeilig + (HysteresischVorstV/2) and not flForceVent2 then
 					flPomp2 := False;
 				End_If;
 				if flPomp2 or flForceVent2 then
@@ -638,7 +287,8 @@ Task tMain Autorun
 				End_If;
 				if flVent2A and tmpRet2 < SetpointVorstVeilig - dTVentBijschakelen or flForceVent2 then
 					flVent2B := True;
-				else
+				End_If
+				if tmpRet2 >= SetpointVorstVeilig and not flForceVent2 then
 					flVent2B := False;
 				End_If;
 				flBlauw2 := True;
@@ -646,32 +296,32 @@ Task tMain Autorun
 		End_If;
 		
 //dakvent Garage
-		if ((tmpRth1dak > setpointDakVent + (HysteresischDak/2)) and (Buiten_Temp <= (MaxTempBuitenDakvent - (HysteresischDak/2)))) or flForceDakVent1 then
+		if ((tmpRth1dak > setpointDakVent + (HysteresischDak/2)) and ctVorstVeilig1 == False) or flForceDakVent1 then
 			flDakvent1 := True;
 		End_if;
-		if ((tmpRth1dak <= setpointDakVent - (HysteresischDak/2)) or (Buiten_Temp > (MaxTempBuitenDakvent + (HysteresischDak/2)))) and not flForceDakVent1 then
+		if ((tmpRth1dak <= setpointDakVent - (HysteresischDak/2)) or ctVorstVeilig1 == True) and not flForceDakVent1 then
 			flDakvent1 := False;
 		End_if;
 		
-		if flActInVorstVeilig1 and tmpRth1dak >= SetpointVorstVeilig + 1 and tmpRth1 <= SetpointVorstVeilig + 1 then
+		if flActInVorstVeilig1 and tmpRth1dak >= SetpointVorstVeilig + 3 and tmpRth1 <= SetpointVorstVeilig + 2 then
 			flDakvent1Vorst := True;
 		End_if;
-		if not flActInVorstVeilig1 or tmpRth1dak < SetpointVorstVeilig or tmpRth1 >= SetpointVorstVeilig + 2  then
+		if not flActInVorstVeilig1 or tmpRth1dak < SetpointVorstVeilig or tmpRth1 > SetpointVorstVeilig + 2  then
 			flDakvent1Vorst := False;
 		End_if;
 		
 //Dakvent loods
-		if ((tmpRth2dak > (setpointDakVent + (HysteresischDak/2))) and (Buiten_Temp <= (MaxTempBuitenDakvent - (HysteresischDak/2)))) or flForceDakVent2 then
+		if ((tmpRth2dak > (setpointDakVent + (HysteresischDak/2))) and ctVorstVeilig2 == False) or flForceDakVent2 then
 			flDakvent2 := True;
 		End_if;
-		if ((tmpRth2dak <= (setpointDakVent - (HysteresischDak/2))) or (Buiten_Temp > (MaxTempBuitenDakvent + (HysteresischDak/2)))) and not flForceDakVent2 then
+		if ((tmpRth2dak <= (setpointDakVent - (HysteresischDak/2))) or ctVorstVeilig2 == True) and not flForceDakVent2 then
 			flDakvent2 := False;
 		End_if;
 		
-		if flActInVorstVeilig2 and tmpRth1dak >= SetpointVorstVeilig + 1 and tmpRth2 <= SetpointVorstVeilig + 1 then
+		if flActInVorstVeilig2 and tmpRth1dak >= SetpointVorstVeilig + 3 and tmpRth2 <= SetpointVorstVeilig + 2 then
 			flDakvent2Vorst := True;
 		End_if;
-		if not flActInVorstVeilig2 or tmpRth1dak < SetpointVorstVeilig or tmpRth2 >= SetpointVorstVeilig + 2  then
+		if not flActInVorstVeilig2 or tmpRth1dak < SetpointVorstVeilig or tmpRth2 > SetpointVorstVeilig + 2  then
 			flDakvent2Vorst := False;
 		End_if;
 		
@@ -832,6 +482,39 @@ Task tMain Autorun
 	End_While;
 End_Task
 
+
+Task tPoorthuis Autorun
+//*************************************tPoorthuis****************************************
+	While True Do
+		// warmte vraag = klep open
+		if rthRuimtePG then 
+			flHrY1 := True;
+		else
+			flHrY1 := False;
+		End_If
+		// als klep open start pomp
+		if ctY1PG then 
+			flM6pmpPG := True;
+		else
+			flM6pmpPG := False;
+		End_If
+		
+		if (PoortOpdrachtIB == 1 or flPoortViaDsp) and PoortOpdrachtOB ==0 then //niet bezig --> strt puls
+			PoortOpdrachtOB := 1; //puls gestart
+			flhrPulsPoort := True; //puls hoog
+			delay(T#500ms); //wacht
+			flhrPulsPoort := False; //puls laag
+			PoortOpdrachtOB := 0; //puls klaar
+			flPoortViaDsp := False;
+		End_If
+		
+		if PoortOpdrachtIB == 0 then
+			PoortOpdrachtOB := 0;
+		End_If
+
+	End_While;
+End_Task
+
 Task tVeiligheden Autorun
 //*************************************tVeiligheden en outputs****************************************
 	While True Do
@@ -850,6 +533,23 @@ Task tVeiligheden Autorun
 	
 	
 // DO sturen op 1 locatie
+		if flhrPulsPoort then
+			hrPulsPoort := True;
+		else 
+			hrPulsPoort := False;
+		End_If
+		
+		if flHrY1 then
+			hrY1PG := True;
+		Else
+			hrY1PG := False;
+		End_If
+		
+		if flM6pmpPG then
+			hrM6pmpPG := True;
+		else
+			hrM6pmpPG := False;
+		end_if
 		
 		if flBlauw1 then
 			laBlauw1 := True;
@@ -914,6 +614,7 @@ Task tVeiligheden Autorun
 		if ctKlepGarage then
 			hrPomp1 := True;
 		End_If
+		
 		if hrKlepGarage then
 			hrPomp1 := False;
 		End_If
@@ -921,6 +622,7 @@ Task tVeiligheden Autorun
 		if ctKlepLoods then
 			hrPomp2 := True;
 		End_If
+		
 		if hrKlepLoods then
 			hrPomp2 := False;
 		End_If
@@ -970,15 +672,57 @@ Task tPulsRelais Autorun
 			hrpVentGarage := False;
 			StatusTimpuls := 0;
 		End_if
+	
 		//puls buitenlamp
+		
+		if ManueelBuitenlmp == 1 then
+			flpManueelBuitenlmp := True;
+		Else
+			flpManueelBuitenlmp := False;
+		End_If
+		
+		
+		if (flLampGarDspConrugis or flpManueelBuitenlmp) and not flbuitenlampWait then
+			flbuitenlampWait := True;
+			flbuitenlampRemote := True;
+			flpBuitenLamp := True;
+		End_If
+		
+		if SchemerschakSonoLux == 0 then //0 = licht, 1 = donker
+			flSchemerSchSonLx := False; //het is licht buiten
+		Else
+			flSchemerSchSonLx := True; // het is donker buiten
+		End_If	
+		
+		// als lamp aan en het is licht of het is na 20:00 uur doe ze dan uit
+		if (not flbuitenlampRemote) and (((ctBuitenLamp and not flSchemerSchSonLx) or (ctBuitenLamp and Hours > 20))) then
+			flpBuitenLamp := true;
+		End_If
+			
+		// puls geven
 		if flpBuitenLamp then
 			StatusTimpuls := 3;
 			hrpBuitenLamp := true;
 			Delay(T#500ms);
-			flpBuitenLamp := False;	
 			hrpBuitenLamp := False;
 			StatusTimpuls := 0;
+			flpBuitenLamp  := False;
+			flLampGarDspConrugis := False;
+			if not ctBuitenLamp then
+				flbuitenlampRemote := False;
+			End_If
 		End_if
+		
+		if (not flLampGarDspConrugis and not flpManueelBuitenlmp) and flbuitenlampWait then
+			flbuitenlampWait := False;
+		End_If
+		
+		if not ctBuitenLamp and flbuitenlampRemote then
+			flbuitenlampRemote := False;
+		End_If
+		
+		//flLampGarDspConrugis := flpManueelBuitenlmp;
+		
 		//puls licht garage
 		if flpLichtGarage then
 			StatusTimpuls := 4;
@@ -995,9 +739,9 @@ Task tPulsRelais Autorun
 			Delay(T#500ms);
 			flpLichtLoods := False;
 			hrpLichtLoods := False;
-			StatusTimpuls := 0;
-			
+			StatusTimpuls := 0;	
 		End_if
+		
 		//puls alles uit
 		if flpAllesUit then
 			StatusTimpuls := 6;
@@ -1048,20 +792,8 @@ Task tPulsRelais Autorun
 		else
 			StatusTimpuls := 0;
 		End_if
-		
-		// test beep
-		//if flpTestBuzz then
-		//	blForceBuzz := true;
-		//	Delay(T#250ms);
-		//	blForceBuzz := False;
-		//	Delay(T#250ms);
-		//	blForceBuzz := true;
-		//	Delay(T#250ms);
-		//	blForceBuzz := False;
-		//	flpTestBuzz := False;
-		//End_If	
-		
-		// na 1 sec elke sec langer dk in is 15 min extractor tijd garage
+	
+			// na 1 sec elke sec langer dk in is 15 min extractor tijd garage
 		if dkVentGarage and ctVentGarage then
 			Delay(T#1s);
 			telExtractorGarage := 1;
@@ -1078,29 +810,25 @@ Task tPulsRelais Autorun
 				blBuzzT2 := False;
 				Delay(T#1s);
 				blDelayGarage := False;
-			End_While
-			//if dkVentGarage and ctVentGarage and not blDelayGarage then
-			//	goto ExtGarage;
-			//End_If
-			
-		End_If
-		// extractor uit = 15 min teller op 0
-		if not ctVentGarage then
-			telExtractorGarage := 0;
-			TussenWaarde2Gar :=0;
-			intFordce0Gar := 0			
+			End_While			
 		End_If
 		
-		//start 15 min timer
+		//instelbaar maken tijdsffactor
+		//6000 = 10 sec 
+		//User Time base --> 1 min = 60000
+		TijdFactor := TijdfactorMin * 60000;
+		TimerValueGarageLoods :=  TijdFactor*telExtractorGarage;
+		
+		//start x min timer
 		if not blTimerExtrGarLoopt and telExtractorGarage > 0 then
+			TimerStart(stExtractorGarage, TijdFactor);
 			intFordce0Gar :=1;
 			blTimerExtrGarLoopt := True;
-			TimerStart(stExtractorGarage, VentDraaiTijd * TijdFactor);
 		End_If
 		
-		TussenWaarde1Gar := TimerValueActual(stExtractorGarage) * intFordce0Gar;
-		TussenWaarde2Gar := TussenWaarde1Gar/TijdFactor;
-		TotVentDraaiTijdGarage := (telExtractorGarage * VentDraaiTijd) + TussenWaarde2Gar; 
+		TussenWaarde1Gar := (TimerValueActual(stExtractorGarage));
+		TussenWaarde2Gar := TussenWaarde1Gar/60000;
+		TotVentDraaiTijdGarage := TussenWaarde2Gar * telExtractorGarage; 
 		
 		//timer end 15 min bij laatste itteratie stop extractor
 		if TimerEnd(stExtractorGarage) and blTimerExtrGarLoopt then
@@ -1111,7 +839,15 @@ Task tPulsRelais Autorun
 			End_If
 		End_If
 		
-		// na 1 sec elke sec langer dk in is 15 min extractor tijd loods
+		// extractor uit = 15 min teller op 0
+		if not ctVentGarage then
+			telExtractorGarage := 0;
+			TussenWaarde2Gar :=0;
+			intFordce0Gar := 0;	
+			TimerStart(stExtractorGarage, 0);		
+		End_If
+		
+		// na 1 sec elke sec langer dk in is x min extractor tijd loods
 		if dkVentLoods and ctVentLoods then
 			Delay(T#1s);
 			telExtractorLoods := 1;
@@ -1131,22 +867,31 @@ Task tPulsRelais Autorun
 				goto ExtLoods
 			End_If
 		End_If
+		//instelbaar maken tijdsffactor
+		//6000 = 10 sec 
+		//User Time base --> 1 min = 60000
+		TijdFactor := TijdfactorMin * 60000;
+		TimerValueGarageStal :=  TijdFactor*telExtractorLoods;
+		
 		// extractor uit = 15 min teller op 0
 		if not ctVentLoods then
 			telExtractorLoods := 0;
 			TussenWaarde2Loods :=0;
 			intFordce0Loods :=0;
+			TimerStart(stExtractorLoods, 0);
 		End_If
+	
 		//start 15 min timer
 		if not blTimerExtrLoodsLoopt and telExtractorLoods > 0 then
 			intFordce0Loods :=1;
 			blTimerExtrLoodsLoopt := True;
-			TimerStart(stExtractorLoods, VentDraaiTijd * TijdFactor);
+			TimerStart(stExtractorLoods, TijdFactor);
 		End_If
+				
 		
-		TussenWaarde1Loods := TimerValueActual(stExtractorLoods) * intFordce0Loods;
-		TussenWaarde2Loods := TussenWaarde1Loods/TijdFactor;
-		TotVentDraaiTijdLoods := (telExtractorLoods * VentDraaiTijd) + TussenWaarde2Loods; 
+		TussenWaarde1Loods := (TimerValueActual(stExtractorLoods));
+		TussenWaarde2Loods := TussenWaarde1Loods/60000;
+		TotVentDraaiTijdLoods := TussenWaarde2Loods * telExtractorLoods;
 		
 		//timer end 15 min bij laatste itteratie stop extractor
 		if TimerEnd(stExtractorLoods) and blTimerExtrLoodsLoopt then
@@ -1165,13 +910,11 @@ Task WeekTest Autorun
 	flWeekTestBezig := False;
 	blForceWeekTest := False;
 	flStartWeekTest := False;
-	Ft06_WeekTestGarFaalt := False;
-	Ft07_WeekTestLoodsFaalt := False;
-	flWeekTestGarageResult:= False;
-	flWeekTestLoodsResult:= False;
+	flWeekTestGarageResult:= True;
+	flWeekTestLoodsResult:= True;
 	While True Do
 		
-		if (Weekday == 1 and Hours >= 1 and Hours < 2 and not blWeekTestUitgevoerd) or (flStartWeekTest and not flWeekTestBezig) then
+		if (Weekday == 0 and Hours > 1 and Hours < 2 and not blWeekTestUitgevoerd) or (flStartWeekTest and not flWeekTestBezig) then
 			blWeekTestUitgevoerd := True;
 			flWeekTestBezig := True;
 			blForceWeekTest := True;
@@ -1200,27 +943,30 @@ Task WeekTest Autorun
 			blForceWeekTest := False;
 		End_If			
 		
-		if  Hours >= 2 and blWeekTestUitgevoerd then
+		if Weekday == 0 and Hours == 1 and blWeekTestUitgevoerd then
 			blWeekTestUitgevoerd := False;
 			Ft06_WeekTestGarFaalt := False;
 			Ft07_WeekTestLoodsFaalt := False;
-		End_If
-		
-		
+		End_If	
 	End_While	
 End_Task
 
 Task tError Autorun
 //*************************************tError****************************************
 	While True Do
+	//Dieseltank stalplaats
+	InhoudDieselStal := mVDieselStal * FactDieselStal + OffsetDieselStal;
+	RuweTankinhoudStal := mVDieselStal; // voor Munereica comunicatie
+	TankinhoudStal := InhoudDieselStal; // voor Munereica comunicatie
+	
 	if hrPomp1 and not blTimeOutPmp1Act then
-		TimerStart(stTimeOutPomp1,T#90s);
+		TimerStart(stTimeOutPomp1,T#240s);
 		blTimeOutPmp1Act := True;
 	End_If;
 	if TimerEnd(stTimeOutPomp1) and not ctFlow1 and hrPomp1 then
 		Ft01_Flow1 := True;
 	End_If;
-	if not ctFlow1 then
+	if  ctFlow1 and hrPomp1 then
 		Ft01_Flow1 := False;
 	End_If;
 	if not hrPomp1 then
@@ -1228,7 +974,7 @@ Task tError Autorun
 	End_If;
 	
 	if hrPomp2 and not blTimeOutPmp2Act then
-		TimerStart(stTimeOutPomp2,T#90s);
+		TimerStart(stTimeOutPomp2,T#240s);
 		blTimeOutPmp2Act := True;
 	End_If;
 	if TimerEnd(stTimeOutPomp2) and not ctFlow2 and hrPomp2 then
@@ -1239,6 +985,38 @@ Task tError Autorun
 	End_If;
 	if not hrPomp2 then
 		blTimeOutPmp2Act := False;
+	End_If;
+	
+	//Time out flow poortgebouw
+	if hrM6pmpPG and not blTimeOuthrM6pmpPG then
+		TimerStart(stTimeOuthrM6pmpPG,T#240s);
+		blTimeOuthrM6pmpPG := True;
+	End_If;
+	if TimerEnd(stTimeOuthrM6pmpPG) and not ctFlowY1PG and hrM6pmpPG then
+		Ft_FlowPoortgebouw := True;
+	End_If;
+	if TimerEnd(stTimeOuthrM6pmpPG)  then
+		blTimeOuthrM6pmpPG := False;
+	End_If;
+	if  ctFlowY1PG and hrM6pmpPG then
+		Ft_FlowPoortgebouw := False;
+	End_If;
+	if not hrM6pmpPG then
+		Ft_FlowPoortgebouw := False;
+	End_If;	
+	
+	if hrY1PG and not flTimeOutKlepPoortGeb then
+		TimerStart(stTimeOutKlepPoortGeb,T#240s);
+		flTimeOutKlepPoortGeb := True;
+	End_If;
+	if TimerEnd(stTimeOutKlepPoortGeb) and not ctY1PG and hrY1PG then
+		Ft_FlowPoortgebouw := True;
+	End_If;
+	if  ctY1PG and hrY1PG then
+		Ft_FlowPoortgebouw := False;
+	End_If;
+	if not hrY1PG then
+		flTimeOutKlepPoortGeb := False;
 	End_If;
 	
 	if ctPressH2O then
@@ -1295,8 +1073,9 @@ Task tError Autorun
 		Ft05_Opstoken := False;
 	End_If
 
-
-	WaterDruk := ((((mVWaterdruk /32767	)*10)*600)/1000); //((((analoge waarde / max ad conv)*10V)*400Kpa)/1000) --> bar
+	
+	WaterDruk := (mVWaterdruk / 32767) *10;//(analoge waarde / max ad conv)*6bar --> bar
+	
 	if WaterDruk <= WaterDruklaag then 
 		Ft08_Waterdruklaag := True;
 	else
@@ -1314,13 +1093,64 @@ Task tError Autorun
 	else
 		Ft10_MoederbordTemp := False;
 	End_If
-	if CPUTemperature >= MaxKaarTemperatuur then
-		Ft11_Raspberry_piTemp := True;
-	else
+	if not TimerEnd(stFt11) or CPUTemperature < MaxKaarTemperatuur then
 		Ft11_Raspberry_piTemp := False;
 	End_If
-	
+	if TimerEnd(stFt11) and CPUTemperature >= MaxKaarTemperatuur then
+		TimerStart(stFt11,T#60m);
+		Ft11_Raspberry_piTemp := True;
+		Delay(T#120s);
+	End_If
 		
+	if Ft01_Flow1 or Ft02_Flow2 or Ft03_H2Odruk or Ft04_Vorstgevaar or Ft05_Opstoken or
+		 Ft06_WeekTestGarFaalt or Ft07_WeekTestLoodsFaalt or Ft08_Waterdruklaag or Ft09_Waterdrukkritiek
+		or Ft10_MoederbordTemp or Ft11_Raspberry_piTemp or Ft12_GlobalError
+		Then
+			flError := True;
+			flNotError :=False;
+		Else
+			flError := False;
+			flNotError := True;
+		End_If
+	
+	
+	End_While	
+End_Task
+
+Task Bootwatcher Autorun
+	While true Do
+		if SecondsAfterBoot < VorigeBootCounter then
+			rebootInterval10 := rebootInterval9;
+			rebootInterval9 := rebootInterval8;
+			rebootInterval8 := rebootInterval7;
+			rebootInterval7 := rebootInterval6;
+			rebootInterval6 := rebootInterval5;
+			rebootInterval5 := rebootInterval4;
+			rebootInterval4 := rebootInterval3;
+			rebootInterval3 := rebootInterval2;
+			rebootInterval2 := rebootInterval1;
+			rebootInterval1 := rebootInterval0;
+			rebootInterval0 := VorigeBootCounter;//(Day*1000000) + (Hours*10000) + (Minutes*100) + Seconds;
+			rebootTimer := rebootInterval0;
+		End_If
+		VorigeBootCounter := SecondsAfterBoot;
+		
+		if resetBootWatchers then
+			rebootInterval10 := 0;
+			rebootInterval9 := 0;
+			rebootInterval8 := 0;
+			rebootInterval7 := 0;
+			rebootInterval6 := 0;
+			rebootInterval5 := 0;
+			rebootInterval4 := 0;
+			rebootInterval3 := 0;
+			rebootInterval2 := 0;
+			rebootInterval1 := 0;
+			rebootInterval0 := 0;
+			BootCounter := 0;
+			VorigeBootCounter := 0;
+			resetBootWatchers := False;
+		End_If
 	End_While	
 End_Task
 
@@ -1328,7 +1158,8 @@ Task tRPI Autorun
 	//Task raspberry pi bewaking
 	PrevPiAliveValue := 0;
 	While true Do
-		TimerStart(stPiAlive,T#20s);
+		TimerStart(stPiAlive,T#120s);
+		Alive := AliveIB;
 		when PrevPiAliveValue <> Alive or TimerEnd(stPiAlive) continue;
 		if TimerEnd(stPiAlive) Then
 			ftPiAlive := True;
@@ -1339,5 +1170,46 @@ Task tRPI Autorun
 		
 	End_While	
 End_Task
+
+Task tAlive Autorun
+	Task7Dalaycounter := 0;
+	While true Do
+		if Task7Dalaycounter >= 100 then
+			PLCAlive := PLCAlive * -1;
+			Task7Dalaycounter := 0;
+		End_If
+		DELAY (100);
+		Task7Dalaycounter := Task7Dalaycounter +1;
+	End_While	
+End_Task
+
+
+Task tCommunicatie Autorun
+	While true Do
+		if ctBuitenLamp then
+			//Input waarden in register steken voor netcopy
+			rctBuitenLamp := 1;
+		Else
+			rctBuitenLamp := 0;
+		End_If
+		
+		//kopierd de inhoud van Calor 400.naar Conruigus 97
+		NetCopyRegFromReg(IP#192.168.250.25,1000400,1000097,1,3,1);		
+		//kopierd de inhoud van Calor 352.naar Conruigus 1000117
+		NetCopyRegFromReg(IP#192.168.250.25,1000352,1000117,8,3,1);	
+		//kopierd de inhoud van Munerica 1041.naar Conruigus 1001500 schemerschakelaar 0 licht, 1 donker
+		NetCopyRegFromReg(IP#192.168.250.26,1001041,1001500,10,3,1);	
+		DELAY (100);
+		
+		BufferLading := BufferLadingIB;
+		BufferBoven := BufferBovenIB;
+		BufferMidden := BufferMiddenIB;
+		BufferOnder := BufferOnderIB;
+		Keteltemperatuur := KeteltemperatuurIB;
+		
+	End_While	
+End_Task
+
+
 
 
